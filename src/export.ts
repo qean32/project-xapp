@@ -24,3 +24,7 @@ export const style = {
     $text_color: '#D2D2D2',
     $color_plate: '#2C2C2C',
 }
+
+export { axiosInstance } from './service/instance'
+export const host = 'http://localhost:5173/'
+export const tokenStorage = 'tokenStorage'
