@@ -14,3 +14,13 @@ export const en = {
     client_update: "client_update",
     client_remove: "client_remove"
 }
+
+export const style = {
+    $bg_color: '#292929',
+    $bg_color_dark: '#262626',
+    $bg_color_light: '#333333',
+    $bg_color_light_: '#373737',
+
+    $text_color: '#D2D2D2',
+    $color_plate: '#2C2C2C',
+}

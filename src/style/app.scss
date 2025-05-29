@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "import";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: cursive;
+  font-size: medium;
+  letter-spacing: .2vh;
+  color: $text-color;
+  text-decoration: none;
+  // outline: #E74343 1px solid;
+}
+
+:root {
+  --color: black;
+}
+
+body {
+  background-color: $bg-color;
+}
