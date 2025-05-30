@@ -8,11 +8,15 @@ export const useChatWebsocket = (chatId: number) => {
     const [messages, setMessages] = React.useState<Message[]>([]);
     const [offset, setOffset] = React.useState<number>(0);
     // const { bool: companionTyping, swap } = useBoolean(false)
-    
+
     const [companionTyping, setCompanionTyping] = React.useState<boolean>(false)
     const debounceCompanionTyping = useDebounce(companionTyping, 600)
 
     const socket = io('http://localhost:3000');
+
+    const getPrevMessage = () => {
+        // get prev message http
+    }
 
     socket.emit(en.connection, chatId);
 
@@ -62,5 +66,5 @@ export const useChatWebsocket = (chatId: number) => {
         setMessages(prev => [...prev.filter(message => message.id != messages.find(message => message.id == id)?.id)])
     })
 
-    return { valueTyping: debounceCompanionTyping, messages, offset, typing, viewMessage, sendMessage, updateMessage, removeMessage }
+    return { valueTyping: debounceCompanionTyping, messages, offset, typing, viewMessage, sendMessage, updateMessage, removeMessage, getPrevMessage }
 }

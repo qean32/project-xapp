@@ -1,3 +1,3 @@
 export const usePage = () => {
-    return []
+    return null
 }

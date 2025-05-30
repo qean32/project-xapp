@@ -1,7 +1,7 @@
 import React from "react";
-import { useBoolean } from "./";
+import { useBoolean } from ".";
 
-export const useHandlerScrool = (ref: any, daley: number = 200) => {
+export const useHandlerScroll = (ref: any, daley: number = 200) => {
     const { bool, on, off } = useBoolean(false)
     const controller = new AbortController
 
