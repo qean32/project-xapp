@@ -1,11 +1,11 @@
-import { tokenStorage } from "../../export"
+import { accessTokenWord, tokenStorage } from "../../export"
 
 export const getAuthHeaders = (file: boolean = false) => {
     return file ?
-        { 'Authorization': `JWT ${JSON.parse(localStorage.getItem(tokenStorage) as string).access}` }
+        { 'Authorization': `${accessTokenWord} ${JSON.parse(localStorage.getItem(tokenStorage) as string).access}` }
         :
         {
             'Content-Type': 'application/json',
-            'Authorization': `JWT ${JSON.parse(localStorage.getItem(tokenStorage) as string).access}`
+            'Authorization': `${accessTokenWord} ${JSON.parse(localStorage.getItem(tokenStorage) as string).access}`
         }
 }

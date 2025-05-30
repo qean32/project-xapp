@@ -25,6 +25,7 @@ export const style = {
     $color_plate: '#2C2C2C',
 }
 
+export const accessTokenWord = 'JWT'
 export { axiosInstance } from './service/instance'
 export const host = 'http://localhost:5173/'
 export const tokenStorage = 'tokenStorage'
