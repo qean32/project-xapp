@@ -6,9 +6,9 @@ const socket = io('http://localhost:3000/')
 socket.emit(en.connection, { chatId: 'room' })
 socket.on(en.connected, (e) => console.log(e))
 
-const gosms = () => {
-    socket.emit(en.client_send, { 'zxc': 'zxc', chatId: 'room' })
-}
+// const gosms = () => {
+//     socket.emit(en.client_send, { 'zxc': 'zxc', chatId: 'room' })
+// }
 
 socket.on(en.server_typing, (payload: any) => {
     console.log(payload)
