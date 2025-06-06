@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @import "import";
+@import "core";
+@import "input";
 
 * {
   margin: 0;

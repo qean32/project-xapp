@@ -1,0 +1,9 @@
+@import 'import';
+
+input[type=search] {
+    padding: 12px;
+    padding-left: 15px;
+    border-radius: 10px;
+    background-color: $bg-color-dark;
+    outline: 1px $bg-color-light solid;
+}

@@ -2,13 +2,15 @@ import React from 'react'
 import { cn } from '../../export'
 
 interface Props {
-className?: string
+    className?: string
 }
 
 
-export const Component: React.FC<Props> = ({ className }: Props) => {
+export const Search: React.FC<Props> = ({ className }: Props) => {
     return (
-        <div className={cn('', className)}>
+        <div className={cn('flex justify-center items-center fit-content', className)}>
+            <input type="search" placeholder='поиск..' />
+            <img src="./svg/search.svg" alt="" style={{ width: '1.3rem', transform: 'translateX(-37px)' }} />
         </div>
     )
 }
