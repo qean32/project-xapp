@@ -2,13 +2,18 @@ import React from 'react'
 import { cn } from '../../export'
 
 interface Props {
-className?: string
+    className?: string
+    text: string
+    icon?: string
 }
 
 
-export const Component: React.FC<Props> = ({ className }: Props) => {
+export const IconAndAText: React.FC<Props> = ({ className, text, icon }: Props) => {
     return (
-        <div className={cn('', className)}>
+        <div className={cn('flex', className)}>
+            <img src={icon} alt="" />
+            <p>{text}</p>
+            <p>{text}</p>
         </div>
     )
 }

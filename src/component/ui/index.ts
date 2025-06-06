@@ -1,0 +1,1 @@
+export { IconAndAText } from './icon-and-text'
