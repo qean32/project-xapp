@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { cn } from '../../export'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 
-export const IconAndAText: React.FC<Props> = ({ className, text, icon, iconSize = 'small' }: Props) => {
+export const IconAndAText: React.FC<Props> = memo(({ className, text, icon, iconSize = 'small' }: Props) => {
     return (
         <div className={cn('flex justify-center items-center gap-2 cursor-pointer', className)}>
             <img className={iconSize} src={'./' + icon} alt="" />
@@ -17,3 +17,4 @@ export const IconAndAText: React.FC<Props> = ({ className, text, icon, iconSize 
         </div >
     )
 }
+)
