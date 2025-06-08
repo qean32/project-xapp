@@ -6,7 +6,7 @@ interface Props {
 }
 
 
-export const Search: React.FC<Props> = ({ className }: Props) => {
+export const Search: React.FC<Props> = React.memo(({ className }: Props) => {
     return (
         <div className={cn('flex justify-center items-center fit-content', className)}>
             <input type="search" placeholder='поиск..' />
@@ -14,3 +14,4 @@ export const Search: React.FC<Props> = ({ className }: Props) => {
         </div>
     )
 }
+)

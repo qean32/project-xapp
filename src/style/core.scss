@@ -14,10 +14,27 @@
     transition: $dft-transition;
 }
 
+.transition03 {
+    transition: .3s;
+}
+
 .small-to-top:hover {
     transform: translateY(-5px);
 }
 
 .fit-content {
     width: fit-content
+}
+
+.fill {
+    position: absolute;
+    inset: 0 0 0 0;
+}
+
+.whitesmoke {
+    color: whitesmoke !important;
+}
+
+.display-none {
+    display: none
 }

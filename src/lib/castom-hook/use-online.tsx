@@ -6,8 +6,8 @@ export const useOnline = () => {
     const controller = new AbortController
 
     React.useEffect(() => {
-        window.addEventListener('online', () => on, { signal: controller.signal })
-        window.addEventListener('offline', () => off, { signal: controller.signal })
+        window.addEventListener('online', () => on(), { signal: controller.signal })
+        window.addEventListener('offline', () => off(), { signal: controller.signal })
 
         return () => {
             controller.abort()

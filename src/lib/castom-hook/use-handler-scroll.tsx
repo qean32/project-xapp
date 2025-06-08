@@ -10,9 +10,9 @@ export const useHandlerScroll = (ref: any, daley: number = 200) => {
 
         const fn = () => {
             node.getBoundingClientRect().top < window.innerHeight + daley ?
-                on
+                on()
                 :
-                off
+                off()
         }
 
         window.addEventListener('scroll', fn, { signal: controller.signal })

@@ -7,8 +7,8 @@ export const useBoolean = (initialValue: boolean = false) => {
         setBool((prev: boolean) => !prev)
     }
 
-    const on = setBool(true)
-    const off = setBool(false)
+    const on = () => setBool(true)
+    const off = () => setBool(false)
 
     return { bool, swap, on, off }
 }
