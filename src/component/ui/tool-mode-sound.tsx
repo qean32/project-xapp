@@ -8,15 +8,13 @@ interface Props {
 }
 
 
-export const ToolModeSound: React.FC<Props> = ({ className }: Props) => {
+export const ToolModeSound: React.FC<Props> = ({ className = 'w-[25px]' }: Props) => {
     const modeSound = useAppSelector((state) => state.modeSound)
     const dispatch = useAppDispatch()
-    console.log(modeSound)
 
     return (
-        // @ts-ignore
-        <div className={cn('', className)} onClick={() => dispatch(swap())}>
-            zxczxc
+        <div className={cn('cursor-pointer m-1', className)} onClick={() => dispatch(swap())}>
+            <img src={'./svg/' + modeSound.mode + '.svg'} alt="" />
         </div>
     )
 }

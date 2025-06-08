@@ -24,3 +24,16 @@
 body {
   background-color: $bg-color;
 }
+
+.music-ava {
+  min-width: 75px;
+  min-height: 50px;
+  background-color: $bg-color-dark;
+  border-radius: 5px;
+}
+
+.trans-5 {
+  transform: translateY(5px);
+}
+
+// .ava {}

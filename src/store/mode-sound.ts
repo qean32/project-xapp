@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export type ModeSoundDto = { mode: 'repeat-playList' | 'repeat-music' | 'compilation' | 'random'; }
-const initialState: ModeSoundDto = { mode: 'repeat-playList' }
+export type ModeSoundDto = { mode: 'repeat' | 'repeat-music' | 'random-play'; }
+const initialState: ModeSoundDto = { mode: 'repeat' }
 
 export const mapModeSound = new Map([
-    ['repeat-playList', 'repeat-music'],
-    ['repeat-music', 'compilation'],
-    ['compilation', 'random'],
-    ['random', 'repeat-playList'],
+    ['repeat', 'repeat-music'],
+    ['repeat-music', 'random-play'],
+    ['random-play', 'repeat'],
 ])
 
 const modeSound = createSlice({
