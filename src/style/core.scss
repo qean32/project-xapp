@@ -18,6 +18,10 @@
     transition: .3s;
 }
 
+.transition07 {
+    transition: .7s;
+}
+
 .small-to-top:hover {
     transform: translateY(-5px);
 }
@@ -37,4 +41,14 @@
 
 .display-none {
     display: none
+}
+
+.dft-container {
+    background-color: $bg-color-light;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    transition: .3s;
+    animation: anim .7s;
 }
