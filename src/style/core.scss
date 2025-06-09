@@ -44,11 +44,6 @@
 }
 
 .dft-container {
-    background-color: $bg-color-light;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    position: relative;
-    z-index: 1;
-    transition: .3s;
+    @include dftPlate;
     animation: anim .7s;
 }

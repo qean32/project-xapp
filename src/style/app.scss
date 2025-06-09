@@ -6,6 +6,7 @@
 @import "core";
 @import "input";
 @import "auth";
+@import 'loader';
 
 * {
   margin: 0;
@@ -16,6 +17,18 @@
   color: $text-color;
   text-decoration: none;
   // outline: #E74343 1px solid;
+}
+
+button {
+  padding: 0.5em 1.4em;
+  font-size: 1em;
+  background-color: $bg-color-light;
+  transition: $dft-transition;
+  border-color: $bg-color-light 1px solid;
+}
+
+button:hover {
+  background-color: $bg-color-light-;
 }
 
 #root {

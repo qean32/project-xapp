@@ -1,15 +1,15 @@
 $bg-color: #292929;
 $bg-color-dark: #262626;
+$plate-color: #2C2C2C;
 
 $bg-color-light: #333333;
 $bg-color-light-: #373737;
-$color-plate: #2C2C2C;
 
 $text-color: #D2D2D2;
 $dft-transition: .7s;
 
 @mixin dftPlate {
-    background-color: $color-plate;
+    background-color: $plate-color;
     border-radius: 8px;
     position: relative;
     transition: $dft-transition;

@@ -22,14 +22,10 @@ export const style = {
     $bg_color_light_: '#373737',
 
     $text_color: '#D2D2D2',
-    $color_plate: '#2C2C2C',
+    $plate_color: '#2C2C2C',
 }
 
 export const accessTokenWord = 'JWT'
 export { axiosInstance } from './service/instance'
 export const host = 'http://localhost:5173/'
 export const tokenStorage = 'tokenStorage'
-
-export const cn = (...args: string[] | any[]) => {
-    return args && args.join(' ')
-}

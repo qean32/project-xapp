@@ -58,6 +58,10 @@ input:focus {
     white-space: nowrap;
 }
 
+.count-input {
+    left: -2vh;
+}
+
 input[type=date] {
     border: none;
     outline: none;

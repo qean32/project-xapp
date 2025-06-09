@@ -1,6 +1,6 @@
 import React from 'react'
-import { cn } from '../../export'
 import { ToolModeSound } from '../ui'
+import { cn } from '../../lib/function'
 
 interface Props {
     className?: string

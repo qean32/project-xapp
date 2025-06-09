@@ -1,8 +1,7 @@
 import React from 'react'
 import { useBoolean } from '../../lib/castom-hook'
-import { generateId, renameFile } from '../../lib/function'
+import { cn, generateId, renameFile } from '../../lib/function'
 import { validateEmail, validatePassword } from '../../lib/function/validate'
-import { cn } from '../../export'
 
 export const InputText = ({ title, value, setValue, max, validate = true, className }: {
     title: string
@@ -43,7 +42,7 @@ export const InputText = ({ title, value, setValue, max, validate = true, classN
             <p className={cn('inputwarning text-nowrap', (!valide.bool && 'opacity-0'))}>не используйте латиницу / числа</p>
 
             <div className='absolute right-5 bottom-3'>
-                <p className={cn('inputwarning opacity-100', (!(value.length > max) ? 'whitesmoke' : ''))}> {value.length}/{max} </p>
+                <p className={cn('inputwarning opacity-100 count-input', (!(value.length > max) ? 'whitesmoke' : ''))}> {value.length}/{max} </p>
             </div>
         </div>
     );
@@ -145,7 +144,7 @@ export const InputEmail = ({ title, value, setValue, className }: {
             <p className={cn('inputwarning', !valide.bool && 'opacity-0')}>не валидная почта</p>
 
             <div className='absolute right-5 bottom-3'>
-                <p className={cn('inputwarning opacity-100', (!(value.length > 40) ? 'whitesmoke' : ''))}> {value.length}/40 </p>
+                <p className={cn('inputwarning opacity-100 count-input', (!(value.length > 40) ? 'whitesmoke' : ''))}> {value.length}/40 </p>
             </div>
         </div>
     );

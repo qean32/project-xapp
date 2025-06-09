@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn } from '../../export'
+import { cn } from '../../lib/function'
 
 interface Props {
     className?: string

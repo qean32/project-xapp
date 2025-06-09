@@ -1,7 +1,7 @@
 import React from 'react'
-import { cn } from '../../export'
 import { useAppSelector, useAppDispatch } from '../../lib/castom-hook/redux'
 import { swap } from '../../store/mode-sound'
+import { cn } from '../../lib/function'
 
 interface Props {
     className?: string
