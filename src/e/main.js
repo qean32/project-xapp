@@ -1,7 +1,8 @@
-const { app, BrowserWindow } = pkg;
 import pkg from 'electron';
 import path from 'path'
+const { app, BrowserWindow, ipcMain } = pkg;
 
+// @ts-ignore
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true
 const extenation = new Map([
     ["dev", "http://localhost:5173"],
@@ -9,7 +10,28 @@ const extenation = new Map([
 ])
 
 app.on('ready', () => {
-    const mainWindow = new BrowserWindow({});
+    const mainWindow = new BrowserWindow({
+        autoHideMenuBar: true,
+        titleBarStyle: 'hidden'
+
+    });
+    mainWindow.setMenu(null)
     mainWindow.webContents.openDevTools();
-    mainWindow.loadURL(extenation.get('dev'));
+
+    // @ts-ignore
+    mainWindow.loadURL(extenation.get('prod'));
+
+    ipcMain.on('sendFrameAction', (payload) => {
+        switch (payload) {
+            case 'CLOSE':
+                mainWindow.close();
+                break;
+            case 'MAXIMIZE':
+                mainWindow.maximize();
+                break;
+            case 'MINIMIZE':
+                mainWindow.minimize();
+                break;
+        }
+    });
 })

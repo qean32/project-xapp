@@ -8,6 +8,7 @@ import { Button } from "../component/ui/custom-buttom"
 
 export const Auth = () => {
     changeTitle('вход')
+
     const [firstname, setFirstname] = React.useState<string>('')
     const [password, setPassword] = React.useState<string>('')
     const [email, setEmail] = React.useState<string>('')
@@ -20,8 +21,8 @@ export const Auth = () => {
     }, [on.bool])
 
     return (
-        <div className="flex justify-center items-center h-100" style={{ height: '100vh' }} >
-            <DefaultContiner className="">
+        <div className="flex justify-center items-center h-100" >
+            <DefaultContiner>
                 <div className="regwindow transition07" style={!authWindow.bool ? { maxHeight: '500px' } : { maxHeight: '360px' }}>
                     <Carousel />
                     <div className="regentrance" style={{ width: '200%' }}>
@@ -54,7 +55,7 @@ export const Auth = () => {
 }
 
 
-export const Carousel = ({ }: {}) => {
+export const Carousel = () => {
     const [index, setIndex] = React.useState<number>(0)
     const [carouselStyle, setCarouselStyle] = React.useState<CSSProperties>({ transform: 'translateY(0%)' })
 
@@ -67,9 +68,6 @@ export const Carousel = ({ }: {}) => {
     }, [])
 
     React.useEffect(() => {
-        console.log(index)
-        console.log(`translateY(${index * 25}%)`);
-
         setCarouselStyle({ transform: `translateY(-${index * 25}%)` })
 
         if (index == 4) {
@@ -79,7 +77,7 @@ export const Carousel = ({ }: {}) => {
 
     return (
         <div style={{ zIndex: '10', backgroundColor: `${style.$plate_color}` }} onClick={() => setIndex((prev: any) => prev + 1)}>
-            <div style={{ width: '100%' }}>
+            <div className="w-100">
                 <div style={{ ...carouselStyle, height: 'calc(100% * 4)' }} className="transition07">
                     <div className="h-1/4 flex justify-center items-center"><img src="/svg/cs.svg" alt="" /><p>играй в CS2 c нами</p></div>
                     <div className="h-1/4 flex justify-center items-center"><img src="/svg/bascketball.svg" alt="" /><p>корт зовет нас...</p></div>

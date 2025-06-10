@@ -1,6 +1,5 @@
 export type { Auth } from './auth.dto'
 export type { Message } from './message.dto'
-export type { Music } from './music.dto'
 export type { PlayList } from './playlist.dto'
 export type { Registration } from './registration.dto'
 export type { SendMessage } from './send-message.dto'
