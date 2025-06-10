@@ -12,11 +12,11 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true
 
 app.on('ready', () => {
     const mainWindow = new BrowserWindow({
-        autoHideMenuBar: true,
-        titleBarStyle: 'hidden'
+        // autoHideMenuBar: true,
+        // titleBarStyle: 'hidden'
 
     });
-    mainWindow.setMenu(null)
+    // mainWindow.setMenu(null)
     mainWindow.webContents.openDevTools();
 
     // @ts-ignore
