@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: cursive;
+  font-size: medium;
+  letter-spacing: 0.2vh;
+  color: #D2D2D2;
+  text-decoration: none;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes anim {
+  from {
+    transform: translateY(-10px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.whitesmoke {
+  color: whitesmoke !important;
+}
+
+.small {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.medium {
+  width: 3rem;
+  height: 3rem;
+}
+
+.music-ava {
+  min-width: 60px;
+  height: 45px;
+  background-color: #292929;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+}
+
+.trans-5 {
+  transform: translateY(5px);
+}
+
+.small-to-top {
+  transition: 0.7s;
+}
+
+.small-to-top:hover {
+  transform: translateY(-5px);
+}
+
+.transform-40 {
+  transform: translateY(-40px) !important;
+}
+
+.music:hover {
+  background-color: #333333;
+}
+
+input {
+  background-color: #292929;
+  padding: 1vh 2.2vh;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  min-height: 31px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: start;
+  padding: 0 0 0 20px;
+  width: 100%;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+label>p {
+  transition: 0.7s;
+  font-size: 16px;
+}
+
+input:focus {
+  border: 1px solid #373737;
+}
+
+input[type=search] {
+  border: 1px solid transparent !important;
+}
+
+.transform-label {
+  transform: translate(-0.4vh, -25px);
+}
+
+.inputwarning {
+  color: #E74343;
+  position: absolute;
+  bottom: -20px;
+  left: 1vh;
+  font-size: 12px;
+  transition: 0.5s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.count-input {
+  left: -10vh;
+}
+
+.lockpass {
+  position: absolute;
+  right: 3.5vh;
+  top: 1.5vh;
+}
+
+input[type=checkbox] {
+  width: 13px;
+  border: 2px solid #262626;
+}
+
+button {
+  padding: 0.5em 1.4em;
+  font-size: 1em;
+  background-color: #333333;
+  transition: 0.7s;
+  border-color: #333333 1px solid;
+}
+
+button:hover {
+  background-color: #373737;
+}
+
+.regwindow {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  width: 640px;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.regwindow>div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.windowreg {
+  display: flex;
+  align-items: start;
+  width: 50%;
+  gap: 30px;
+  flex-direction: column;
+}
+
+.regentrance {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.regentrance>div {
+  display: flex;
+  width: 100%;
+  padding: 50px 0 20px 0;
+}
+
+.regwarning>p {
+  font-size: 13px;
+  padding: 0 0 0 10px;
+  cursor: pointer;
+}
+
+.navreg {
+  position: absolute;
+  right: -10px;
+  cursor: pointer;
+  top: -50px;
+  display: flex;
+  gap: 20px;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  transition: 0.7s;
+  animation: rotate 1.6s linear infinite;
+}
+
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 4px solid white;
+  animation: prixClipFix 1s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+#root {
+  height: 100vh;
+}
+
+body {
+  background-color: #292929;
+}
+
+.transition03 {
+  transition: 0.3s;
+}
+
+.transition07 {
+  transition: 0.7s;
+}
+
+.fit-content {
+  width: fit-content;
+}
+
+.fill {
+  position: absolute;
+  inset: 0 0 0 0;
+}
+
+.display-none {
+  display: none;
+}
+
+.dft-container {
+  background-color: #2C2C2C;
+  border-radius: 8px;
+  position: relative;
+  transition: 0.7s;
+  animation: anim 0.7s;
+  animation: anim 0.7s;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  height: 100vh;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/*# sourceMappingURL=core.css.map */
