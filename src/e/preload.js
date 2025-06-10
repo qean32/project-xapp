@@ -1,16 +1,15 @@
 const electron = require('electron')
 
-console.log('zxc123zxc')
-console.log(electron)
-
 electron.contextBridge.exposeInMainWorld('electron', {
-    sendFrameAction: (payload) => { ipcSend('sendFrameAction', payload); electron.ipcRenderer.emit(payload); electron.ipcRenderer.send(payload); console.log('zxczxc52') },
-    ipcRenderer: (payload) => ipcRenderer(payload)
+    sendFrameAction: (payload) => electron.ipcRenderer.send(payload)
 })
 
-function ipcSend(
-    key,
-    payload
-) {
-    electron.ipcRenderer.send(key, payload);
-}
+window.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('top-bar')
+    el.addEventListener('mouseenter', () => {
+        ipcRenderer.send('set-ignore-mouse-events', true, { forward: true })
+    })
+    el.addEventListener('mouseleave', () => {
+        ipcRenderer.send('set-ignore-mouse-events', false)
+    })
+})

@@ -12,36 +12,36 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true
 
 app.on('ready', () => {
     const mainWindow = new BrowserWindow({
-        // autoHideMenuBar: true,
-        // titleBarStyle: 'hidden'
+        autoHideMenuBar: true,
+        titleBarStyle: 'hidden',
         webPreferences: {
             nodeIntegration: true,
             preload: path.join(app.getAppPath(), 'src/e/', 'preload.js')
         }
 
     });
-    // mainWindow.setMenu(null)
+    mainWindow.setMenu(null)
     mainWindow.webContents.openDevTools();
 
-    // @ts-ignore
     mainWindow.loadURL(extenation.get('prod'));
-
-    ipcMain.on('sendFrameAction', (payload) => {
-        switch (payload) {
-            case 'CLOSE':
-                console.log('zxcrrrrr')
-                mainWindow.close();
-                break;
-            case 'MAXIMIZE':
-                mainWindow.maximize();
-                break;
-            case 'MINIMIZE':
-                mainWindow.minimize();
-                break;
-        }
-    });
-
     ipcMain.on('CLOSE', () => {
         mainWindow.close();
+    })
+
+    ipcMain.on('HIDE', () => {
+        mainWindow.minimize();
+    })
+
+    ipcMain.on('CHANGE-WiNDOW-', () => {
+        mainWindow.unmaximize();
+    })
+
+    ipcMain.on('CHANGE-WiNDOW+', () => {
+        mainWindow.maximize();
+    })
+
+    ipcMain.on('set-ignore-mouse-events', (event, ignore, options) => {
+        const win = BrowserWindow.fromWebContents(event.sender)
+        win.setIgnoreMouseEvents(ignore, options)
     })
 })

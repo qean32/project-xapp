@@ -1,5 +1,6 @@
 import React from 'react'
 import { cn } from '../../lib/function'
+import { useBoolean } from '../../lib/castom-hook'
 
 
 interface Props {
@@ -8,25 +9,37 @@ interface Props {
 
 
 export const TopMenu: React.FC<Props> = ({ className }: Props) => {
-    // @ts-ignore
-    // console.log(window)
+    const { bool, swap } = useBoolean(false)
 
-    const clickhandl = () => {
-
+    const clickHandler = (key: 'CLOSE' | 'HIDE' | 'CHANGE-WiNDOW') => {
         // @ts-ignore
-        window.electron.sendFrameAction('CLOSE')
-        //@ts-ignore
-        // @ts-ignore
-        console.log(window.electron)
-        // @ts-expect-error
-        window.electron.ipcRenderer('CLOSE')
+        window.electron.sendFrameAction(key)
     }
+
+    const changeWinwdowClickHandler = () => {
+        if (bool) {
+            // @ts-ignore
+            window.electron.sendFrameAction('CHANGE-WiNDOW-')
+            swap()
+            return
+        }
+
+        // @ts-ignore
+        window.electron.sendFrameAction('CHANGE-WiNDOW+')
+        swap()
+    }
+
     return (
-        <div className={cn('absolute top-0 w-100 flex justify-start items-center gap-4 pt-2 pr-2', className)}>
-            {/* <img onClick={() => window.electron.sendFrameAction('hide')} className='small cursor-pointer' src="./svg/hide.svg" alt="" /> */}
-            {/* <img onClick={() => window.electron.sendFrameAction('change-window')} className='small cursor-pointer' src="./svg/change-window.svg" alt="" /> */}
-            {/*// @ts-ignore */}
-            <img onClick={clickhandl} className='small cursor-pointer' src="./svg/cross.svg" alt="" />
-        </div>
+        <>
+            <div className='fixed top-0 w-100 z-10'>
+                <div className={cn('gap-4 pr-2 cursor-pointer flex', className)} >
+                    <div id='top-bar'></div>
+
+                    <img onClick={() => clickHandler('HIDE')} className='small cursor-pointer' src="./svg/hide.svg" style={{ transform: 'translateY(-2px)' }} alt="" />
+                    <img onClick={changeWinwdowClickHandler} className='small cursor-pointer' src="./svg/change-window.svg" alt="" />
+                    <img onClick={() => clickHandler('CLOSE')} className='cursor-pointer' src="./svg/cross.svg" alt="" width={'17'} />
+                </div>
+            </div>
+        </>
     )
 }

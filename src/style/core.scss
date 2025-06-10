@@ -32,6 +32,12 @@
   height: 100vh;
 }
 
+.top-bar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  flex: 1;
+}
+
 body {
   background-color: $bg-color;
 }
