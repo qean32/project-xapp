@@ -14,6 +14,10 @@ app.on('ready', () => {
     const mainWindow = new BrowserWindow({
         // autoHideMenuBar: true,
         // titleBarStyle: 'hidden'
+        webPreferences: {
+            nodeIntegration: true,
+            preload: path.join(app.getAppPath(), 'src/e/', 'preload.js')
+        }
 
     });
     // mainWindow.setMenu(null)
@@ -25,6 +29,7 @@ app.on('ready', () => {
     ipcMain.on('sendFrameAction', (payload) => {
         switch (payload) {
             case 'CLOSE':
+                console.log('zxcrrrrr')
                 mainWindow.close();
                 break;
             case 'MAXIMIZE':
@@ -35,4 +40,8 @@ app.on('ready', () => {
                 break;
         }
     });
+
+    ipcMain.on('CLOSE', () => {
+        mainWindow.close();
+    })
 })
