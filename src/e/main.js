@@ -23,7 +23,7 @@ app.on('ready', () => {
     mainWindow.setMenu(null)
     mainWindow.webContents.openDevTools();
 
-    mainWindow.loadURL(extenation.get('prod'));
+    mainWindow.loadURL(extenation.get('dev'));
     ipcMain.on('CLOSE', () => {
         mainWindow.close();
     })

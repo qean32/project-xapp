@@ -31,7 +31,7 @@ export const TopMenu: React.FC<Props> = ({ className }: Props) => {
 
     return (
         <>
-            <div className='fixed top-0 w-100 z-10'>
+            <div className='fixed top-0 w-100 z-10 pt-3 pr-1'>
                 <div className={cn('gap-4 pr-2 cursor-pointer flex', className)} >
                     <div id='top-bar'></div>
 

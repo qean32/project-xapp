@@ -2,12 +2,10 @@
   from {
     transform: translateY(-10px);
   }
-
   to {
     transform: translateY(0);
   }
 }
-
 .whitesmoke {
   color: whitesmoke !important;
 }
@@ -73,7 +71,7 @@ label {
   cursor: pointer;
 }
 
-label>p {
+label > p {
   transition: 0.7s;
   font-size: 16px;
 }
@@ -137,7 +135,7 @@ button:hover {
   padding: 20px 0;
 }
 
-.regwindow>div {
+.regwindow > div {
   width: 100%;
   height: 100%;
   display: flex;
@@ -157,13 +155,13 @@ button:hover {
   overflow: hidden;
 }
 
-.regentrance>div {
+.regentrance > div {
   display: flex;
   width: 100%;
   padding: 50px 0 20px 0;
 }
 
-.regwarning>p {
+.regwarning > p {
   font-size: 13px;
   padding: 0 0 0 10px;
   cursor: pointer;
@@ -202,33 +200,26 @@ button:hover {
     transform: rotate(360deg);
   }
 }
-
 @keyframes prixClipFix {
   0% {
     clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
   }
-
   25% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
   }
-
   50% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
   }
-
   75% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
   }
-
   100% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
   }
 }
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 *::-webkit-scrollbar {
   width: 0;
 }

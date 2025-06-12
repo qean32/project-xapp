@@ -32,7 +32,7 @@
   height: 100vh;
 }
 
-.top-bar {
+#top-bar {
   -webkit-user-select: none;
   -webkit-app-region: drag;
   flex: 1;
@@ -71,8 +71,7 @@ body {
 main {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 50px;
+  gap: 30px;
   height: 100vh;
 }
 

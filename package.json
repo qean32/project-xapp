@@ -6,6 +6,7 @@
   "main": "src/e/main.js",
   "scripts": {
     "dev": "vite",
+    "scss": "npx sass ./src/style/core.scss:src/style/core/core.css",
     "dev:electron": "electron .",
     "build": "tsc -b && vite build",
     "dist:win": "electron-builder --win --x64",

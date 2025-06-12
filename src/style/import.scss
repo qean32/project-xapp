@@ -1,9 +1,16 @@
-$bg-color: #292929;
-$bg-color-dark: #262626;
-$plate-color: #2C2C2C;
+// $bg-color: #292929;
+// $bg-color-dark: #262626;
+// $plate-color: #2C2C2C;
 
-$bg-color-light: #333333;
-$bg-color-light-: #373737;
+// $bg-color-light: #333333;
+// $bg-color-light-: #373737;
+
+$bg-color: #1b1b1b;
+$bg-color-dark: #141414;
+$plate-color: #212121;
+
+$bg-color-light: #2c2c2c;
+$bg-color-light-: #2e2e2e;
 
 $text-color: #D2D2D2;
 $dft-transition: .7s;
@@ -14,6 +21,26 @@ $dft-transition: .7s;
     position: relative;
     transition: $dft-transition;
     animation: anim $dft-transition;
+}
+
+.bg-color {
+    background-color: $bg-color !important;
+}
+
+.bg-color-dark {
+    background-color: $bg-color-dark !important;
+}
+
+.plate-color {
+    background-color: $plate-color !important;
+}
+
+.bg-color-light {
+    background-color: $bg-color-light !important;
+}
+
+.bg-color-light- {
+    background-color: $bg-color-light- !important;
 }
 
 @keyframes anim {
