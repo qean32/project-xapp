@@ -19,7 +19,6 @@ export const Music: React.FC<Props> = ({ className = 'music' }: Props) => {
             <div className='flex gap-3 pl-5'>
                 <img className='cursor-pointer' src="./svg/playlist.svg" alt="" />
                 <img className='cursor-pointer' src="./svg/download.svg" alt="" />
-                <img className='cursor-pointer' src="./svg/like.svg" alt="" />
             </div>
         </div>
     )

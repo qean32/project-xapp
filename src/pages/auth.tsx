@@ -1,10 +1,8 @@
 import React, { CSSProperties } from "react"
-import { InputPassword, InputEmail, InputText } from "../component/ui"
+import { InputPassword, InputEmail, InputText, Button } from "../component/ui"
 import { useBoolean } from "../lib/castom-hook"
 import { changeTitle } from "../lib/function"
 import { DefaultContiner } from "../component/hoc"
-import { style } from "../export"
-import { Button } from "../component/ui/custom-buttom"
 
 export const Auth = () => {
     changeTitle('вход')
@@ -76,7 +74,7 @@ export const Carousel = () => {
     }, [index])
 
     return (
-        <div style={{ zIndex: '10', backgroundColor: `${style.$plate_color}` }} onClick={() => setIndex((prev: any) => prev + 1)}>
+        <div className="Z-10 plate-color" onClick={() => setIndex((prev: any) => prev + 1)}>
             <div className="w-100">
                 <div style={{ ...carouselStyle, height: 'calc(100% * 4)' }} className="transition07">
                     <div className="h-1/4 flex justify-center items-center"><img src="/svg/cs.svg" alt="" /><p>играй в CS2 c нами</p></div>
