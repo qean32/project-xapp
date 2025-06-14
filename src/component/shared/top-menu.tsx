@@ -33,14 +33,14 @@ export const TopMenu: React.FC<Props> = ({ className }: Props) => {
 
     return (
         <>
-            <div className='fixed top-0 w-100 z-10 pt-3 pr-1'>
-                <div className={cn('gap-4 pr-2 pl-8 cursor-pointer flex', className)} >
-                    <img src="./svg/arrow.svg" alt="" onClick={() => navigate(-1)} title='назад' />
+            <div className='fixed top-0 w-100 z-10 pt-2'>
+                <div className={cn('gap-2 pr-2 pl-8 cursor-pointer flex', className)} >
+                    <img src="./svg/arrow.svg" alt="" onClick={() => navigate(-1)} title='назад' className='medium' />
                     <div id='top-bar'></div>
 
-                    <img onClick={() => clickHandler('HIDE')} className='small cursor-pointer' src="./svg/hide.svg" style={{ transform: 'translateY(-2px)' }} alt="" />
-                    <img onClick={changeWinwdowClickHandler} className='small cursor-pointer' src="./svg/change-window.svg" alt="" />
-                    <img onClick={() => clickHandler('CLOSE')} className='cursor-pointer' src="./svg/cross.svg" alt="" width={'17'} style={{ transform: 'translateY(-6px)' }} />
+                    <img onClick={() => clickHandler('HIDE')} className='medium' src="./svg/hide.svg" style={{ transform: 'translateY(-2px)' }} alt="" />
+                    <img onClick={changeWinwdowClickHandler} className='medium' src="./svg/change-window.svg" alt="" style={{ transform: 'translateX(2px)' }} />
+                    <img onClick={() => clickHandler('CLOSE')} className='medium' src="./svg/cross.svg" alt="" />
                 </div>
             </div>
         </>

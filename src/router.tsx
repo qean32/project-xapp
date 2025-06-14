@@ -16,7 +16,6 @@ export const Router = () => {
                     <Route path="chat" element={_.Chat()} />
                     <Route path="chats" element={_.Chats()} />
                     <Route path="auth" element={_.Auth()} />
-                    <Route path="test" element={_.Test()} />
                     <Route path="overlay" element={_.Overlay()} />
                 </Routes>
             </Provider>

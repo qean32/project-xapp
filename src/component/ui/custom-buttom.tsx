@@ -1,8 +1,10 @@
 import { useBoolean } from "../../lib/castom-hook"
+import { cn } from "../../lib/function"
 
-export const Button = ({ title, function_ }: {
+export const Button = ({ title, function_, className }: {
     title: string,
     function_: Function
+    className?: string
 }) => {
     const color = useBoolean(false)
     const fn = (e: any) => {
@@ -15,7 +17,7 @@ export const Button = ({ title, function_ }: {
         }, 700);
     }
     return (
-        <button className="rounded-md transotion07 flex justify-center items-center" onClick={fn} type="submit">
+        <button className={cn("rounded-md transotion07 flex justify-center items-center", className)} onClick={fn} type="submit">
             <p className={color.bool ? 'opacity-0' : ''}>{title}</p>
             {color.bool && <span className="loader"></span>}
         </button>

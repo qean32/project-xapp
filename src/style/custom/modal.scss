@@ -1,0 +1,64 @@
+@use '../import.scss' as *;
+
+.modal {
+    @include dftPlate;
+    background-color: $plate-color;
+}
+
+.modal-upload-anim {
+    animation: modalUploadAnim .3s;
+    transform: translate(0, -12vh);
+}
+
+.modal-add-playlist-anim {
+    animation: modalAddPlayListAnim .3s;
+    transform: translate(0, 0);
+}
+
+.modal-upload {
+    border: 5px dashed $bg-color-light-;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.shadow {
+    position: fixed;
+    inset: 0 0 0 0;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.678);
+    animation: shadowAnim .7s;
+}
+
+@keyframes modalUploadAnim {
+    from {
+        transform: translate(0, -4vh);
+        opacity: .2;
+    }
+
+    to {
+        transform: translate(0, -12vh);
+        opacity: 1;
+    }
+}
+
+@keyframes modalAddPlayListAnim {
+    from {
+        transform: translate(0, 4vh);
+        opacity: .2;
+    }
+
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes shadowAnim {
+    from {
+        opacity: .2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

@@ -3,6 +3,7 @@
 @use "./custom/input";
 @use "./custom/auth";
 @use './custom/loader';
+@use './custom/modal';
 
 @tailwind base;
 @tailwind components;
@@ -81,4 +82,8 @@ main {
 
 .w-100 {
   width: 100%;
+}
+
+.transform-reverse {
+  transform: scale(-1, 1);
 }

@@ -10,7 +10,7 @@ export const User: React.FC<Props> = ({ className = 'music' }: Props) => {
     return (
         <div className={cn('w-100 flex justify-between items-center py-3 pr-8 pl-10 transition03 cursor-pointer', className)}>
             <div className='flex gap-5 overflow-hidden justify-center items-center'>
-                <div className="music-ava"></div>
+                <div className="small-ava"></div>
                 <p className='text-nowrap overflow-hidden text-ellipsis'>НИКНЕЙМ</p>
             </div>
         </div>

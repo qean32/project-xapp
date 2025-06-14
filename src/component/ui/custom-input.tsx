@@ -98,10 +98,10 @@ export const Checkbox = ({ title, fn, value, className }: {
     return (
         <div onClick={() => fn()} className={cn('cursor-pointer relative fit-content', className)} >
             <p>{title}</p>
-            <input type='checkbox' style={{top: '-2px'}} className={cn('transition03 absolute -right-6', (value ? 'opacity-0' : ''))} />
+            <input type='checkbox' style={{ top: '-2px' }} className={cn('transition03 absolute -right-6', (value ? 'opacity-0' : ''))} />
             <img src='./svg/accept.svg'
                 alt=''
-                style={{top: '4px'}} className={cn('transition03 absolute -right-7', (!value && 'opacity-0'))}
+                style={{ top: '4px' }} className={cn('transition03 absolute -right-7', (!value && 'opacity-0'))}
             />
         </div>
     );

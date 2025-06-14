@@ -1,7 +1,7 @@
 import React from 'react'
 import { cn } from '../../lib/function'
 import { DefaultContiner } from '../hoc'
-import { PlayList } from '../shared'
+import { Ava, PlayList } from '../shared'
 
 interface Props {
     className?: string
@@ -16,7 +16,7 @@ export const RightSide: React.FC<Props> = ({ className, playList = false }: Prop
         <div className={cn('mt-8 min-w-[280px]', className)}>
             <div className="flex justify-between mb-8">
                 <h2>НИКНЕЙМ</h2>
-                <div className="ava music-ava h-[70px] w-[100px] bg-color-light"></div>
+                <Ava />
             </div>
 
             {playList &&

@@ -10,17 +10,22 @@
 }
 
 .medium {
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
 }
 
-.music-ava {
+.small-ava {
     min-width: 60px;
     height: 45px;
     background-color: $bg-color-light;
     border-radius: 5px;
     background-position: center;
     background-size: cover;
+}
+
+.ava {
+    height: 70px;
+    width: 100px;
 }
 
 .trans-5 {
@@ -41,4 +46,51 @@
 
 .music:hover {
     background-color: $bg-color-light;
+}
+
+
+
+
+
+
+
+
+
+.chat {
+    min-height: 600px;
+    min-width: 500px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    gap: 20px;
+}
+
+.chatwindow {
+    max-height: 600px;
+    min-height: 600px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column-reverse;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overscroll-behavior: none;
+}
+
+.chatwindow::-webkit-scrollbar {
+    display: none;
+}
+
+.message {
+    display: flex;
+    gap: 20px;
+}
+
+.messagecontext {
+    max-width: 300px;
+    background-color: #242424d7;
+    padding: 20px;
+    border-radius: 0 10px 10px 10px;
 }

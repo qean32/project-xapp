@@ -1,7 +1,6 @@
 export { Auth } from './auth'
 export { Main } from './main'
 export { Overlay } from './overlay'
-export { Test } from './test'
 export { Community } from './community'
 export { Chat } from './chat'
 export { Chats } from './chats'
