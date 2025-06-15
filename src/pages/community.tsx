@@ -7,7 +7,8 @@ export const Community = () => {
     return (
         <>
             <DftSETPage />
-            <main>
+
+            <main className="overflow-hidden">
                 <LeftSide />
 
                 <DefaultContiner className="pb-5 pt-8 h-100 min-h-[300px]">

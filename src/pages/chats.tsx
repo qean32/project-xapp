@@ -8,7 +8,7 @@ export const Chats = () => {
         <>
             <DftSETPage />
 
-            <main>
+            <main className="overflow-hidden">
                 <LeftSide />
 
                 <DefaultContiner className="py-5 h-100 min-h-[300px]">

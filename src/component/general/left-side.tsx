@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { cn } from '../../lib/function'
 import { ClickHocFn, DefaultContiner } from '../hoc'
-import { MusicShort } from '../shared'
+import { MusicShort, PlayList } from '../shared'
 import { IconAndAText } from '../ui'
 import { useNavigate } from 'react-router-dom'
 
@@ -23,14 +23,11 @@ export const LeftSide: React.FC<Props> = ({ className }: Props) => {
 
     return (
         <div className={cn('', className)}>
-            <DefaultContiner className="py-5 px-0 mt-8 max-h-[39%] min-h-[300px] overflow-hidden">
+            <DefaultContiner className="py-5 px-0 mt-8 overflow-hidden">
                 <h2 className="px-5">ТЕКУЩИЙ ПЛЕЙЛИСТ: </h2>
                 <h2 className="px-5">автоподбор</h2>
 
-                <div className="flex flex-col relative py-10 overflow-y-scroll max-h-[300px]">
-                    <MusicShort />
-                    <MusicShort />
-                    <MusicShort />
+                <div className="flex flex-col relative pt-10 overflow-y-scroll max-h-[280px]">
                     <MusicShort />
                     <MusicShort />
                     <MusicShort />

@@ -48,49 +48,15 @@
     background-color: $bg-color-light;
 }
 
-
-
-
-
-
-
-
-
-.chat {
-    min-height: 600px;
-    min-width: 500px;
-    border-radius: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px 0;
-    gap: 20px;
-}
-
-.chatwindow {
-    max-height: 600px;
-    min-height: 600px;
-    display: flex;
-    gap: 20px;
-    flex-direction: column-reverse;
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overscroll-behavior: none;
-}
-
-.chatwindow::-webkit-scrollbar {
-    display: none;
-}
-
-.message {
-    display: flex;
-    gap: 20px;
-}
-
 .messagecontext {
-    max-width: 300px;
-    background-color: #242424d7;
-    padding: 20px;
+    max-width: 70%;
+    background-color: $bg-color-light;
+}
+
+.m-reverse {
+    border-radius: 10px 0 10px 10px !important;
+}
+
+.m-line {
     border-radius: 0 10px 10px 10px;
 }
