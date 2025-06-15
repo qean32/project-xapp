@@ -9,6 +9,7 @@ input {
     outline: none;
     cursor: pointer;
     min-height: 31px;
+    width: 100%;
 }
 
 label {
@@ -49,12 +50,12 @@ input[type=search] {
 }
 
 .count-input {
-    left: -8vh;
+    left: -3vh;
 }
 
 .lockpass {
     position: absolute;
-    right: 2.5vh;
+    right: 1.5vh;
     top: 1.5vh;
 }
 
@@ -73,4 +74,8 @@ button {
 
 button:hover {
     background-color: $bg-color-light- !important;
+}
+
+.input-commnet {
+    padding: 15px 0 15px 30px !important;
 }

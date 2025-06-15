@@ -20,7 +20,7 @@ export const Community = () => {
                         <span className="loader w-[35px] h-[35px]"></span>
                     </div> */}
 
-                    <div className="flex flex-col w-[700px] max-h-[83%] overflow-y-scroll relative">
+                    <div className="flex flex-col w-[660px] max-h-[83%] overflow-y-scroll relative">
                         <User />
                         <User />
                         <User />

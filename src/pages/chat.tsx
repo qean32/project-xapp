@@ -2,7 +2,7 @@ import React from "react"
 import { LeftSide, RightSide } from "../component/general"
 import { DefaultContiner } from "../component/hoc"
 import { DftSETPage } from "../component/hoc"
-import { InputText } from "../component/ui"
+import { InputComment } from "../component/ui"
 import { cn } from "../lib/function"
 
 export const Chat = () => {
@@ -18,14 +18,14 @@ export const Chat = () => {
                 <DefaultContiner className="h-100 min-h-[300px]">
 
                     {/* <div className="h-[70px] bg-color"></div> */}
-                    <div className="w-[700px] px-8 relative pt-9 flex flex-col justify-between" style={{ height: '85%' }} >
-                        <div className="flex flex-col-reverse gap-5 overflow-y-scroll">
+                    <div className="w-[660px] px-8 relative pt-9 flex flex-col justify-between" style={{ height: '90%' }} >
+                        <div className="flex flex-col-reverse gap-5 py-6 overflow-y-scroll">
                             <Message />
                             <Message />
                             <Message />
                         </div>
-                        <div>
-                            <InputText max={300} setValue={setValue} value={value} title="Сообщение" />
+                        <div className="plate-color py-5">
+                            <InputComment setValue={setValue} value={value} />
                         </div>
                     </div>
                 </DefaultContiner>

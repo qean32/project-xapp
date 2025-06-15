@@ -29,14 +29,14 @@ export const InputText = ({ title, value, setValue, max, validate = true, classN
             false ? valide.off() : valide.on()
     }
 
-    const id_ = generateId()
+    const id = generateId().toString()
     return (
         <div className={cn('w-100 relative', className)} >
-            <label htmlFor={`${id_}`} className='fill' >
+            <label htmlFor={id} className='fill' >
                 <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type='text' id={`${id_}`}
+            <input type='text' id={id}
                 onFocus={() => color.on()} onBlur={check} onChange={changeHandler} value={value} />
 
             <p className={cn('inputwarning text-nowrap', (!valide.bool && 'opacity-0'))}>не используйте латиницу / числа</p>
@@ -72,17 +72,17 @@ export const InputPassword = ({ title, value, setValue, className }: {
         !validatePassword(value) ? valide.on() : valide.off()
     }
 
-    const id_ = generateId()
+    const id = generateId().toString()
     return (
         <div className={cn('w-100 relative', className)}>
 
             <img src={view.bool ? './svg/unlock.svg' : './svg/lock.svg'} style={{ zIndex: '10' }} alt='' onClick={() => view.swap()} className='lockpass cursor-pointer' />
 
-            <label htmlFor={`${id_}`} className='fill' >
+            <label htmlFor={id} className='fill' >
                 <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type={view.bool ? 'text' : 'password'} id={`${id_}`}
+            <input type={view.bool ? 'text' : 'password'} id={id}
                 onFocus={() => color.on()} onBlur={check} onChange={changeHandler} value={value} />
             <p className='inputwarning' style={!valide.bool ? { opacity: '0', bottom: '-4vh' } : { bottom: '-4vh' }}> используйте латиницу и цифры. <br /> минимальная длина - 6</p>
         </div>
@@ -130,15 +130,15 @@ export const InputEmail = ({ title, value, setValue, className }: {
         if (!validateEmail(value)) { valide.on() } else { valide.off() }
     }
 
-    const id_ = generateId()
+    const id = generateId().toString()
     return (
         <div className={cn('w-100 relative', className)} >
 
-            <label htmlFor={`${id_}`} className='fill' >
+            <label htmlFor={id} className='fill' >
                 <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type='text' id={`${id_}`}
+            <input type='text' id={id}
                 onFocus={() => color.on()} onBlur={check} onChange={changeHandler} value={value} />
 
             <p className={cn('inputwarning', !valide.bool && 'opacity-0')}>не валидная почта</p>
@@ -156,7 +156,7 @@ export const InputFile = ({ title = 'изображение', setValue, classNam
     setValue: Function
     className?: string
 }) => {
-    const id_ = generateId()
+    const id = generateId().toString()
     const [src, setSrc] = React.useState<any>([]);
     const urls = src.map((file: any) => URL.createObjectURL(file));
 
@@ -169,14 +169,49 @@ export const InputFile = ({ title = 'изображение', setValue, classNam
     }
     return (
         <div className={cn('w-100 relative', className)}>
-            <input accept='image/png, image/jpeg, image/svg, image/jpg, image/webp' type='file' id={`${id_}`} style={{ display: 'none' }} onChange={changeHandler} />
+            <input accept='image/png, image/jpeg, image/svg, image/jpg, image/webp' type='file' id={id} style={{ display: 'none' }} onChange={changeHandler} />
 
-            <label htmlFor={`${id_}`} className='flex items-start flex-col gap-3' style={{ pointerEvents: 'auto' }}>
+            <label htmlFor={id} className='flex items-start flex-col gap-3' style={{ pointerEvents: 'auto' }}>
                 <div className='music-ava flex justify-center items-center' style={{ backgroundImage: `url(${urls[0]})`, width: '70px', height: '50px' }}>
                     {src.length > 0 ? <></> : <img src='./svg/upload.svg' width={'27px'} />}
                 </div>
                 <p>{title}</p>
             </label>
+        </div>
+    );
+}
+
+export const InputComment = ({ value, setValue, validate = false, className }: {
+    value: string
+    setValue: Function
+    validate?: boolean,
+    className?: string
+}) => {
+    const valide = useBoolean(false)
+    const color = useBoolean(false)
+
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value)
+    }
+
+    React.useEffect(() => {
+        if (value != '') check()
+    }, [value])
+
+    const check = () => {
+        value != '' ? color.on() : color.off()
+
+        if (validate)
+            false ? valide.off() : valide.on()
+    }
+
+    const id = generateId().toString()
+    return (
+        <div className={cn('w-100 relative', className)} >
+            <input type='text' id={id} className='input-commnet' placeholder='сообщение'
+                onFocus={() => color.on()} onBlur={check} onChange={changeHandler} value={value} />
+
+            <p className={cn('inputwarning text-nowrap', (!valide.bool && 'opacity-0'))}>не используйте латиницу / числа</p>
         </div>
     );
 }

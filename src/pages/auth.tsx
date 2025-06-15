@@ -27,8 +27,8 @@ export const Auth = () => {
                         <NavPanel switcher={on} />
                         <div style={!authWindow.bool ? { marginLeft: '-50%' } : {}} className="transition07">
                             <form className="windowreg">
-                                <InputEmail value={email} setValue={setEmail} title="почта" />
-                                <InputPassword value={password} setValue={setPassword} title="пароль" />
+                                <InputEmail className="w-80" value={email} setValue={setEmail} title="почта" />
+                                <InputPassword className="w-80" value={password} setValue={setPassword} title="пароль" />
                                 <div className="regwarning">
                                     <p> забыли пароль? --анлак</p>
                                     <p onClick={on.off}> нет аккаунта? --регистрация</p>
@@ -36,9 +36,9 @@ export const Auth = () => {
                                 <Button title="вход" function_={() => { }} />
                             </form>
                             <form className="windowreg">
-                                <InputText value={firstname} setValue={setFirstname} title="имя" max={20} />
-                                <InputEmail value={email} setValue={setEmail} title="почта" />
-                                <InputPassword value={password} setValue={setPassword} title="пароль" />
+                                <InputText className="w-80" value={firstname} setValue={setFirstname} title="имя" max={20} />
+                                <InputEmail className="w-80" value={email} setValue={setEmail} title="почта" />
+                                <InputPassword className="w-80" value={password} setValue={setPassword} title="пароль" />
                                 <div className="regwarning">
                                     <p onClick={on.on}> есть аккаунт? --войти</p>
                                 </div>
