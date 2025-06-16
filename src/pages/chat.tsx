@@ -1,38 +1,29 @@
 import React from "react"
-import { LeftSide, RightSide } from "../component/general"
-import { DefaultContiner } from "../component/hoc"
 import { DftSETPage } from "../component/hoc"
 import { InputComment } from "../component/ui"
 import { cn } from "../lib/function"
+import { LeftNavigate } from "../component/shared"
 
 export const Chat = () => {
     const [value, setValue] = React.useState('')
 
     return (
-        <>
-            <DftSETPage />
+        <main>
+            <LeftNavigate />
+            <DftSETPage>
 
-            <main className="overflow-hidden">
-                <LeftSide />
-
-                <DefaultContiner className="h-100 min-h-[300px]">
-
-                    {/* <div className="h-[70px] bg-color"></div> */}
-                    <div className="w-[660px] px-8 relative pt-9 flex flex-col justify-between" style={{ height: '90%' }} >
-                        <div className="flex flex-col-reverse gap-5 py-6 overflow-y-scroll">
-                            <Message />
-                            <Message />
-                            <Message />
-                        </div>
-                        <div className="plate-color py-5">
-                            <InputComment setValue={setValue} value={value} />
-                        </div>
+                <div className="px-12 pt-8 relative flex flex-col justify-between h-100">
+                    <div className="flex flex-col-reverse gap-5 py-6 overflow-y-scroll">
+                        <Message />
+                        <Message />
+                        <Message />
                     </div>
-                </DefaultContiner>
-
-                <RightSide />
-            </main>
-        </>
+                    <div className="plate-color py-5">
+                        <InputComment setValue={setValue} value={value} />
+                    </div>
+                </div>
+            </DftSETPage>
+        </main>
     )
 }
 

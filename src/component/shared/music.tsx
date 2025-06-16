@@ -20,12 +20,12 @@ export const Music: React.FC<Props> = ({ className = 'music' }: Props) => {
                     <AddToPlayList />
                 </ModalSET>, document.body)}
 
-            <div className={cn('w-100 flex justify-between items-center py-3 pr-8 pl-10 transition03 cursor-pointer', className)}>
+            <div className={cn('flex justify-between items-center py-3 pr-8 pl-10 cursor-pointer transition03', className)}>
                 <div className='flex gap-5 overflow-hidden justify-center items-center'>
                     <div className="small-ava"></div>
                     <div className="flex flex-col justify-between p-1 max-w-[85%]">
-                        <p className='text-nowrap overflow-hidden text-ellipsis'>АРТИСТ</p>
-                        <p className='text-nowrap overflow-hidden text-ellipsis'>НАЗВАНИЕ НАЗВАНИЕ</p>
+                        <p className='text-nowrap text-ellipsis'>АРТИСТ</p>
+                        <p className='text-nowrap text-ellipsis'>НАЗВАНИЕ НАЗВАНИЕ</p>
                     </div>
                 </div>
                 <div className='flex gap-3 pl-5'>

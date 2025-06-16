@@ -71,9 +71,9 @@ body {
 
 main {
   display: flex;
-  justify-content: center;
-  gap: 40px;
+  justify-content: space-between;
   height: 100vh;
+  overflow: hidden;
 }
 
 .h-100 {
@@ -90,4 +90,32 @@ main {
 
 .transform-reverse {
   transform: scale(-1, 1);
+}
+
+@media screen and (max-width: 1277px) {
+  .right-side-adaptive {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 955px) {
+  main {
+    justify-content: end;
+  }
+
+  .adaptive-center {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .adaptive-icon-and-text {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .adaptive-text {
+    width: 150px;
+  }
 }
