@@ -10,11 +10,11 @@ interface Props {
 export const AddToPlayList: React.FC<Props> = ({ className }: Props) => {
     return (
         <div className={cn('relative w-100', className)}>
-            <div className="flex p-0 w-[100] pointer-events-auto h-[200px] justify-center items-center">
-                <PlayList />
-                <PlayList />
-                <PlayList />
-                <PlayList />
+            <div className="flex py-10 w-[100] pointer-events-auto flex-col justify-center items-center">
+                <PlayList className='w-[400px]' />
+                <PlayList className='w-[400px]' />
+                <PlayList className='w-[400px]' />
+                <PlayList className='w-[400px]' />
             </div>
         </div>
     )
