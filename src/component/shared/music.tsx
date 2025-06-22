@@ -11,7 +11,7 @@ interface Props {
 
 
 export const Music: React.FC<Props> = ({ className = 'music pl-10' }: Props) => {
-    const { bool, swap } = useBoolean(true)
+    const { bool, swap } = useBoolean(false)
 
     return (
         <>

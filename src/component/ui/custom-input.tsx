@@ -1,33 +1,16 @@
 import React from 'react'
 import { useBoolean } from '../../lib/castom-hook'
 import { cn, generateId, renameFile } from '../../lib/function'
-import { validateEmail, validatePassword } from '../../lib/function/validate'
+import { useFormContext } from 'react-hook-form'
 
-export const InputText = ({ title, value, setValue, max, validate = true, className }: {
+export const InputText = ({ title, max, validate = true, className }: {
     title: string
-    value: string
-    setValue: Function
     max: number
     validate?: boolean,
     className?: string
 }) => {
     const valide = useBoolean(false)
     const color = useBoolean(false)
-
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
-    }
-
-    React.useEffect(() => {
-        if (value != '') check()
-    }, [value])
-
-    const check = () => {
-        value != '' ? color.on() : color.off()
-
-        if (validate)
-            false ? valide.off() : valide.on()
-    }
 
     const id = generateId().toString()
     return (
@@ -36,55 +19,36 @@ export const InputText = ({ title, value, setValue, max, validate = true, classN
                 <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type='text' id={id}
-                onFocus={() => color.on()} onBlur={check} onChange={changeHandler} value={value} />
+            <input type='text' id={id} />
 
             <p className={cn('inputwarning text-nowrap', (!valide.bool && 'opacity-0'))}>не используйте латиницу / числа</p>
 
             <div className='absolute right-5 bottom-3'>
-                <p className={cn('inputwarning opacity-100 count-input', (!(value.length > max) ? 'whitesmoke' : ''))}> {value.length}/{max} </p>
+                <p className={cn('inputwarning opacity-100 count-input')}>{max} </p>
             </div>
         </div>
     );
 }
 
 
-export const InputPassword = ({ title, value, setValue, className }: {
+export const InputPassword = ({ title, className }: {
     title: string
-    value: string
-    setValue: Function
     className?: string
 }) => {
-    const valide = useBoolean(false)
-    const color = useBoolean(false)
     const view = useBoolean(false)
-
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
-    }
-
-    React.useEffect(() => {
-        value != '' && check()
-    }, [value])
-
-    const check = () => {
-        value != '' ? color.on() : color.off()
-        !validatePassword(value) ? valide.on() : valide.off()
-    }
-
     const id = generateId().toString()
+
     return (
         <div className={cn('w-100 relative', className)}>
 
             <img src={view.bool ? './svg/unlock.svg' : './svg/lock.svg'} style={{ zIndex: '10' }} alt='' onClick={() => view.swap()} className='lockpass cursor-pointer' />
 
             <label htmlFor={id} className='fill' >
-                <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
+                <p className='opacity-60 transform-label'>{title}</p>
             </label>
 
-            <input type={view.bool ? 'text' : 'password'} id={id}
-                onFocus={() => color.on()} onBlur={check} onChange={changeHandler} value={value} />
-            <p className='inputwarning' style={!valide.bool ? { opacity: '0', bottom: '-4vh' } : { bottom: '-4vh' }}> используйте латиницу и цифры. <br /> минимальная длина - 6</p>
+            <input type={view.bool ? 'text' : 'password'} id={id} />
+            <p className='inputwarning' style={{ opacity: '0', bottom: '-4vh' }}> используйте латиницу и цифры. <br /> минимальная длина - 6</p>
         </div>
     );
 }
@@ -108,26 +72,18 @@ export const Checkbox = ({ title, fn, value, className }: {
 }
 
 
-export const InputEmail = ({ title, value, setValue, className }: {
+export const InputEmail = ({ title, className, name }: {
     title: string
-    value: string
-    setValue: Function
     className?: string
+    name: string
 }) => {
-    const valide = useBoolean(false)
+    const { register, watch, formState: { errors } } = useFormContext()
+    const textError = errors[name]?.message as string;
+    const value = watch(name)
     const color = useBoolean(false)
-
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
-    }
-
-    React.useEffect(() => {
-        if (value != '') check()
-    }, [value])
 
     const check = () => {
         if (value != '') { color.on() } else { color.off() }
-        if (!validateEmail(value)) { valide.on() } else { valide.off() }
     }
 
     const id = generateId().toString()
@@ -138,13 +94,11 @@ export const InputEmail = ({ title, value, setValue, className }: {
                 <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type='text' id={id}
-                onFocus={() => color.on()} onBlur={check} onChange={changeHandler} value={value} />
-
-            <p className={cn('inputwarning', !valide.bool && 'opacity-0')}>не валидная почта</p>
+            <input type='text' {...register(name)} onFocus={() => color.on()} onBlur={check} />
+            <p className={cn('inputwarning')}>{textError && textError}</p>
 
             <div className='absolute right-5 bottom-3'>
-                <p className={cn('inputwarning opacity-100 count-input', (!(value.length > 40) ? 'whitesmoke' : ''))}> {value.length}/40 </p>
+                <p className={cn('inputwarning opacity-100 count-input', (!(value?.length > 40) ? 'whitesmoke' : ''))}>{value?.length}/40</p>
             </div>
         </div>
     );

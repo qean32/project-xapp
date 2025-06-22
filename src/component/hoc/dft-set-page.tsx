@@ -14,8 +14,8 @@ export const DftSETPage: React.FC<Props> = ({ children }: Props) => {
             <TopMenu />
             <BottomTool />
 
-            <div className="flex gap-12 justify-center" style={{ flex: 1 }}>
-                <DefaultContiner className="h-100 pb-[90px] pt-5 adaptive-center w-[760px]">
+            <div className="flex gap-12 justify-center adaptive-center-parent" style={{ flex: 1 }}>
+                <DefaultContiner className="h-100 pb-[90px] pt-5 adaptive-center w-[750px]">
                     {children}
                 </DefaultContiner>
                 <RightSide />

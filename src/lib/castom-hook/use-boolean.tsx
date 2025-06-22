@@ -12,3 +12,5 @@ export const useBoolean = (initialValue: boolean = false) => {
 
     return { bool, swap, on, off }
 }
+
+export type TypeUseBoolen = ReturnType<typeof useBoolean>

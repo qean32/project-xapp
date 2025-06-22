@@ -1,4 +1,4 @@
-export { useBoolean } from './use-boolean'
+export { useBoolean, type TypeUseBoolen } from './use-boolean'
 export { useChatWebsocket } from './use-chat-websocket'
 export { useDebounce } from './use-debounce'
 export { useDinamickPagination } from './use-dinamick-pagination'

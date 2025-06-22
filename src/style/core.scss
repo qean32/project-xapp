@@ -96,13 +96,20 @@ main {
   .right-side-adaptive {
     display: none;
   }
-}
 
-@media screen and (max-width: 955px) {
   main {
     justify-content: end;
   }
+}
 
+@media screen and (max-width: 1055px) {
+
+  .adaptive-center-parent {
+    justify-content: end !important;
+  }
+}
+
+@media screen and (max-width: 955px) {
   .adaptive-center {
     width: 100%;
   }

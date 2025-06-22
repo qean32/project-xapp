@@ -11,7 +11,6 @@ export const Chat = () => {
         <main>
             <LeftNavigate />
             <DftSETPage>
-
                 <div className="px-12 pt-8 relative flex flex-col justify-between h-100">
                     <div className="flex flex-col-reverse gap-5 py-6 overflow-y-scroll">
                         <Message />
@@ -32,8 +31,10 @@ type Props = {
 
 export const Message: React.FC<Props> = ({ }: Props) => {
     return (
-        <div className={cn("flex gap-5", (false && 'transform-reverse'))}>
+        <div className={cn("flex gap-5 relative", (false && 'transform-reverse'))} onContextMenu={e => e.preventDefault()} >
+            <div className="absolute"></div>
             <div className="small-ava" style={{ backgroundImage: `url(${'zxczxc'})` }}></div>
+
             <div className={cn("messagecontext p-5 m-line flex flex-col gap-3", (false && 'm-reverse transform-reverse'))}>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis temporibus aut accusantium.</p>
             </div>
