@@ -11,7 +11,6 @@ export const Message: React.FC<Props> = ({ }: Props) => {
 
     const rightClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()
-
         // @ts-ignore
         dispatch(setSelectMessage({ position: { top: e.pageY + 'px', left: e.pageX + 'px' }, message: {} }))
     }

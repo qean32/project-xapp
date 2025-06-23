@@ -1,5 +1,6 @@
+import { LeftNavigate } from "../component/general"
 import { DftSETPage } from "../component/hoc"
-import { LeftNavigate, User } from "../component/shared"
+import { User } from "../component/shared"
 import { Search } from "../component/ui"
 
 export const Community = () => {

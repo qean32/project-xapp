@@ -1,6 +1,7 @@
+import { LeftNavigate } from "../component/general"
 import { DftSETPage } from "../component/hoc"
 import { EnterMessage } from "../component/shared"
-import { LeftNavigate, Message, RightClickMessageWindowComponent } from "../component/shared"
+import { Message, RightClickMessageWindowComponent } from "../component/shared"
 
 export const Chat = () => {
     return (

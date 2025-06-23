@@ -1,5 +1,6 @@
 import { DftSETPage } from "../component/hoc"
-import { Chat, LeftNavigate } from "../component/shared"
+import { LeftNavigate } from "../component/general"
+import { Chat } from "../component/shared"
 
 export const Chats = () => {
     return (
