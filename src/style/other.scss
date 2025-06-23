@@ -60,3 +60,9 @@
 .m-line {
     border-radius: 0 10px 10px 10px;
 }
+
+.rightClickMessageWindow {
+    & p:hover {
+        background-color: $bg-color-light;
+    }
+}

@@ -1,0 +1,1 @@
+export type positionDto = { top: string, left: string }

@@ -1,4 +1,4 @@
-export interface PlayList {
+export interface PlayListDto {
     id: number
     name: string
     urlMusicArray: string

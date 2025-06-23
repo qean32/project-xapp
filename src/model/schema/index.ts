@@ -1,2 +1,2 @@
-export { authSchema } from './auth-schema'
-export { registrationSchema } from './registration-schema'
+export { authSchema, type AuthFormDto } from './auth-schema'
+export { registrationSchema, type RegistrationFormDto } from './registration-schema'

@@ -4,12 +4,7 @@ import { InputEmail, InputPassword, Button } from '../ui'
 import { TypeUseBoolen } from '../../lib/castom-hook'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
-import { authSchema } from '../../model/schema'
-
-type Iform = {
-    email: string
-    password: string
-}
+import { AuthFormDto, authSchema } from '../../model/schema'
 
 interface Props {
     className?: string
@@ -17,12 +12,12 @@ interface Props {
 }
 
 export const AuthForm: React.FC<Props> = ({ className, on }: Props) => {
-    const form = useForm<Iform>({
+    const form = useForm<AuthFormDto>({
         mode: 'onChange',
         resolver: zodResolver(authSchema)
     })
 
-    const onSubmit: SubmitHandler<Iform> = (data) => {
+    const onSubmit: SubmitHandler<AuthFormDto> = (data) => {
         console.log(data)
     }
 
@@ -30,7 +25,7 @@ export const AuthForm: React.FC<Props> = ({ className, on }: Props) => {
         <FormProvider {...form} >
             <form className={cn('windowreg', className)} onSubmit={form.handleSubmit(onSubmit)} >
                 <InputEmail className="w-80" title="почта" name='email' />
-                <InputPassword className="w-80" title="пароль" />
+                <InputPassword className="w-80" title="пароль" name='password' />
                 <div className="regwarning">
                     <p> забыли пароль? --анлак</p>
                     <p onClick={on.off}> нет аккаунта? --регистрация</p>

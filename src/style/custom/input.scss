@@ -77,6 +77,11 @@ button:hover {
     background-color: $bg-color-light- !important;
 }
 
-.input-commnet {
-    padding: 15px 0 15px 30px !important;
+input[type=comment] {
+    border-radius: 10px;
+    padding: 12px 0 12px 20px !important;
+
+    &:focus {
+        border: 1px solid transparent;
+    }
 }

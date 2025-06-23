@@ -1,4 +1,4 @@
-export interface UpdateMessage {
+export interface UpdateMessageDto {
     id: number;
     chatId: string
     newMessage: string

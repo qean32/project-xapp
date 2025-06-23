@@ -3,14 +3,21 @@ import { useBoolean } from '../../lib/castom-hook'
 import { cn, generateId, renameFile } from '../../lib/function'
 import { useFormContext } from 'react-hook-form'
 
-export const InputText = ({ title, max, validate = true, className }: {
+export const InputText = ({ title, max, validate = true, className, name }: {
     title: string
     max: number
+    name: string
     validate?: boolean,
     className?: string
 }) => {
-    const valide = useBoolean(false)
+    const { register, watch, formState: { errors } } = useFormContext()
+    const textError = errors[name]?.message as string;
+    const value = watch(name)
     const color = useBoolean(false)
+
+    const check = () => {
+        value != '' ? color.on() : color.off()
+    }
 
     const id = generateId().toString()
     return (
@@ -19,36 +26,46 @@ export const InputText = ({ title, max, validate = true, className }: {
                 <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type='text' id={id} />
+            <input type='text' id={id} {...register(name)} onFocus={() => color.on()} onBlur={check} />
 
-            <p className={cn('inputwarning text-nowrap', (!valide.bool && 'opacity-0'))}>не используйте латиницу / числа</p>
+            <p className={cn('inputwarning text-nowrap', (!textError && 'opacity-0'))}>{validate && textError && textError}</p>
 
             <div className='absolute right-5 bottom-3'>
-                <p className={cn('inputwarning opacity-100 count-input')}>{max} </p>
+                <p className={cn('inputwarning opacity-100 count-input', (!(value?.length > 40) ? 'whitesmoke' : ''))}>{value?.length}/{max}</p>
             </div>
         </div>
     );
 }
 
 
-export const InputPassword = ({ title, className }: {
+export const InputPassword = ({ title, className, name }: {
     title: string
     className?: string
+    name: string
 }) => {
+    const { register, watch, formState: { errors } } = useFormContext()
+    const textError = errors[name]?.message as string;
+    const value = watch(name)
     const view = useBoolean(false)
-    const id = generateId().toString()
+    const color = useBoolean(false)
 
+    const check = () => {
+        value != '' ? color.on() : color.off()
+    }
+
+    const id = generateId().toString()
     return (
         <div className={cn('w-100 relative', className)}>
 
             <img src={view.bool ? './svg/unlock.svg' : './svg/lock.svg'} style={{ zIndex: '10' }} alt='' onClick={() => view.swap()} className='lockpass cursor-pointer' />
 
             <label htmlFor={id} className='fill' >
-                <p className='opacity-60 transform-label'>{title}</p>
+                <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type={view.bool ? 'text' : 'password'} id={id} />
-            <p className='inputwarning' style={{ opacity: '0', bottom: '-4vh' }}> используйте латиницу и цифры. <br /> минимальная длина - 6</p>
+            <input type={view.bool ? 'text' : 'password'} id={id} {...register(name)}
+                onFocus={() => color.on()} onBlur={check} />
+            <p className='inputwarning' style={!textError ? { opacity: '0', bottom: '-4vh' } : { bottom: '-4vh' }}> {textError && textError} </p>
         </div>
     );
 }
@@ -95,7 +112,7 @@ export const InputEmail = ({ title, className, name }: {
             </label>
 
             <input type='text' {...register(name)} onFocus={() => color.on()} onBlur={check} />
-            <p className={cn('inputwarning')}>{textError && textError}</p>
+            <p className={cn('inputwarning', !textError && 'opacity-0')}>{textError}</p>
 
             <div className='absolute right-5 bottom-3'>
                 <p className={cn('inputwarning opacity-100 count-input', (!(value?.length > 40) ? 'whitesmoke' : ''))}>{value?.length}/40</p>
@@ -131,41 +148,6 @@ export const InputFile = ({ title = 'изображение', setValue, classNam
                 </div>
                 <p>{title}</p>
             </label>
-        </div>
-    );
-}
-
-export const InputComment = ({ value, setValue, validate = false, className }: {
-    value: string
-    setValue: Function
-    validate?: boolean,
-    className?: string
-}) => {
-    const valide = useBoolean(false)
-    const color = useBoolean(false)
-
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
-    }
-
-    React.useEffect(() => {
-        if (value != '') check()
-    }, [value])
-
-    const check = () => {
-        value != '' ? color.on() : color.off()
-
-        if (validate)
-            false ? valide.off() : valide.on()
-    }
-
-    const id = generateId().toString()
-    return (
-        <div className={cn('w-100 relative', className)} >
-            <input type='text' id={id} className='input-commnet' placeholder='сообщение'
-                onFocus={() => color.on()} onBlur={check} onChange={changeHandler} value={value} />
-
-            <p className={cn('inputwarning text-nowrap', (!valide.bool && 'opacity-0'))}>не используйте латиницу / числа</p>
         </div>
     );
 }

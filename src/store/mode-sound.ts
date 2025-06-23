@@ -9,7 +9,7 @@ export const mapModeSound = new Map([
     ['random-play', 'repeat'],
 ])
 
-const modeSound = createSlice({
+const modeSoundSlice = createSlice({
     name: 'mode-sound',
     initialState,
     reducers: {
@@ -20,5 +20,5 @@ const modeSound = createSlice({
     }
 })
 
-export const modeSoundReducer = modeSound.reducer
-export const { swap } = modeSound.actions
+export const modeSoundReducer = modeSoundSlice.reducer
+export const { swap } = modeSoundSlice.actions

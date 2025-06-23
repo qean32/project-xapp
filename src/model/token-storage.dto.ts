@@ -1,2 +1,2 @@
-export interface TokenStorage {
+export interface TokenStorageDto {
 }
