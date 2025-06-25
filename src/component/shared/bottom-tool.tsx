@@ -1,8 +1,6 @@
 import React from 'react'
 import { cn } from '../../lib/function'
-import { Music } from './music'
-import { ToolMusic } from './tool-music'
-
+import { Music, ToolMusic } from './'
 
 interface Props {
     className?: string

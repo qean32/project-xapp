@@ -5,5 +5,6 @@ export { Checkbox, InputEmail, InputFile, InputPassword, InputText } from './cus
 export { Button } from './custom-buttom'
 export { Shadow } from './shadow'
 export { NavPanel } from './nav-panel'
-export { VerticalCarousel } from './vertical-carousel'
 export { FileInMessage } from './file-in-message'
+export { MessageRead } from './message-read'
+export { } from './icon-and-description'

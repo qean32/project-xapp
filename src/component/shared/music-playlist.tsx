@@ -6,7 +6,7 @@ interface Props {
 }
 
 
-export const MusicShort: React.FC<Props> = ({ className }: Props) => {
+export const MusicPlayList: React.FC<Props> = ({ className }: Props) => {
     return (
         <div className={cn('w-100 flex justify-between items-center py-3 pr-8 pl-5 music transition03 cursor-pointer', className)}>
             <div className='flex gap-5 overflow-hidden justify-center items-center'>

@@ -7,12 +7,12 @@
 
 .modal-upload-anim {
     animation: modalUploadAnim .3s;
-    transform: translate(0, -12vh);
+    transform: translateY(0);
 }
 
 .modal-add-playlist-anim {
     animation: modalAddPlayListAnim .3s;
-    transform: translate(0, 0);
+    transform: translateX(0px);
 }
 
 .modal-upload {
@@ -31,31 +31,31 @@
 
 @keyframes modalUploadAnim {
     from {
-        transform: translate(0, -4vh);
-        opacity: .2;
+        transform: translateY(20px);
+        opacity: .6;
     }
 
     to {
-        transform: translate(0, -12vh);
+        transform: translateY(0);
         opacity: 1;
     }
 }
 
 @keyframes modalAddPlayListAnim {
     from {
-        transform: translate(0, 4vh);
-        opacity: .2;
+        transform: translateX(-20px);
+        opacity: .6;
     }
 
     to {
-        transform: translate(0, 0);
+        transform: translateX(0);
         opacity: 1;
     }
 }
 
 @keyframes shadowAnim {
     from {
-        opacity: .2;
+        opacity: .6;
     }
 
     to {

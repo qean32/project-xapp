@@ -1,14 +1,13 @@
 import React from 'react'
-import { cn, generateId, renameFile } from '../../../lib/function'
+import { generateId, renameFile } from '../../../lib/function'
 import { Button } from '../../ui'
 import { useBoolean } from '../../../lib/castom-hook'
 
 interface Props {
-    className?: string
 }
 
 
-export const UploadImgChild: React.FC<Props> = ({ className }: Props) => {
+export const UploadImgChild: React.FC<Props> = ({ }: Props) => {
     const id = generateId().toString()
     const [src, setSrc] = React.useState<any>([]);
     const { bool, off, on } = useBoolean(false)
@@ -43,10 +42,10 @@ export const UploadImgChild: React.FC<Props> = ({ className }: Props) => {
     }
 
     return (
-        <div className={cn('relative', className)}>
+        <>
             <div className='small-ava ava absolute right-[-30%]' style={{ backgroundImage: `url(${urls[0]})` }} ></div>
             <Button title='сохранить' function_={() => { }} className='absolute bottom-[-25%]' />
-            <input accept='image/png, image/jpeg, image/svg, image/jpg, image/webp' type='file' style={{ display: 'none' }} id={id} onChange={changeHandler} />
+            <input accept='image/png, image/jpeg, image/svg, image/jpg, image/webp' type='file' className='display-none' id={id} onChange={changeHandler} />
             <label
                 className="flex p-0 cursor-pointer pointer-events-auto justify-center items-center w-[400px] h-[300px] modal-upload"
                 htmlFor={id}
@@ -57,6 +56,6 @@ export const UploadImgChild: React.FC<Props> = ({ className }: Props) => {
             >
                 {bool ? <img src="./svg/plus.svg" alt="" width={50} /> : <img src="./svg/upload.svg" alt="" width={50} />}
             </label>
-        </div>
+        </>
     )
 }

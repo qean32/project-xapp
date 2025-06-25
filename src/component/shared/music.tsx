@@ -16,7 +16,7 @@ export const Music: React.FC<Props> = ({ className = 'music pl-10' }: Props) => 
     return (
         <>
             {bool && createPortal(
-                <ModalSET fn={swap} className="items-end justify-center" className_="rounded-none w-100 modal-add-playlist-anim" >
+                <ModalSET fn={swap} className="items-start justify-start" className_="modal-add-playlist-anim h-100 rounded-none" >
                     <AddToPlayList />
                 </ModalSET>, document.body)}
 

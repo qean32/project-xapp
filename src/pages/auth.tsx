@@ -1,9 +1,10 @@
 import React from "react"
-import { VerticalCarousel, NavPanel } from "../component/ui"
+import { NavPanel } from "../component/ui"
 import { TypeUseBoolen, useBoolean } from "../lib/castom-hook"
 import { changeTitle } from "../lib/function"
 import { DefaultContiner } from "../component/hoc"
 import { AuthForm, RegistrationForm } from "../component/children"
+import { VerticalCarousel } from "../component/shared"
 
 export const Auth = () => {
     changeTitle('вход')

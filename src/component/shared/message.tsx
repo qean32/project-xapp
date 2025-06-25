@@ -1,7 +1,7 @@
 import { cn } from "../../lib/function";
 import { useAppDispatch } from "../../store";
 import { setSelectMessage } from '../../store/right-click-message-window'
-import { FileInMessage } from "../ui";
+import { FileInMessage, MessageRead } from "../ui";
 
 type Props = {
 }
@@ -21,11 +21,9 @@ export const Message: React.FC<Props> = ({ }: Props) => {
 
             <div className={cn("messagecontext cursor-pointer relative p-5 m-line flex flex-col gap-3", (false && 'm-reverse transform-reverse'))}>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis temporibus aut accusantium.</p>
-                {true ?
-                    <img src="./svg/read-it.svg" alt="" className="absolute right-3 bottom-3" />
-                    :
-                    <img src="./svg/shipped.svg" alt="" className="absolute right-3 bottom-3" />
-                }
+
+                <MessageRead read={false} />
+
                 <div>
                     <FileInMessage path="http://localhost:3000/789429383.rar" />
                     <FileInMessage path="http://localhost:3000/789429383.rar" />

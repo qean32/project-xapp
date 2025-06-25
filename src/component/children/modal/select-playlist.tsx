@@ -5,10 +5,10 @@ interface Props {
 }
 
 
-export const AddToPlayList: React.FC<Props> = ({ }: Props) => {
+export const SelectPlayList: React.FC<Props> = ({ }: Props) => {
     return (
-        <div>
-            <div className="flex py-10 pointer-events-auto flex-col justify-center items-center">
+        <div className='relative w-100'>
+            <div className="flex py-10 w-[100] pointer-events-auto flex-col justify-center items-center">
                 <PlayList />
                 <PlayList />
                 <PlayList />
