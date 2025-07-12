@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form'
 
 export const InputText = ({ title, max, validate = true, className, name }: {
     title: string
-    max: number
+    max?: number
     name: string
     validate?: boolean,
     className?: string
@@ -30,9 +30,11 @@ export const InputText = ({ title, max, validate = true, className, name }: {
 
             <p className={cn('inputwarning text-nowrap', (!textError && 'opacity-0'))}>{validate && textError && textError}</p>
 
-            <div className='absolute right-5 bottom-3'>
-                <p className={cn('inputwarning opacity-100 count-input', (!(value?.length > 40) ? 'whitesmoke' : ''))}>{value?.length}/{max}</p>
-            </div>
+            {max &&
+                <div className='absolute right-5 bottom-3'>
+                    <p className={cn('inputwarning opacity-100 count-input', (!(value?.length > 40) ? 'whitesmoke' : ''))}>{value?.length}/{max}</p>
+                </div>
+            }
         </div>
     );
 }

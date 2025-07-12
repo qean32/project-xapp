@@ -29,3 +29,7 @@ export const accessTokenWord = 'JWT'
 export { axiosInstance } from './service/instance'
 export const host = 'http://localhost:5173/'
 export const tokenStorage = 'tokenStorage'
+
+export const customAttribute = {
+    dataId: 'data-id'
+}

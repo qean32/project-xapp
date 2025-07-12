@@ -1,13 +1,13 @@
 import { requestPost } from "../lib/function/request"
-import { Auth, Registration } from "../model"
+import { AuthFormDto, RegistrationFormDto } from "../model/schema"
 const instance = 'auth'
 
 export const authService = {
-    login: async (body: Auth) => {
+    login: async (body: AuthFormDto) => {
         return requestPost(`${instance}`, body)
     },
 
-    registration: async (body: Registration) => {
+    registration: async (body: RegistrationFormDto) => {
         return requestPost(`${instance}/registration`, body)
     }
 }

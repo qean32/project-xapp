@@ -5,6 +5,7 @@ const { app, BrowserWindow, ipcMain } = pkg;
 const extenation = new Map([
     ["dev", "http://localhost:5173"],
     ["prod", path.join(app.getAppPath(), '/dist-react/index.html')],
+    ["prod_", path.join(app.getAppPath(), '/dist-react/overlay.html')],
 ])
 
 // @ts-ignore
@@ -18,9 +19,7 @@ app.on('ready', () => {
             nodeIntegration: true,
             preload: path.join(app.getAppPath(), 'src/e/', 'preload.js')
         }
-
     });
-    mainWindow.setMenu(null)
     mainWindow.webContents.openDevTools();
 
     mainWindow.loadURL(extenation.get('dev'));

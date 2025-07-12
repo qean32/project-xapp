@@ -29,7 +29,7 @@ export const Message: React.FC<Props> = ({ }: Props) => {
                     <FileInMessage path="http://localhost:3000/789429383.rar" />
                 </div>
 
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-3 flex-wrap">
                     <FileInMessage path="https://i.pinimg.com/736x/0d/68/64/0d68647fbd2514040becbaab2de3a8dc.jpg" />
                     <FileInMessage path="https://i.pinimg.com/736x/0d/68/64/0d68647fbd2514040becbaab2de3a8dc.jpg" />
                 </div>

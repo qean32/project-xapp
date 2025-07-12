@@ -9,7 +9,7 @@ interface Props {
 
 export const Chat: React.FC<Props> = ({ className = 'music' }: Props) => {
     return (
-        <div className={cn('w-100 flex justify-between items-center py-4 pr-8 pl-10 transition03 cursor-pointer relative', className)}>
+        <div data-id={'1'} className={cn('w-100 flex justify-between items-center py-4 pr-8 pl-10 transition03 cursor-pointer relative children-no-events', className)}>
             <MessageRead read={false} className='right-8' />
             <div className='flex gap-5 overflow-hidden justify-center items-center'>
                 <div className="small-ava"></div>

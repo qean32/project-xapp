@@ -109,6 +109,10 @@
         <div class="cart" onclick="addBuy('алигатор')">товар :5</div>
     </div>
 
+    <div class="" onclick="fn_(this)">
+        <p>zxczxc</p> zxczxczxc
+    </div>
+
     <main>
         <div class="slider">
             <div class="slide red"></div>
@@ -122,6 +126,10 @@
     </main>
 
     <script>
+        const fn_ = (elem) => {
+            console.log(elem.childNodes[1].remove())
+        }
+
         const genId = () => {
             return Math.floor(Math.random() * 10)
         }
@@ -159,7 +167,7 @@
             index++
         }
 
-        setInterval(next_slide, 5000)
+        // setInterval(next_slide, 5000)
 
         const date = new Date('25 June 2025 00:00:00').getTime()
         const time = document.querySelector('.time')
@@ -178,7 +186,7 @@
             console.log(date, currentTime, diff, dayDiff, dayHours, dayM, dayS);
         }
 
-        setInterval(culcTime, 1000)
+        // setInterval(culcTime, 1000)
     </script>
 </body>
 

@@ -1,11 +1,11 @@
 import React from "react"
-import { Message } from "../../model"
+import { MessageDto } from "../../model"
 import io from 'socket.io-client'
 import { en } from "../../export"
 import { useDebounce } from "./"
 
 export const useChatWebsocket = (chatId: number) => {
-    const [messages, setMessages] = React.useState<Message[]>([]);
+    const [messages, setMessages] = React.useState<MessageDto[]>([]);
     const [offset, setOffset] = React.useState<number>(0);
     // const { bool: companionTyping, swap } = useBoolean(false)
 
@@ -40,7 +40,7 @@ export const useChatWebsocket = (chatId: number) => {
         socket.emit(en.client_view, { message })
     }
 
-    socket.on(en.server_send, (payload: Message) => {
+    socket.on(en.server_send, (payload: MessageDto) => {
         setOffset(prev => prev++)
         setMessages(prev => [...prev, payload])
     })
@@ -53,11 +53,11 @@ export const useChatWebsocket = (chatId: number) => {
         }, 1000);
     })
 
-    socket.on(en.server_view, (payload: Message) => {
+    socket.on(en.server_view, (payload: MessageDto) => {
         setMessages(prev => [...prev.filter(message => message.id != messages.find(message => message.id == payload.id)?.id), payload])
     })
 
-    socket.on(en.server_update, (payload: Message) => {
+    socket.on(en.server_update, (payload: MessageDto) => {
         setMessages(prev => [...prev.filter(message => message.id != messages.find(message => message.id == payload.id)?.id), payload])
     })
 

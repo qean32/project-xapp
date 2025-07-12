@@ -14,6 +14,7 @@ $bg-color-light-: #252525;
 
 $text-color: #D2D2D2;
 $dft-transition: .7s;
+$short-transition: .3s;
 
 @mixin dftPlate {
     background-color: $plate-color;

@@ -5,6 +5,7 @@ import { Router } from './router'
 import './style/core.scss';
 import { HookFormProvider } from './component/general';
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HookFormProvider>

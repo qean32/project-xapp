@@ -1,4 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import {
+    BrowserRouter,
+    // HashRouter,
+    Route, Routes
+} from "react-router-dom"
 import * as _ from './pages'
 import { store } from './store'
 import { Provider } from 'react-redux'
@@ -12,7 +16,7 @@ export const Router = () => {
                 <Routes>
 
                     <Route path="/" element={_.Main()} />
-                    <Route path="playlist" element={_.PlayList()} />
+                    <Route path="playlist/:id" element={_.PlayList()} />
                     <Route path="community" element={_.Community()} />
                     <Route path="chat" element={_.Chat()} />
                     <Route path="chats" element={_.Chats()} />
