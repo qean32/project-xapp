@@ -2,6 +2,7 @@ import { DftSETPage } from "../component/hoc"
 import { LeftNavigate } from "../component/general"
 import { Chat } from "../component/shared"
 import { getDataId } from "../lib/function"
+import { useNavigate } from "react-router-dom"
 
 export const Chats = () => {
     return (
@@ -17,8 +18,9 @@ export const Chats = () => {
 
 
 const ChatsGroup: React.FC<{}> = ({ }) => {
+    const navigate = useNavigate();
     const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-        console.log(getDataId(e.target))
+        navigate('/chat/' + getDataId(e.target))
     }
 
     return (

@@ -50,7 +50,7 @@ export const LeftNavigate: React.FC<Props> = ({ className }: Props) => {
                 <ClickHocFn fn={navToCommunity} ><IconAndAText icon="svg/community.svg" text="сообщество" /></ClickHocFn>
                 <ClickHocFn fn={swap} ><IconAndAText icon="svg/playlist.svg" text="плейлисты" /></ClickHocFn>
                 <ClickHocFn fn={navToChats} ><IconAndAText icon="svg/message.svg" text="мессенджер" /></ClickHocFn>
-                <ClickHocFn fn={() => navigate('/chat')} ><IconAndAText icon="svg/playlist.svg" text="чат" /></ClickHocFn>
+                <ClickHocFn fn={() => navigate('/chat/1')} ><IconAndAText icon="svg/playlist.svg" text="чат" /></ClickHocFn>
             </div>
         </div>
     )

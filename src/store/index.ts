@@ -5,6 +5,7 @@ import { RightClickMessageReducer } from './right-click-message-window'
 import { changeMessageResucer } from './change-message'
 import { createStateSyncMiddleware, initMessageListener, withReduxStateSync } from 'redux-state-sync'
 
+
 const rootReducer = withReduxStateSync(
     combineReducers({
         modeSound: modeSoundReducer,

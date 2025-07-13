@@ -10,7 +10,7 @@ interface Props {
 }
 
 
-export const Music: React.FC<Props> = ({ className = 'music pl-10' }: Props) => {
+export const Music: React.FC<Props> = ({ className = 'music pl-9' }: Props) => {
     const { bool, swap } = useBoolean(false)
 
     return (
@@ -20,7 +20,7 @@ export const Music: React.FC<Props> = ({ className = 'music pl-10' }: Props) => 
                     <AddToPlayList />
                 </ModalSET>, document.body)}
 
-            <div className={cn('flex justify-between items-center py-3 pr-8 cursor-pointer transition03', className)}>
+            <div className={cn('flex justify-between items-center py-3 pr-7 cursor-pointer transition03', className)}>
                 <div className='flex gap-5 overflow-hidden justify-center items-center'>
                     <div className="small-ava"></div>
                     <div className="flex flex-col justify-between p-1 max-w-[85%]">

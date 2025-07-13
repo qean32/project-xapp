@@ -8,8 +8,8 @@ export const Community = () => {
         <main>
             <LeftNavigate />
             <DftSETPage>
-                <Search className="my-5 pl-10" />
-                <h2 className="pl-10 mb-5">РЕЗУЛЬТАТЫ ПОИСКА</h2>
+                <Search className="my-5 pl-9" />
+                <h2 className="pl-9 mb-5">РЕЗУЛЬТАТЫ ПОИСКА</h2>
 
                 {/* <div className="absolute flex justify-center items-center" style={{ inset: '0 0', transform: 'translateY(-100px)' }}>
                         <span className="loader w-[35px] h-[35px]"></span>
