@@ -6,7 +6,10 @@ import './style/core.scss';
 import { HookFormProvider } from './component/general';
 import { Overlay } from './pages';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import {
+  BrowserRouter,
+  // HashRouter
+} from 'react-router-dom';
 import { store } from './store';
 
 
@@ -24,10 +27,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
     <React.StrictMode >
       <BrowserRouter>
+        {/* <HashRouter> */}
         <Provider store={store} >
 
           <Overlay />
         </Provider>
+        {/* </HashRouter> */}
       </BrowserRouter>
-    </React.StrictMode>
+    </React.StrictMode >
 )

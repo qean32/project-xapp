@@ -20,7 +20,9 @@ function createMainWindow() {
         webPreferences: {
             nodeIntegration: true,
             preload: path.join(app.getAppPath(), 'src/e/', 'preload.js')
-        }
+        },
+        minWidth: 620,
+        minHeight: 130
     });
     mainWindow.webContents.openDevTools();
 

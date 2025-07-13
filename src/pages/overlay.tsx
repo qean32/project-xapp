@@ -1,11 +1,9 @@
-import { ToolModeSound } from "../component/ui"
+import { ToolMusic } from "../component/shared"
 
 export const Overlay = () => {
-    console.log(localStorage)
     return (
         <>
-            azxczxc
-            <ToolModeSound />
+            <ToolMusic />
         </>
     )
 }
