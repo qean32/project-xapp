@@ -32,7 +32,7 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
                 <input type='comment' className='input-commnet' placeholder='сообщение'
                     value={message} onChange={changeHandlerMessage} />
 
-                <button><img src="./svg/send-message.svg" width={'36px'} /></button>
+                <button><img src="/svg/send-message.svg" width={'36px'} /></button>
             </form>
         </div >
     );
@@ -46,7 +46,7 @@ const InputFile: React.FC<Props_> = ({ changeHandler }: Props_) => {
     return (
         <>
             <input type="file" className="display-none" id="y1" onChange={changeHandler} />
-            <label htmlFor="y1" className="fit-content pointer-events-auto" ><img src="./svg/upload-file-message.svg" width={'30px'} /></label>
+            <label htmlFor="y1" className="fit-content pointer-events-auto" ><img src="/svg/upload-file-message.svg" width={'30px'} /></label>
         </>
     )
 }

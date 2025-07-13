@@ -54,7 +54,7 @@ export const UploadImgChild: React.FC<Props> = ({ }: Props) => {
                 onDragOver={e => dragStartHandler(e)}
                 onDrop={e => dropHandler(e)}
             >
-                {bool ? <img src="./svg/plus.svg" alt="" width={50} /> : <img src="./svg/upload.svg" alt="" width={50} />}
+                {bool ? <img src="/svg/plus.svg" alt="" width={50} /> : <img src="/svg/upload.svg" alt="" width={50} />}
             </label>
         </>
     )

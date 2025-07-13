@@ -18,8 +18,8 @@ export const MusicPlayList: React.FC<Props> = ({ className = 'music pl-9' }: Pro
                     </div>
                 </div>
                 <div className='flex gap-3 pl-5'>
-                    <img className='cursor-pointer' src="./svg/trash.svg" alt="" />
-                    <img className='cursor-pointer' src="./svg/download.svg" alt="" />
+                    <img className='cursor-pointer' src="/svg/trash.svg" alt="" />
+                    <img className='cursor-pointer' src="/svg/download.svg" alt="" />
                 </div>
             </div>
         </>

@@ -29,8 +29,8 @@ export const Music: React.FC<Props> = ({ className = 'music pl-9' }: Props) => {
                     </div>
                 </div>
                 <div className='flex gap-3 pl-5'>
-                    <img className='cursor-pointer' src="./svg/playlist.svg" alt="" onClick={swap} />
-                    <img className='cursor-pointer' src="./svg/download.svg" alt="" />
+                    <img className='cursor-pointer' src="/svg/playlist.svg" alt="" onClick={swap} />
+                    <img className='cursor-pointer' src="/svg/download.svg" alt="" />
                 </div>
             </div>
         </>
