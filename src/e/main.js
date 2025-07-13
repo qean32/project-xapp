@@ -5,13 +5,15 @@ const { app, BrowserWindow, ipcMain } = pkg;
 const extenation = new Map([
     ["dev", "http://localhost:5173"],
     ["prod", path.join(app.getAppPath(), '/dist-react/index.html')],
-    ["prod_", path.join(app.getAppPath(), '/dist-react/overlay.html')],
 ])
-
-// @ts-ignore
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true
 
-app.on('ready', () => {
+app.whenReady().then(() => {
+    createMainWindow();
+    createOverlayWindow();
+});
+
+function createMainWindow() {
     const mainWindow = new BrowserWindow({
         autoHideMenuBar: true,
         titleBarStyle: 'hidden',
@@ -29,6 +31,7 @@ app.on('ready', () => {
 
     ipcMain.on('HIDE', () => {
         mainWindow.minimize();
+        mainWindow.setAlwaysOnTop(true)
     })
 
     ipcMain.on('CHANGE-WiNDOW-', () => {
@@ -38,9 +41,16 @@ app.on('ready', () => {
     ipcMain.on('CHANGE-WiNDOW+', () => {
         mainWindow.maximize();
     })
+}
 
-    ipcMain.on('set-ignore-mouse-events', (event, ignore, options) => {
-        const win = BrowserWindow.fromWebContents(event.sender)
-        win.setIgnoreMouseEvents(ignore, options)
-    })
-})
+function createOverlayWindow() {
+    const overlayWindow = new BrowserWindow({
+        transparent: true,
+        webPreferences: {
+            nodeIntegration: true,
+            preload: path.join(app.getAppPath(), 'src/e/', 'preload-overlay.js')
+        },
+    });
+    overlayWindow.webContents.openDevTools();
+    overlayWindow.loadURL(extenation.get('dev'));
+}

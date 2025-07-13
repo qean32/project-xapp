@@ -1,5 +1,7 @@
+// @ts-nocheck 
+
 import React from 'react'
-import { cn } from '../../lib/function'
+import { cn, getUrl } from '../../lib/function'
 import { useBoolean } from '../../lib/castom-hook'
 
 interface Props {
@@ -11,21 +13,18 @@ export const TopMenu: React.FC<Props> = ({ className }: Props) => {
     const { bool, swap } = useBoolean(false)
 
     const clickHandler = (key: 'CLOSE' | 'HIDE' | 'CHANGE-WiNDOW') => {
-        // @ts-ignore
-        window.electron.sendFrameAction(key)
+        window.electron?.sendFrameAction(key)
     }
 
     const changeWinwdowClickHandler = () => {
         if (bool) {
-            // @ts-ignore
-            window.electron.sendFrameAction('CHANGE-WiNDOW-')
+            window.electron?.sendFrameAction('CHANGE-WiNDOW-')
             swap()
 
             return
         }
 
-        // @ts-ignore
-        window.electron.sendFrameAction('CHANGE-WiNDOW+')
+        window.electron?.sendFrameAction('CHANGE-WiNDOW+')
         swap()
     }
 
