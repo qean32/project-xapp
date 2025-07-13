@@ -9,6 +9,7 @@ export const Chat = () => {
             <LeftNavigate />
             <RightClickMessageWindowComponent />
             <DftSETPage>
+
                 <div className="px-12 pt-8 flex flex-col justify-between h-100">
                     <div className="flex flex-col-reverse gap-5 py-6 overflow-y-scroll">
                         <Message />
@@ -17,6 +18,7 @@ export const Chat = () => {
                     </div>
                     <EnterMessage />
                 </div>
+
             </DftSETPage>
         </main>
     )

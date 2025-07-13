@@ -8,10 +8,10 @@ interface Props {
 }
 
 
-export const ToolMusic: React.FC<Props> = ({ className, left = true }: Props) => {
+export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true }: Props) => {
     return (
-        <div className={cn('flex gap-1 p-5 items-end w-[200px]', className)}>
-            {left && <ToolModeSound className='w-[25px] trans-5' />}
+        <div className={cn('flex gap-1 items-end', className)}>
+            {left && <ToolModeSound className='w-[20px] trans-5' />}
 
             <div className='flex gap-5'>
                 <img className='cursor-pointer' src="./svg/next.svg" alt="" style={{ transform: 'scaleX(-1)' }} />
@@ -19,7 +19,7 @@ export const ToolMusic: React.FC<Props> = ({ className, left = true }: Props) =>
                 <img className='cursor-pointer' src="./svg/next.svg" alt="" />
             </div>
 
-            {!left && <ToolModeSound className='w-[25px] trans-5' />}
+            {!left && <ToolModeSound className='w-[20px] trans-5' />}
         </div>
     )
 }

@@ -4,7 +4,6 @@
 @use "./custom/auth";
 @use './custom/loader';
 @use './custom/modal';
-@use './custom/overlay';
 
 @tailwind base;
 @tailwind components;
@@ -137,5 +136,8 @@ main {
 @media screen and (max-width: 710px) {
   .adaptive-text {
     width: 150px;
+  }
+  .adaptive-bottom-tool {
+    justify-content: center !important;
   }
 }

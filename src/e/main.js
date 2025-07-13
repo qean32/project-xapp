@@ -9,7 +9,7 @@ const extenation = new Map([
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true
 
 app.whenReady().then(() => {
-    createMainWindow();
+    // createMainWindow();
     createOverlayWindow();
 });
 
@@ -48,11 +48,19 @@ function createMainWindow() {
 function createOverlayWindow() {
     const overlayWindow = new BrowserWindow({
         transparent: true,
+        alwaysOnTop: true,
+        icon: './lock.svg',
+        resizable: false,
+        // skipTaskbar: true,
+        autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
             preload: path.join(app.getAppPath(), 'src/e/', 'preload-overlay.js')
         },
+        height: 85,
+        width: 170,
+        backgroundColor: '#141414',
     });
-    overlayWindow.webContents.openDevTools();
+    // overlayWindow.webContents.openDevTools();
     overlayWindow.loadURL(extenation.get('dev'));
 }

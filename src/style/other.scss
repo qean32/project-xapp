@@ -83,3 +83,15 @@
         transform: scaleY(1);
     }
 }
+
+.overlay {
+    cursor: pointer;
+    pointer-events: all;
+    -electron-corner-smoothing: 10px;
+    opacity: .5;
+    transition: $dft-transition;
+
+    // &:hover {
+    //     opacity: 1;
+    // }
+}
