@@ -4,13 +4,15 @@ import { useDispatch } from 'react-redux'
 import { RightClickMessageReducer } from './right-click-message-window'
 import { changeMessageResucer } from './change-message'
 import { createStateSyncMiddleware, initMessageListener, withReduxStateSync } from 'redux-state-sync'
+import { MusicResucer } from './music'
 
 
 const rootReducer = withReduxStateSync(
     combineReducers({
         modeSound: modeSoundReducer,
         rightClickMessageWindow: RightClickMessageReducer,
-        changeMessage: changeMessageResucer
+        changeMessage: changeMessageResucer,
+        music: MusicResucer
     })
 )
 

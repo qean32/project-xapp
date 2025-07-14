@@ -2,13 +2,17 @@
 
 input {
     background-color: $bg-color-light !important;
-    padding: 1vh 2.2vh !important;
+    padding: 10px 18px !important;
     border-radius: 5px;
     border: 1px solid transparent;
     outline: none;
     cursor: pointer;
     min-height: 31px;
     width: 100%;
+}
+
+.input-padding {
+    padding: 14px 20px !important;
 }
 
 label {
@@ -41,8 +45,8 @@ input[type=search] {
 .inputwarning {
     color: #E74343;
     position: absolute;
-    bottom: -20px;
-    left: 1vh;
+    bottom: -25px;
+    left: 5px;
     font-size: 14px;
     transition: .5s;
     cursor: pointer;

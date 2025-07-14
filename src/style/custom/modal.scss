@@ -62,3 +62,20 @@
         opacity: 1;
     }
 }
+
+.create-playlist-anim {
+    transition: $dft-transition;
+    transform: scaleY(1);
+    animation: create-playlist-anim-anim .2s;
+    transform-origin: top;
+}
+
+@keyframes create-playlist-anim-anim {
+    from {
+        transform: scaleY(0.4);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}

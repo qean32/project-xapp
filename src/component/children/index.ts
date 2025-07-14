@@ -1,5 +1,4 @@
 export { UploadImgChild } from './modal/upload-img'
-export { AddToPlayList } from './modal/add-to-playlist'
 export { AuthForm } from './auth-form'
 export { RegistrationForm } from './registration-form'
-export { SelectPlayList } from './modal/select-playlist'
+export { PlayListModal } from './modal/playlist-modal'

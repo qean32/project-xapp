@@ -3,12 +3,13 @@ import { useBoolean } from '../../lib/castom-hook'
 import { cn, generateId, renameFile } from '../../lib/function'
 import { useFormContext } from 'react-hook-form'
 
-export const InputText = ({ title, max, validate = true, className, name }: {
+export const InputText = ({ title, max, validate = true, className, name, classNameInput }: {
     title: string
     max?: number
     name: string
     validate?: boolean,
     className?: string
+    classNameInput?: string
 }) => {
     const { register, watch, formState: { errors } } = useFormContext()
     const textError = errors[name]?.message as string;
@@ -26,7 +27,7 @@ export const InputText = ({ title, max, validate = true, className, name }: {
                 <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type='text' id={id} {...register(name)} onFocus={() => color.on()} onBlur={check} />
+            <input type='text' id={id} {...register(name)} onFocus={() => color.on()} onBlur={check} className={classNameInput} />
 
             <p className={cn('inputwarning text-nowrap', (!textError && 'opacity-0'))}>{validate && textError && textError}</p>
 
@@ -67,7 +68,7 @@ export const InputPassword = ({ title, className, name }: {
 
             <input type={view.bool ? 'text' : 'password'} id={id} {...register(name)}
                 onFocus={() => color.on()} onBlur={check} />
-            <p className='inputwarning' style={!textError ? { opacity: '0', bottom: '-4vh' } : { bottom: '-4vh' }}> {textError && textError} </p>
+            <p className={cn('inputwarning text-nowrap', (!textError && 'opacity-0'))}> {textError && textError} </p>
         </div>
     );
 }

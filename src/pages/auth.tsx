@@ -16,15 +16,17 @@ export const Auth = () => {
     }, [on.bool])
 
     return (
-        <div className="flex justify-center items-center h-100" >
-            <DefaultContiner>
-                <div className="regwindow transition07" style={!authWindow.bool ? { maxHeight: '500px' } : { maxHeight: '360px' }}>
-                    
-                    <VerticalCarousel />
-                    <RightSide authWindow={authWindow} on={on} />
-                </div >
-            </DefaultContiner >
-        </div >
+        <main>
+            <div className="flex justify-center items-center h-75 w-100" >
+                <DefaultContiner>
+                    <div className="regwindow transition07" style={!authWindow.bool ? { maxHeight: '500px' } : { maxHeight: '360px' }}>
+
+                        <VerticalCarousel />
+                        <RightSide authWindow={authWindow} on={on} />
+                    </div >
+                </DefaultContiner >
+            </div >
+        </main>
     );
 }
 

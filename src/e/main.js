@@ -7,16 +7,19 @@ const extenation = new Map([
     ["prod", path.join(app.getAppPath(), '/dist-react/index.html')],
 ])
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true
+const overlay = false
 
 app.whenReady().then(() => {
     createMainWindow();
-    createOverlayWindow();
+    overlay && createOverlayWindow();
 });
 
 function createMainWindow() {
     const mainWindow = new BrowserWindow({
         autoHideMenuBar: true,
         titleBarStyle: 'hidden',
+        icon: path.join(app.getAppPath(), 'public/favicon/', 'favicon-32x32.png'),
+        width: 620,
         webPreferences: {
             nodeIntegration: true,
             preload: path.join(app.getAppPath(), 'src/e/', 'preload.js')
@@ -48,8 +51,8 @@ function createMainWindow() {
 function createOverlayWindow() {
     const overlayWindow = new BrowserWindow({
         transparent: true,
-        alwaysOnTop: true,
-        icon: './lock.svg',
+        // alwaysOnTop: true,
+        icon: path.join(app.getAppPath(), 'src/e/', 'lock.svg'),
         // resizable: false,
         skipTaskbar: true,
         x: 20,

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useBoolean } from '../../lib/castom-hook'
 import { createPortal } from 'react-dom'
 import { ModalSET } from './modal-set'
-import { SelectPlayList } from '../children'
+import { PlayListModal } from '../children'
 
 interface Props {
     className?: string
@@ -42,7 +42,7 @@ export const LeftNavigate: React.FC<Props> = ({ className }: Props) => {
         <div className={cn('h-100 fit-content min-w-[60px]', className)}>
             {bool && createPortal(
                 <ModalSET fn={swap} className="items-start justify-start" className_="modal-add-playlist-anim h-100 rounded-none" >
-                    <SelectPlayList fn={selectPlayListHandler} />
+                    <PlayListModal fn={selectPlayListHandler} />
                 </ModalSET>, document.body)}
             <div className="flex flex-col gap-5 pl-5 bg-color-dark p-5 h-100 pt-10">
                 <ClickHocFn fn={navToBack} ><IconAndAText icon="svg/arrow.svg" text="назад" /></ClickHocFn>
@@ -50,7 +50,7 @@ export const LeftNavigate: React.FC<Props> = ({ className }: Props) => {
                 <ClickHocFn fn={navToCommunity} ><IconAndAText icon="svg/community.svg" text="сообщество" /></ClickHocFn>
                 <ClickHocFn fn={swap} ><IconAndAText icon="svg/playlist.svg" text="плейлисты" /></ClickHocFn>
                 <ClickHocFn fn={navToChats} ><IconAndAText icon="svg/message.svg" text="мессенджер" /></ClickHocFn>
-                <ClickHocFn fn={() => navigate('/chat/1')} ><IconAndAText icon="svg/playlist.svg" text="чат" /></ClickHocFn>
+                <img src="/favicon/favicon-32x32.png" alt="" className='small- cursor-pointer' />
             </div>
         </div>
     )

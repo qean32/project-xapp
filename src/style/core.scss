@@ -32,7 +32,7 @@
 main {
   height: 100vh;
   background-color: $bg-color;
-  // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23CCC' stroke-width='0' %3E%3Crect fill='%231A1A1A' x='-60' y='-60' width='110' height='240'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23CCC' stroke-width='0' %3E%3Crect fill='%231A1A1A' x='-60' y='-60' width='110' height='240'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 #top-bar {
@@ -47,6 +47,10 @@ main {
 
 .transition07 {
   transition: .7s;
+}
+
+.transition01 {
+  transition: .1s;
 }
 
 .fit-content {
@@ -137,6 +141,7 @@ main {
   .adaptive-text {
     width: 150px;
   }
+
   .adaptive-bottom-tool {
     justify-content: center !important;
   }

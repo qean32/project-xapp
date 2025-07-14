@@ -9,6 +9,11 @@
     height: 18px;
 }
 
+.small- {
+    width: 23px;
+    height: 23px;
+}
+
 .medium {
     width: 30px;
     height: 30px;
@@ -70,24 +75,6 @@
         background-color: $bg-color-light;
     }
 }
-
-.create-playlist-anim {
-    transition: $dft-transition;
-    transform: scaleY(1);
-    animation: create-playlist-anim-anim .2s;
-    transform-origin: top;
-}
-
-@keyframes create-playlist-anim-anim {
-    from {
-        transform: scaleY(0.6);
-    }
-
-    to {
-        transform: scaleY(1);
-    }
-}
-
 .overlay {
     cursor: pointer;
     transition: $dft-transition;
