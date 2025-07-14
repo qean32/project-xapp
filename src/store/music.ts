@@ -42,13 +42,8 @@ const MusicSlice = createSlice({
             state.playList = payload.payload.playList
         },
         swapOnlyCurrent: (state: MusicSliceDto, payload: PayloadAction<MusicDto>) => {
-            console.log(payload)
-            state.current.progress = payload.payload.progress
-            state.current.length = payload.payload.length
-            state.current.author = payload.payload.author
-            state.current.ava = payload.payload.ava
-            state.current.link = payload.payload.link
-            state.current.name = payload.payload.name
+            // console.log(payload.payload.currentTime)
+            state.current = payload.payload
         }
     }
 })

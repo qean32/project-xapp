@@ -1,6 +1,6 @@
 import { LeftNavigate } from "../component/general"
 import { DftSETPage, GroupContainer } from "../component/hoc"
-import { Music } from "../component/shared"
+import { MusicPlayList } from "../component/shared"
 import { ResultSearch, Search } from "../component/ui"
 import { changeTitle } from "../lib/function"
 
@@ -14,7 +14,7 @@ export const Main = () => {
                 <Search />
                 <ResultSearch />
 
-                <GroupContainer Component={Music} />
+                <GroupContainer Component={MusicPlayList} />
             </DftSETPage>
         </main >
     )

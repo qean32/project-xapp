@@ -3,6 +3,7 @@ export interface MusicDto {
     name: string
     ava: string
     author: string
-    progress?: string | number
-    length?:  string | number
+    progress?: number
+    length?: number
+    currentTime?: number
 }

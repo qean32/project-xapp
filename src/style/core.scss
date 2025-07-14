@@ -146,3 +146,9 @@ main {
     justify-content: center !important;
   }
 }
+
+.child-fill-event {
+  &>* {
+    pointer-events: auto !important;
+  }
+}

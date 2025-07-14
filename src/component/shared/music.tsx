@@ -31,11 +31,11 @@ export const Music: React.FC<Props> = ({ className = 'music pl-9', music }: Prop
                     </div>
                 </div>
                 <div className='flex gap-3 pl-5'>
-                    <img className='cursor-pointer' src="/svg/playlist.svg" alt="" onClick={swap} />
+                    <img className='cursor-pointer pointer-events-auto' src="/svg/playlist.svg" alt="" onClick={swap} />
                     <a
                         download={''}
                         href={music.link}
-                    ><img className='cursor-pointer' src="/svg/download.svg" alt="" /></a>
+                    ><img className='cursor-pointer pointer-events-auto' src="/svg/download.svg" alt="" /></a>
                 </div>
             </div>
         </>

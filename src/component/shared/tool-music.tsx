@@ -12,9 +12,13 @@ interface Props {
 
 export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, small = false }: Props) => {
     const { audioElem, back, current, next, play, isPlay, onPlaying } = useSound();
+    React.useEffect(() => {
+        if (current.currentTime)
+            audioElem.current.currentTime = current.currentTime;
+    }, [current.currentTime])
 
     return (
-        <div className={cn('flex gap-1 items-end', className)}>
+        <div className={cn('flex gap-1 items-end pointer-events-none child-fill-event', className)}>
             {left && <ToolModeSound className='w-[20px] trans-5' />}
             <audio src={current.link} ref={audioElem} onTimeUpdate={onPlaying} />
 
