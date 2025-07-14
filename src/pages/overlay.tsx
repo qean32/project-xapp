@@ -1,14 +1,30 @@
 import { ToolMusic } from "../component/shared"
-import { changeTitle } from "../lib/function"
+import { useBoolean } from "../lib/castom-hook";
+import { changeTitle, cn } from "../lib/function"
+import { IpcEventNameDto } from "../model";
 
 export const Overlay = () => {
     changeTitle('');
+    const { bool, swap } = useBoolean(true)
+    const hoverHandler = (key: IpcEventNameDto) => {
+        // @ts-ignore
+        window.electron?.sendFrameAction(key);
+        swap();
+    }
 
     return (
-        <div className="p-2 bg-color fit-content rounded-md px-3">
-            <div className="opacity-0 w-0"></div>
-            <p className="text-ellipsis overflow-hidden max-w-[140px] mb-1" >НАЗВАНИЕНАЗВАНИЕНАЗВАНИЕ</p>
-            <ToolMusic left={false} className="p-1" />
+        <div
+            className={cn("bg-color p-3 py-2 fit-content overflow-hidden overlay rounded-b-md", (bool ? 'h-[35px]' : 'h-[75px]'))}
+            onClick={() => hoverHandler('CHANGE-SIZE-OVERLAY-WINDOW')}>
+            <div className="flex gap-2">
+                <p className="text-ellipsis max-w-[120px] overflow-hidden text-nowrap text-sm" >НАЗВАНИЕНАЗВАНИЕ НАЗВАНИЕ</p>
+
+                <img src="/svg/arrow.svg" alt=""
+                    style={!bool ? { transform: 'rotate(90deg)' } : { transform: 'rotate(-90deg)' }}
+                    className="transition07" />
+
+            </div>
+            <ToolMusic left={false} className="p-0" small />
         </div>
     )
 }

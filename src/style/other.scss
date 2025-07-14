@@ -32,6 +32,10 @@
     transform: translateY(5px);
 }
 
+.trans-10 {
+    transform: translateY(10px);
+}
+
 .small-to-top {
     transition: $dft-transition;
 }
@@ -86,12 +90,5 @@
 
 .overlay {
     cursor: pointer;
-    pointer-events: all;
-    -electron-corner-smoothing: 10px;
-    opacity: .5;
     transition: $dft-transition;
-
-    // &:hover {
-    //     opacity: 1;
-    // }
 }

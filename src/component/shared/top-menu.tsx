@@ -3,6 +3,7 @@
 import React from 'react'
 import { cn, getUrl } from '../../lib/function'
 import { useBoolean } from '../../lib/castom-hook'
+import { IpcEventNameDto } from '../../model'
 
 interface Props {
     className?: string
@@ -12,19 +13,12 @@ interface Props {
 export const TopMenu: React.FC<Props> = ({ className }: Props) => {
     const { bool, swap } = useBoolean(false)
 
-    const clickHandler = (key: 'CLOSE' | 'HIDE' | 'CHANGE-WiNDOW') => {
+    const clickHandler = (key: IpcEventNameDto) => {
         window.electron?.sendFrameAction(key)
     }
 
     const changeWinwdowClickHandler = () => {
-        if (bool) {
-            window.electron?.sendFrameAction('CHANGE-WiNDOW-')
-            swap()
-
-            return
-        }
-
-        window.electron?.sendFrameAction('CHANGE-WiNDOW+')
+        window.electron?.sendFrameAction('CHANGE-WiNDOW')
         swap()
     }
 

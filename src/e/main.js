@@ -9,7 +9,7 @@ const extenation = new Map([
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true
 
 app.whenReady().then(() => {
-    // createMainWindow();
+    createMainWindow();
     createOverlayWindow();
 });
 
@@ -36,12 +36,12 @@ function createMainWindow() {
         mainWindow.setAlwaysOnTop(true)
     })
 
-    ipcMain.on('CHANGE-WiNDOW-', () => {
-        mainWindow.unmaximize();
-    })
-
-    ipcMain.on('CHANGE-WiNDOW+', () => {
-        mainWindow.maximize();
+    ipcMain.on('CHANGE-WiNDOW', () => {
+        if (mainWindow.isMaximized()) {
+            mainWindow.unmaximize();
+        } else {
+            mainWindow.maximize();
+        }
     })
 }
 
@@ -50,17 +50,28 @@ function createOverlayWindow() {
         transparent: true,
         alwaysOnTop: true,
         icon: './lock.svg',
-        resizable: false,
-        // skipTaskbar: true,
+        // resizable: false,
+        skipTaskbar: true,
+        x: 20,
+        y: 20,
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
             preload: path.join(app.getAppPath(), 'src/e/', 'preload-overlay.js')
         },
-        height: 85,
-        width: 170,
+        height: 35,
+        width: 160,
         backgroundColor: '#141414',
     });
+
+    ipcMain.on('CHANGE-SIZE-OVERLAY-WINDOW', () => {
+        if (overlayWindow.getSize()[1] == 35) {
+            overlayWindow.setSize(160, 75)
+        }
+        else {
+            overlayWindow.setSize(160, 35)
+        }
+    })
     // overlayWindow.webContents.openDevTools();
     overlayWindow.loadURL(extenation.get('dev'));
 }
