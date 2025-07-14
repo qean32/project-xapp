@@ -59,7 +59,7 @@ export const InputPassword = ({ title, className, name }: {
     return (
         <div className={cn('w-100 relative', className)}>
 
-            <img src={view.bool ? './svg/unlock.svg' : './svg/lock.svg'} style={{ zIndex: '10' }} alt='' onClick={() => view.swap()} className='lockpass cursor-pointer' />
+            <img src={view.bool ? '/svg/unlock.svg' : '/svg/lock.svg'} style={{ zIndex: '10' }} alt='' onClick={() => view.swap()} className='lockpass cursor-pointer' />
 
             <label htmlFor={id} className='fill' >
                 <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
@@ -82,7 +82,7 @@ export const Checkbox = ({ title, fn, value, className }: {
         <div onClick={() => fn()} className={cn('cursor-pointer relative fit-content', className)} >
             <p>{title}</p>
             <input type='checkbox' style={{ top: '-2px' }} className={cn('transition03 absolute -right-6', (value ? 'opacity-0' : ''))} />
-            <img src='./svg/accept.svg'
+            <img src='/svg/accept.svg'
                 alt=''
                 style={{ top: '4px' }} className={cn('transition03 absolute -right-7', (!value && 'opacity-0'))}
             />
@@ -146,7 +146,7 @@ export const InputFile = ({ title = 'изображение', setValue, classNam
 
             <label htmlFor={id} className='flex items-start flex-col gap-3' style={{ pointerEvents: 'auto' }}>
                 <div className='music-ava flex justify-center items-center' style={{ backgroundImage: `url(${urls[0]})`, width: '70px', height: '50px' }}>
-                    {src.length > 0 ? <></> : <img src='./svg/upload.svg' width={'27px'} />}
+                    {src.length > 0 ? <></> : <img src='/svg/upload.svg' width={'27px'} />}
                 </div>
                 <p>{title}</p>
             </label>

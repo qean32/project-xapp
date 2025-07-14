@@ -67,7 +67,7 @@
 }
 
 .messagecontext {
-  max-width: 60%;
+  max-width: 70%;
   background-color: #222222;
 }
 
@@ -83,6 +83,21 @@
   background-color: #222222;
 }
 
+.create-playlist-anim {
+  transition: 0.7s;
+  transform: scaleY(1);
+  animation: create-playlist-anim-anim 0.2s;
+  transform-origin: top;
+}
+
+@keyframes create-playlist-anim-anim {
+  from {
+    transform: scaleY(0.6);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
 input {
   background-color: #222222 !important;
   padding: 1vh 2.2vh !important;
@@ -331,23 +346,20 @@ input[type=comment]:focus {
   margin: 0;
   font-family: cursive;
   font-size: medium;
-  letter-spacing: 0.1vh;
+  letter-spacing: 1px;
   color: #D2D2D2;
   text-decoration: none;
 }
 
-#root {
+main {
   height: 100vh;
+  background-color: #141414;
 }
 
 #top-bar {
   -webkit-user-select: none;
   -webkit-app-region: drag;
   flex: 1;
-}
-
-body {
-  background-color: #141414;
 }
 
 .transition03 {
@@ -385,6 +397,13 @@ main {
   overflow: hidden;
 }
 
+.transform-right {
+  transition: 0.3s;
+}
+.transform-right:hover {
+  transform: translateX(5px);
+}
+
 .h-100 {
   height: 100%;
 }
@@ -395,6 +414,10 @@ main {
 
 .w-80 {
   width: 80%;
+}
+
+.children-no-events > * {
+  pointer-events: none;
 }
 
 .transform-reverse {

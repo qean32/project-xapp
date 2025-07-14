@@ -14,7 +14,7 @@ export const ToolModeSound: React.FC<Props> = ({ className = 'w-[25px]' }: Props
 
     return (
         <div className={cn('cursor-pointer m-1', className)} onClick={() => dispatch(swap())}>
-            <img src={'./svg/' + modeSound.mode + '.svg'} alt="" />
+            <img src={'/svg/' + modeSound.mode + '.svg'} alt="" />
         </div>
     )
 }

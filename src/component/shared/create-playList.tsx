@@ -13,7 +13,7 @@ export const CreatePlayList: React.FC<Props> = ({ }: Props) => {
         <>
             {!bool ?
                 <div className='cursor-pointer flex justify-center items-center transition03 music py-5 mx-6 rounded-md' onClick={swap} >
-                    <img src="./svg/plus.svg" alt="" />
+                    <img src="/svg/plus.svg" alt="" />
                 </div>
                 :
                 <>
