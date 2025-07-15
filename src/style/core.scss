@@ -34,6 +34,10 @@
   font-style: normal;
 }
 
+.reverse {
+  transform: scale(-1);
+}
+
 main {
   height: 100vh;
   background-color: $bg-color;

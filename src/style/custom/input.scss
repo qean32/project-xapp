@@ -89,3 +89,52 @@ input[type=comment] {
         border: 1px solid transparent;
     }
 }
+
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border: none !important;
+    height: 15px !important;
+    min-height: min-content !important;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 15px !important;
+    background: $bg-color-light-;
+}
+
+#p-0 {
+    padding: 0 !important;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 15px !important;
+    background: $bg-color-light-;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 15px !important;
+    width: 15px !important;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid $bg-color-light;
+
+    box-shadow: -407px 0 0 400px $bg-color-light;
+}
+
+
+input[type="range"]::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid $bg-color-light;
+    box-shadow: -407px 0 0 400px $bg-color-light;
+}

@@ -3,6 +3,8 @@ import { ToolModeSound } from '../ui'
 import { cn } from '../../lib/function'
 import { useSound } from '../../lib/castom-hook'
 import { nextarrowImg, nextmainarrowImg, pauseImg } from '../ui/img'
+import { AudioValue } from './audio-value'
+import { useAppSelector } from '../../lib/castom-hook/redux'
 
 interface Props {
     className?: string
@@ -13,15 +15,23 @@ interface Props {
 
 export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, small = false }: Props) => {
     const { audioElem, back, current, next, play, isPlay, onPlaying } = useSound();
+    const { value } = useAppSelector(state => state.audioValue);
     React.useEffect(() => {
         if (current.currentTime)
             audioElem.current.currentTime = current.currentTime;
     }, [current.currentTime])
+    React.useEffect(() => {
+        if (audioElem.current.volume) {
+            audioElem.current.volume = value
+            console.log(audioElem.current.volume)
+        }
+    }, [value])
 
     return (
-        <div className={cn('flex gap-1 items-end pointer-events-none child-fill-event trans-5', className)}>
-            {left && <ToolModeSound />}
+        <div className={cn('relative flex gap-1 items-end pointer-events-none child-fill-event trans-5', className)}>
             <audio src={current.link} ref={audioElem} onTimeUpdate={onPlaying} />
+            <AudioValue />
+            {left && <ToolModeSound />}
 
             <div className='flex gap-1'>
                 <img width={small ? '16px' : '24px'} className='cursor-pointer' src={nextarrowImg} alt="" onClick={back} style={{ transform: 'scaleX(-1)' }} />

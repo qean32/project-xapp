@@ -29,6 +29,8 @@ import lockImg from '../../../public/svg/lock.svg'
 import likeImg from '../../../public/svg/like.svg'
 import nextarrowImg from '../../../public/svg/next-arrow.svg'
 import nextmainarrowImg from '../../../public/svg/next-main-arrow.svg'
+import soundvalue_img from '../../../public/svg/sound-value-.svg'
+import soundvalue__img from '../../../public/svg/sound-value--.svg'
 
 import empielogoImg from '../../../public/svg/empie-logo.svg'
 import animalhideImg from '../../../public/svg/animal-hide.svg'
@@ -46,6 +48,8 @@ export {
     sneakersImg,
     musicImg,
 
+    soundvalue_img,
+    soundvalue__img,
     acceptImg,
     nextarrowImg,
     nextmainarrowImg,

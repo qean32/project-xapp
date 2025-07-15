@@ -21,9 +21,9 @@ export const BottomTool: React.FC<Props> = ({ className }: Props) => {
     }
 
     const changeHandler = useDebounceFunction(clickHandler, 20)
-    React.useEffect(() => {
-        console.log('change')
-    }, [changeHandler, clickHandler])
+    // React.useEffect(() => {
+    //     console.log('change')
+    // }, [changeHandler, clickHandler])
 
     return (
         <>
