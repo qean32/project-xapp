@@ -7,6 +7,7 @@ import { useBoolean } from '../../lib/castom-hook'
 import { createPortal } from 'react-dom'
 import { ModalSET } from './modal-set'
 import { PlayListModal } from '../children'
+import { arrowImg, communityImg, homeImg, logoImg, messageImg, playlistImg } from '../ui/img'
 
 interface Props {
     className?: string
@@ -45,12 +46,12 @@ export const LeftNavigate: React.FC<Props> = ({ className }: Props) => {
                     <PlayListModal fn={selectPlayListHandler} />
                 </ModalSET>, document.body)}
             <div className="flex flex-col gap-5 pl-5 bg-color-dark p-5 h-100 pt-10">
-                <ClickHocFn fn={navToBack} ><IconAndAText icon="svg/arrow.svg" text="назад" /></ClickHocFn>
-                <ClickHocFn fn={navToHome} ><IconAndAText icon="svg/home.svg" text="главная" /></ClickHocFn>
-                <ClickHocFn fn={navToCommunity} ><IconAndAText icon="svg/community.svg" text="сообщество" /></ClickHocFn>
-                <ClickHocFn fn={swap} ><IconAndAText icon="svg/playlist.svg" text="плейлисты" /></ClickHocFn>
-                <ClickHocFn fn={navToChats} ><IconAndAText icon="svg/message.svg" text="мессенджер" /></ClickHocFn>
-                <img src="/favicon/favicon-32x32.png" alt="" className='small- cursor-pointer' />
+                <ClickHocFn fn={navToBack} ><IconAndAText icon={arrowImg} text="назад" /></ClickHocFn>
+                <ClickHocFn fn={navToHome} ><IconAndAText icon={homeImg} text="главная" /></ClickHocFn>
+                <ClickHocFn fn={navToChats} ><IconAndAText icon={messageImg} text="мессенджер" /></ClickHocFn>
+                <ClickHocFn fn={navToCommunity} ><IconAndAText icon={communityImg} text="сообщество" /></ClickHocFn>
+                <ClickHocFn fn={swap} ><IconAndAText icon={playlistImg} text="плейлисты" /></ClickHocFn>
+                <img src={logoImg} alt="" className='small- cursor-pointer' />
             </div>
         </div>
     )

@@ -1,5 +1,4 @@
 import React from 'react'
-import { TopMenu } from '../shared'
 import { DefaultContiner } from '.'
 import { RightSide } from '../general'
 
@@ -11,9 +10,6 @@ interface Props {
 export const DftSETPage: React.FC<Props> = ({ children }: Props) => {
     return (
         <>
-            <TopMenu />
-            {/* <BottomTool /> */}
-
             <div className="flex gap-12 justify-center adaptive-center-parent" style={{ flex: 1 }}>
                 <DefaultContiner className="h-100 pb-[90px] pt-5 adaptive-center w-[740px]">
                     {children}

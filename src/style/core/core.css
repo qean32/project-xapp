@@ -27,6 +27,11 @@
   height: 18px;
 }
 
+.small- {
+  width: 23px;
+  height: 23px;
+}
+
 .medium {
   width: 30px;
   height: 30px;
@@ -48,6 +53,10 @@
 
 .trans-5 {
   transform: translateY(5px);
+}
+
+.trans-10 {
+  transform: translateY(10px);
 }
 
 .small-to-top {
@@ -83,30 +92,24 @@
   background-color: #222222;
 }
 
-.create-playlist-anim {
+.overlay {
+  cursor: pointer;
   transition: 0.7s;
-  transform: scaleY(1);
-  animation: create-playlist-anim-anim 0.2s;
-  transform-origin: top;
 }
 
-@keyframes create-playlist-anim-anim {
-  from {
-    transform: scaleY(0.6);
-  }
-  to {
-    transform: scaleY(1);
-  }
-}
 input {
   background-color: #222222 !important;
-  padding: 1vh 2.2vh !important;
+  padding: 10px 18px !important;
   border-radius: 5px;
   border: 1px solid transparent;
   outline: none;
   cursor: pointer;
   min-height: 31px;
   width: 100%;
+}
+
+.input-padding {
+  padding: 14px 20px !important;
 }
 
 label {
@@ -141,8 +144,8 @@ input[type=search] {
 .inputwarning {
   color: #E74343;
   position: absolute;
-  bottom: -20px;
-  left: 1vh;
+  bottom: -25px;
+  left: 5px;
   font-size: 14px;
   transition: 0.5s;
   cursor: pointer;
@@ -285,7 +288,7 @@ input[type=comment]:focus {
 
 .modal-upload-anim {
   animation: modalUploadAnim 0.3s;
-  transform: translateY(0);
+  transform: translate(0, -12vh);
 }
 
 .modal-add-playlist-anim {
@@ -313,7 +316,7 @@ input[type=comment]:focus {
     opacity: 0.6;
   }
   to {
-    transform: translateY(0);
+    transform: translate(0, -12vh);
     opacity: 1;
   }
 }
@@ -335,6 +338,21 @@ input[type=comment]:focus {
     opacity: 1;
   }
 }
+.create-playlist-anim {
+  transition: 0.7s;
+  transform: scaleY(1);
+  animation: create-playlist-anim-anim 0.2s;
+  transform-origin: top;
+}
+
+@keyframes create-playlist-anim-anim {
+  from {
+    transform: scaleY(0.4);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -354,6 +372,7 @@ input[type=comment]:focus {
 main {
   height: 100vh;
   background-color: #141414;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23CCC' stroke-width='0' %3E%3Crect fill='%231A1A1A' x='-60' y='-60' width='110' height='240'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 #top-bar {
@@ -368,6 +387,10 @@ main {
 
 .transition07 {
   transition: 0.7s;
+}
+
+.transition01 {
+  transition: 0.1s;
 }
 
 .fit-content {
@@ -451,6 +474,12 @@ main {
   .adaptive-text {
     width: 150px;
   }
+  .adaptive-bottom-tool {
+    justify-content: center !important;
+  }
+}
+.child-fill-event > * {
+  pointer-events: auto !important;
 }
 
 /*# sourceMappingURL=core.css.map */

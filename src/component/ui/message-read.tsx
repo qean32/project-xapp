@@ -1,5 +1,6 @@
 import React from 'react'
 import { cn } from '../../lib/function'
+import { readitImg, shippedImg } from './img'
 
 interface Props {
     read: boolean
@@ -11,9 +12,9 @@ export const MessageRead: React.FC<Props> = ({ read, className }: Props) => {
     return (
         <>
             {read ?
-                <img src="/svg/read-it.svg" alt="" className={cn("absolute right-3 bottom-3", className)} />
+                <img src={readitImg} alt="" className={cn("absolute right-3 bottom-3", className)} />
                 :
-                <img src="/svg/shipped.svg" alt="" className={cn("absolute right-3 bottom-3", className)} />
+                <img src={shippedImg} alt="" className={cn("absolute right-3 bottom-3", className)} />
             }
         </>
     )

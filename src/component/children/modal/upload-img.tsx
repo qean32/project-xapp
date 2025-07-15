@@ -2,6 +2,7 @@ import React from 'react'
 import { generateId, renameFile } from '../../../lib/function'
 import { Button } from '../../ui'
 import { useBoolean } from '../../../lib/castom-hook'
+import { plusImg, uploadImg } from '../../ui/img'
 
 interface Props {
 }
@@ -54,7 +55,7 @@ export const UploadImgChild: React.FC<Props> = ({ }: Props) => {
                 onDragOver={e => dragStartHandler(e)}
                 onDrop={e => dropHandler(e)}
             >
-                {bool ? <img src="/svg/plus.svg" alt="" width={50} /> : <img src="/svg/upload.svg" alt="" width={50} />}
+                {bool ? <img src={plusImg} alt="" width={50} /> : <img src={uploadImg} alt="" width={50} />}
             </label>
         </>
     )

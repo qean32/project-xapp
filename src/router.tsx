@@ -6,13 +6,15 @@ import {
 import * as _ from './pages'
 import { store } from './store'
 import { Provider } from 'react-redux'
-import { BottomTool } from "./component/shared"
+import { BottomTool, TopMenu } from "./component/shared"
 
 export const Router = () => {
     return (
         // <HashRouter>
         <BrowserRouter>
             <Provider store={store} >
+                <BottomTool />
+                <TopMenu />
 
                 <Routes>
 
@@ -24,7 +26,6 @@ export const Router = () => {
                     <Route path="auth" element={<_.Auth />} />
                     <Route path="overlay" element={<_.Overlay />} />
                 </Routes>
-                <BottomTool />
             </Provider>
         </BrowserRouter>
         // </HashRouter>

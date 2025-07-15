@@ -1,5 +1,6 @@
 import React from 'react'
 import { cn } from '../../lib/function'
+import { downloadImg, trashImg } from '../ui/img'
 
 interface Props {
     className?: string
@@ -18,8 +19,8 @@ export const MusicPlayList: React.FC<Props> = ({ className = 'music pl-9' }: Pro
                     </div>
                 </div>
                 <div className='flex gap-3 pl-5'>
-                    <img className='cursor-pointer' src="/svg/trash.svg" alt="" />
-                    <img className='cursor-pointer' src="/svg/download.svg" alt="" />
+                    <img className='cursor-pointer' src={trashImg} alt="" />
+                    <img className='cursor-pointer' src={downloadImg} alt="" />
                 </div>
             </div>
         </>

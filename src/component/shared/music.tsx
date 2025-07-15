@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import { PlayListModal } from '../children'
 import { ModalSET } from '../general'
 import { MusicDto } from '../../model'
+import { downloadImg, playlistImg } from '../ui/img'
 
 interface Props {
     className?: string
@@ -31,11 +32,11 @@ export const Music: React.FC<Props> = ({ className = 'music pl-9', music }: Prop
                     </div>
                 </div>
                 <div className='flex gap-3 pl-5'>
-                    <img className='cursor-pointer pointer-events-auto' src="/svg/playlist.svg" alt="" onClick={swap} />
+                    <img className='cursor-pointer pointer-events-auto' src={playlistImg} alt="" onClick={swap} />
                     <a
                         download={''}
                         href={music.link}
-                    ><img className='cursor-pointer pointer-events-auto' src="/svg/download.svg" alt="" /></a>
+                    ><img className='cursor-pointer pointer-events-auto' src={downloadImg} alt="" /></a>
                 </div>
             </div>
         </>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useMessage } from "../../lib/castom-hook";
+import { sendmessageImg } from "../ui/img";
 
 type Props = {
 }
@@ -21,7 +22,7 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
                 <input type='comment' className='input-commnet' placeholder='сообщение'
                     value={message} onChange={changeHandlerMessage} />
 
-                <button><img src="/svg/send-message.svg" width={'36px'} /></button>
+                <button><img src={sendmessageImg} width={'36px'} /></button>
             </form>
         </div >
     );
