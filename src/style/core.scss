@@ -157,7 +157,13 @@ main {
 }
 
 .child-fill-event {
-  &>* {
+  & * {
     pointer-events: auto !important;
+  }
+}
+
+.child-no-event {
+  & * {
+    pointer-events: none;
   }
 }

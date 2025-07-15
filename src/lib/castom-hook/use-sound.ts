@@ -3,6 +3,7 @@ import { MusicDto } from "../../model";
 import { useBoolean } from "./use-boolean";
 import { useAppSelector, useAppDispatch } from '../../lib/castom-hook/redux'
 import { swapOnlyCurrent, swapMusic } from '../../store/music'
+import { rndArray } from "../function";
 
 
 export const useSound = () => {
@@ -11,12 +12,9 @@ export const useSound = () => {
     const { current, playList, primePlayList } = useAppSelector((state) => state.music)
     const { mode } = useAppSelector((state) => state.modeSound)
     const dispatch = useAppDispatch()
-    function shuffle(array: any) {
-        return [...array].sort(() => Math.random() - 0.5);
-    }
     React.useEffect(() => {
         if (mode == "random-play") {
-            dispatch(swapMusic({ current, primePlayList, playList: shuffle(playList) }))
+            dispatch(swapMusic({ current, primePlayList, playList: rndArray(playList) }))
         } else if (playList != primePlayList) {
             dispatch(swapMusic({ current, primePlayList, playList: primePlayList }))
         }
@@ -54,15 +52,17 @@ export const useSound = () => {
 
 
     const next = () => {
-        const index = playList.findIndex((item: MusicDto) => item.link == current.link);
+        if (playList.length) {
+            const index = playList.findIndex((item: MusicDto) => item.link == current.link);
 
-        if (index == playList.length - 1) {
-            dispatch(swapOnlyCurrent(playList[0]))
+            if (index == playList.length - 1) {
+                dispatch(swapOnlyCurrent(playList[0]))
+            }
+            else {
+                dispatch(swapOnlyCurrent(playList[index + 1]))
+            }
+            audioElem.current.currentTime = 0;
         }
-        else {
-            dispatch(swapOnlyCurrent(playList[index + 1]))
-        }
-        audioElem.current.currentTime = 0;
     }
 
     const onPlaying = () => {

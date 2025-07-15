@@ -33,15 +33,15 @@ export const GroupContainerLink: React.FC<Props> = ({ className, Component, link
 interface Props_ {
     className?: string
     Component: React.FC | React.ReactNode | any
+    fn: React.MouseEventHandler<HTMLDivElement>
 }
 
 
-export const GroupContainer: React.FC<Props_> = ({ className, Component }: Props_) => {
+export const GroupContainer: React.FC<Props_> = ({ className, Component, fn }: Props_) => {
     return (
         <div className={cn('', className)}>
             {/* <Loader /> */}
-
-            <div className="flex flex-col max-h-[80%] relative overflow-y-scroll" >
+            <div className="flex flex-col max-h-[80%] relative overflow-y-scroll" onClick={fn} >
                 <Component />
                 <Component />
                 <Component />

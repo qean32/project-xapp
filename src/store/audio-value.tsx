@@ -8,7 +8,6 @@ const audioValueSlice = createSlice({
     initialState,
     reducers: {
         change: (state: AudioValueDto, payload: PayloadAction<AudioValueDto>) => {
-            console.log(payload.payload.value)
             if (payload.payload.value != 0)
                 state.value = payload.payload.value
         }

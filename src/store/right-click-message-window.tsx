@@ -18,15 +18,17 @@ const RightClickMessageSlice = createSlice({
     initialState,
     reducers: {
         setSelectMessage: (state: RightClickMessageWindowDto, payload: PayloadAction<{ message: MessageDto, position: positionDto }>) => {
+            state.position = payload.payload.position
+            if (state.message?.id == payload.payload.message?.id && !state.view) {
+                state.view = true
+                return
+            }
             if (state.message?.id == payload.payload.message?.id) {
                 state.view = false
                 return
             }
-            console.log(state.message.id)
-            console.log(payload.payload.message.id)
 
             state.view = true
-            state.position = payload.payload.position
             state.message = payload.payload.message
         }
     }
