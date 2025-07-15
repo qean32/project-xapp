@@ -14,7 +14,7 @@ interface Props {
 
 
 export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, small = false }: Props) => {
-    const { audioElem, back, current, next, play, isPlay, onPlaying } = useSound();
+    const { audioElem, back, current, next, play, isPlay, onPlaying, isNewAudio } = useSound();
     const { value } = useAppSelector(state => state.audioValue);
     const { mode } = useAppSelector(state => state.modeSound);
 
@@ -36,6 +36,9 @@ export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, sma
         if (audioElem.current.volume)
             audioElem.current.volume = value
     }, [value])
+    React.useEffect(() => {
+        isNewAudio && play()
+    }, [isNewAudio])
     return (
         <div className={cn('relative flex gap-1 items-end pointer-events-none child-fill-event trans-5', className)} >
             <audio src={current.link} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endAudio} />

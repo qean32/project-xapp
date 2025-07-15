@@ -11,7 +11,12 @@ export const Chats = () => {
             <LeftNavigate />
             <DftSETPage>
 
-                <GroupContainerLink Component={Chat} link="/chat/" />
+                <GroupContainerLink link="/chat/">
+                    {[1, 2, 4].map(item => {
+                        
+                        return <Chat key={item} />
+                    })}
+                </GroupContainerLink>
             </DftSETPage>
         </main>
     )

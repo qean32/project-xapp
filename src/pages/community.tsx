@@ -14,7 +14,12 @@ export const Community = () => {
                 <Search />
                 <ResultSearch />
 
-                <GroupContainerLink Component={User} link="/chat/" />
+                <GroupContainerLink link="/chat/">
+                    {[1, 2, 4].map(item => {
+                        
+                        return <User key={item} />
+                    })}
+                </GroupContainerLink>
             </DftSETPage >
         </main >
     )

@@ -5,6 +5,7 @@ import { DftSETPage, GroupContainer } from "../component/hoc"
 import { Music } from "../component/shared"
 import { ResultSearch, Search } from "../component/ui"
 import { testPlaylist } from "../export"
+import { useSound } from "../lib/castom-hook"
 import { useAppDispatch } from "../lib/castom-hook/redux"
 import { changeTitle } from "../lib/function"
 import { swapMusic } from "../store/music"
@@ -26,6 +27,7 @@ export const Main = () => {
             },
             playList: testPlaylist,
             primePlayList: testPlaylist,
+            isNewAudio: true
         }))
     }
 
@@ -36,7 +38,13 @@ export const Main = () => {
                 <Search />
                 <ResultSearch />
 
-                <GroupContainer Component={Music} fn={clickHandler} />
+                <GroupContainer fn={clickHandler}>
+                    {testPlaylist && testPlaylist.map(item => {
+
+                        return <Music music={item} key={item.link} />
+                    })}
+                </GroupContainer>
+
             </DftSETPage>
         </main >
     )

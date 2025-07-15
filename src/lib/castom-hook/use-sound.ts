@@ -9,14 +9,14 @@ import { rndArray } from "../function";
 export const useSound = () => {
     const audioElem: any = React.useRef();
     const { bool: isPlay, swap } = useBoolean(false)
-    const { current, playList, primePlayList } = useAppSelector((state) => state.music)
+    const { current, playList, primePlayList, isNewAudio } = useAppSelector((state) => state.music)
     const { mode } = useAppSelector((state) => state.modeSound)
     const dispatch = useAppDispatch()
     React.useEffect(() => {
         if (mode == "random-play") {
-            dispatch(swapMusic({ current, primePlayList, playList: rndArray(playList) }))
+            dispatch(swapMusic({ current, primePlayList, isNewAudio: false, playList: rndArray(playList) }))
         } else if (playList != primePlayList) {
-            dispatch(swapMusic({ current, primePlayList, playList: primePlayList }))
+            dispatch(swapMusic({ current, primePlayList, isNewAudio: false, playList: primePlayList }))
         }
     }, [mode])
 
@@ -72,5 +72,5 @@ export const useSound = () => {
         dispatch(swapOnlyCurrent({ ...current, "progress": ct / duration * 100, "length": duration }))
     }
 
-    return { current, next, back, play, audioElem, isPlay, onPlaying }
+    return { current, next, back, play, audioElem, isPlay, onPlaying, isNewAudio }
 }

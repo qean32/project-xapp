@@ -5,6 +5,7 @@ type MusicSliceDto = {
     current: MusicDto,
     playList: MusicDto[]
     primePlayList: MusicDto[]
+    isNewAudio: boolean
 }
 
 const initialState: MusicSliceDto = {
@@ -14,6 +15,7 @@ const initialState: MusicSliceDto = {
         ava: 'https://i.pinimg.com/1200x/f0/59/98/f059981655a772f50670ae134e348a55.jpg',
         name: 'dead inside'
     },
+    isNewAudio: false,
     playList: [],
     primePlayList: []
 }
@@ -23,12 +25,12 @@ const MusicSlice = createSlice({
     initialState,
     reducers: {
         swapMusic: (state: MusicSliceDto, payload: PayloadAction<MusicSliceDto>) => {
+            state.isNewAudio = payload.payload.isNewAudio
             state.current = payload.payload.current
             state.playList = payload.payload.playList
             state.primePlayList = payload.payload.primePlayList
         },
         swapOnlyCurrent: (state: MusicSliceDto, payload: PayloadAction<MusicDto>) => {
-            // console.log(payload.payload.currentTime)
             state.current = payload.payload
         }
     }

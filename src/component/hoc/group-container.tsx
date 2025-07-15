@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
     className?: string
-    Component: React.FC | React.ReactNode | any
     link: string
+    children: React.ReactNode
 }
 
 
-export const GroupContainerLink: React.FC<Props> = ({ className, Component, link }: Props) => {
+export const GroupContainerLink: React.FC<Props> = ({ className, link, children }: Props) => {
     const navigate = useNavigate();
     const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         navigate(link + getDataId(e.target))
@@ -21,9 +21,7 @@ export const GroupContainerLink: React.FC<Props> = ({ className, Component, link
             {/* <Loader /> */}
 
             <div className="flex flex-col max-h-[80%] relative overflow-y-scroll" onClick={clickHandler} >
-                <Component />
-                <Component />
-                <Component />
+                {children}
             </div>
         </div>
     )
@@ -32,19 +30,17 @@ export const GroupContainerLink: React.FC<Props> = ({ className, Component, link
 
 interface Props_ {
     className?: string
-    Component: React.FC | React.ReactNode | any
     fn: React.MouseEventHandler<HTMLDivElement>
+    children: React.ReactNode
 }
 
 
-export const GroupContainer: React.FC<Props_> = ({ className, Component, fn }: Props_) => {
+export const GroupContainer: React.FC<Props_> = ({ className, fn, children }: Props_) => {
     return (
         <div className={cn('', className)}>
             {/* <Loader /> */}
             <div className="flex flex-col max-h-[80%] relative overflow-y-scroll" onClick={fn} >
-                <Component />
-                <Component />
-                <Component />
+                {children}
             </div>
         </div>
     )

@@ -24,6 +24,7 @@ export const PlayList = () => {
             },
             playList: testPlaylist,
             primePlayList: testPlaylist,
+            isNewAudio: true
         }))
     }
 
@@ -34,7 +35,12 @@ export const PlayList = () => {
                 <Search />
                 <ResultSearch />
 
-                <GroupContainer Component={MusicPlayList} fn={clickHandler} />
+                <GroupContainer fn={clickHandler}>
+                    {testPlaylist && testPlaylist.map(item => {
+
+                        return <MusicPlayList music={item} key={item.link} />
+                    })}
+                </GroupContainer>
             </DftSETPage>
         </main >
     )
