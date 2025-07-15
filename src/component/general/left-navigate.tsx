@@ -42,7 +42,7 @@ export const LeftNavigate: React.FC<Props> = ({ className }: Props) => {
     return (
         <div className={cn('h-100 fit-content min-w-[60px]', className)}>
             {bool && createPortal(
-                <ModalSET fn={swap} className="items-start justify-start" className_="modal-add-playlist-anim h-100 rounded-none" >
+                <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none" >
                     <PlayListModal fn={selectPlayListHandler} />
                 </ModalSET>, document.body)}
             <div className="flex flex-col gap-5 pl-5 bg-color-dark p-5 h-100 pt-10">
