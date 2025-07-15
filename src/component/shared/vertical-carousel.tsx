@@ -1,4 +1,5 @@
 import React from "react";
+import { empielogoImg, animalhideImg, sneakersImg, musicImg } from "../ui/img";
 
 export const VerticalCarousel: React.FC<{}> = React.memo(() => {
     const [index, setIndex] = React.useState<number>(0)
@@ -24,10 +25,10 @@ export const VerticalCarousel: React.FC<{}> = React.memo(() => {
         <div className="Z-10 plate-color" onClick={() => setIndex((prev: any) => prev + 1)}>
             <div className="w-100">
                 <div style={{ ...carouselStyle, height: 'calc(100% * 4)' }} className="transition07">
-                    <CarouselItem icon={<></>} text="zxczxc" />
-                    <CarouselItem icon={<></>} text="zxczxc" />
-                    <CarouselItem icon={<></>} text="zxczxc" />
-                    <CarouselItem icon={<></>} text="zxczxc" />
+                    <CarouselItem icon={<img className="carousel-img" src={animalhideImg} alt="" width={55} />} text="В разработке" />
+                    <CarouselItem icon={<img className="carousel-img" src={empielogoImg} alt="" width={55} />} text="Оценили проект?" />
+                    <CarouselItem icon={<img className="carousel-img" src={musicImg} alt="" width={55} />} text="Музыка продливает жизнь" />
+                    <CarouselItem icon={<img className="carousel-img" src={sneakersImg} alt="" width={55} />} text="Занимайтесь спортом!" />
                 </div>
             </div>
         </div>
@@ -40,5 +41,5 @@ type Props = {
 }
 
 const CarouselItem: React.FC<Props> = ({ icon, text }: Props) => {
-    return <div className="h-1/4 flex justify-center items-center">{icon}<p>{text}</p></div>
+    return <div className="h-1/4 flex justify-center flex-col gap-5 items-center">{icon}<p>{text}</p></div>
 }

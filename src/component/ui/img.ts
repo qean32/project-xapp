@@ -27,14 +27,28 @@ import nextImg from '../../../public/svg/next.svg'
 import messageImg from '../../../public/svg/message.svg'
 import lockImg from '../../../public/svg/lock.svg'
 import likeImg from '../../../public/svg/like.svg'
+import nextarrowImg from '../../../public/svg/next-arrow.svg'
+import nextmainarrowImg from '../../../public/svg/next-main-arrow.svg'
+
+import empielogoImg from '../../../public/svg/empie-logo.svg'
+import animalhideImg from '../../../public/svg/animal-hide.svg'
+import sneakersImg from '../../../public/svg/sneakers.svg'
+import musicImg from '../../../public/svg/music.svg'
 
 import logoImg from '../../../public/favicon/favicon-32x32.png'
 
 
 export {
     logoImg,
-    
+
+    empielogoImg,
+    animalhideImg,
+    sneakersImg,
+    musicImg,
+
     acceptImg,
+    nextarrowImg,
+    nextmainarrowImg,
     arrowImg,
     backgroundImg,
     changewindowbigImg,

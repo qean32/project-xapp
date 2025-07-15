@@ -45,7 +45,7 @@ export const UploadImgChild: React.FC<Props> = ({ }: Props) => {
     return (
         <>
             <div className='small-ava ava absolute right-[-30%]' style={{ backgroundImage: `url(${urls[0]})` }} ></div>
-            <Button title='сохранить' function_={() => { }} className='absolute bottom-[-25%]' />
+            <Button place='сохранить' function_={() => { }} className='absolute bottom-[-25%]' />
             <input accept='image/png, image/jpeg, image/svg, image/jpg, image/webp' type='file' className='display-none' id={id} onChange={changeHandler} />
             <label
                 className="flex p-0 cursor-pointer pointer-events-auto justify-center items-center w-[400px] h-[300px] modal-upload"

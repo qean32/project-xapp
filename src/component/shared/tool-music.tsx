@@ -2,7 +2,7 @@ import React from 'react'
 import { ToolModeSound } from '../ui'
 import { cn } from '../../lib/function'
 import { useSound } from '../../lib/castom-hook'
-import { arrowImg, nextImg, pauseImg } from '../ui/img'
+import { nextarrowImg, nextmainarrowImg, pauseImg } from '../ui/img'
 
 interface Props {
     className?: string
@@ -19,14 +19,14 @@ export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, sma
     }, [current.currentTime])
 
     return (
-        <div className={cn('flex gap-1 items-end pointer-events-none child-fill-event', className)}>
-            {left && <ToolModeSound className='w-[20px] trans-5' />}
+        <div className={cn('flex gap-1 items-end pointer-events-none child-fill-event trans-5', className)}>
+            {left && <ToolModeSound />}
             <audio src={current.link} ref={audioElem} onTimeUpdate={onPlaying} />
 
-            <div className='flex gap-5'>
-                <img width={small ? '16px' : '24px'} className='cursor-pointer' src={arrowImg} alt="" onClick={back} />
-                <img width={small ? '16px' : '30px'} className='cursor-pointer' src={isPlay ? pauseImg : nextImg} alt="" onClick={play} />
-                <img width={small ? '16px' : '24px'} className='cursor-pointer' src={arrowImg} alt="" style={{ transform: 'scaleX(-1)' }} onClick={next} />
+            <div className='flex gap-1'>
+                <img width={small ? '16px' : '24px'} className='cursor-pointer' src={nextarrowImg} alt="" onClick={back} style={{ transform: 'scaleX(-1)' }} />
+                <img width={small ? '16px' : '55px'} className='cursor-pointer' src={isPlay ? pauseImg : nextmainarrowImg} alt="" onClick={play} />
+                <img width={small ? '16px' : '24px'} className='cursor-pointer' src={nextarrowImg} alt="" onClick={next} />
             </div>
 
             {!left && <ToolModeSound className='w-[20px] trans-10' />}

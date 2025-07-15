@@ -1,13 +1,14 @@
 import React from "react";
 import { useMessage } from "../../lib/castom-hook";
-import { sendmessageImg } from "../ui/img";
+import { sendmessageImg, uploadfilemessageImg } from "../ui/img";
+import { Button } from "../ui";
 
 type Props = {
 }
 
 export const EnterMessage: React.FC<Props> = ({ }: Props) => {
     const { changeHandlerFile, changeHandlerMessage, files, message } = useMessage();
-    
+
     const submitHandler = (e: React.SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault()
 
@@ -22,7 +23,7 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
                 <input type='comment' className='input-commnet' placeholder='сообщение'
                     value={message} onChange={changeHandlerMessage} />
 
-                <button><img src={sendmessageImg} width={'36px'} /></button>
+                <Button place={<img src={sendmessageImg} width={'36px'} alt="" />} function_={() => { }} />
             </form>
         </div >
     );
@@ -36,7 +37,7 @@ const InputFile: React.FC<Props_> = ({ changeHandler }: Props_) => {
     return (
         <>
             <input type="file" className="display-none" id="y1" onChange={changeHandler} />
-            <label htmlFor="y1" className="fit-content pointer-events-auto" ><img src="/svg/upload-file-message.svg" width={'30px'} /></label>
+            <label htmlFor="y1" className="fit-content pointer-events-auto" ><img src={uploadfilemessageImg} width={'29px'} /></label>
         </>
     )
 }

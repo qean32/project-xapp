@@ -14,7 +14,7 @@ const modeConnectImg = new Map([
     ['random-play', randomplayImg],
 ])
 
-export const ToolModeSound: React.FC<Props> = ({ className = 'w-[25px]' }: Props) => {
+export const ToolModeSound: React.FC<Props> = ({ className = 'w-[20px]' }: Props) => {
     const { mode } = useAppSelector((state) => state.modeSound)
     const dispatch = useAppDispatch()
 

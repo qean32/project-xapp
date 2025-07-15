@@ -16,7 +16,7 @@ export const BottomTool: React.FC<Props> = ({ className }: Props) => {
     const { bool, on, off } = useBoolean(false)
     const clickHandler = (e: any) => {
         if (current.length) {
-            dispath(swapOnlyCurrent({ ...current, currentTime: (e.pageX / e.target.offsetWidth) * current.length }))
+            dispath(swapOnlyCurrent({ ...current, currentTime: (e.pageX / e.target.offsetWidth) * current.length, progress: (e.pageX / e.target.offsetWidth) * current.length }))
         }
     }
 
@@ -30,7 +30,7 @@ export const BottomTool: React.FC<Props> = ({ className }: Props) => {
             <div
                 className={cn('fixed bottom-0 h-[85px] w-100 z-20 flex justify-center bg-color-dark', className)}>
                 <div className="flex justify-between w-[770px] adaptive-bottom-tool z-10 pointer-events-none">
-                    <Music className='pl-2 pointer-events-none' music={current} />
+                    <Music className='pl-2 pointer-events-none current-music' music={current} />
                     <ToolMusic />
                 </div>
 

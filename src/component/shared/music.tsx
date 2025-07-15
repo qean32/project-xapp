@@ -13,7 +13,14 @@ interface Props {
 }
 
 
-export const Music: React.FC<Props> = ({ className = 'music pl-9', music }: Props) => {
+export const Music: React.FC<Props> = ({ className = 'music pl-9', music =
+    {
+        link: 'https://cdn2.deliciousoranges.com/s1/get/cuts/d4/87/d4870c957a77b4f9ce597548a2ebfbb6/73433358/Serega_pirat_-_Masha_b128f0d151.mp3',
+        author: 'Serega Pirat',
+        ava: 'https://i.pinimg.com/1200x/d3/99/bc/d399bc4b020f56d316e4c3de3702e2cb.jpg',
+        name: 'Masha'
+    }
+}: Props) => {
     const { bool, swap } = useBoolean(false)
 
     return (

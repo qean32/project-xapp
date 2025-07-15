@@ -4,6 +4,7 @@
 @use "./custom/auth";
 @use './custom/loader';
 @use './custom/modal';
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=TikTok+Sans:opsz,wght@12..36,300..900&family=WDXL+Lubrifont+JP+N&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -22,11 +23,15 @@
   margin: 0;
   // padding: 0;
   // outline: #E74343 1px solid;
-  font-family: cursive;
+  // font-family: cursive;
   font-size: medium;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   color: $text-color;
   text-decoration: none;
+
+  font-family: "WDXL Lubrifont JP N", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 main {

@@ -75,7 +75,29 @@
         background-color: $bg-color-light;
     }
 }
+
 .overlay {
     cursor: pointer;
     transition: $dft-transition;
+}
+
+.current-music {
+    width: 440px;
+
+    & img {
+        transform: translateY(15px);
+    }
+
+    & .small-ava {
+        width: 75px !important;
+        height: 50px !important;
+    }
+
+    & p {
+        font-size: 18px;
+    }
+}
+
+.carousel-img {
+    transform: translateY(-70px);
 }
