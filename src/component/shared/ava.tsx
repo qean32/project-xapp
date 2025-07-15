@@ -16,7 +16,7 @@ export const Ava: React.FC<Props> = ({ className }: Props) => {
     return (
         <>
             {bool && createPortal(
-                <ModalSET fn={swap} className="items-center justify-center" className_="modal-upload-anim" >
+                <ModalSET fn={swap} className="items-center justify-center" classNameWindow="modal-upload-anim" >
                     <UploadImgChild />
                 </ModalSET>, document.body)}
 

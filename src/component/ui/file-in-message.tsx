@@ -23,7 +23,7 @@ export const FileInMessage: React.FC<Props> = ({ path }: Props) => {
                 :
                 <>
                     {bool && createPortal(
-                        <ModalSET fn={swap} className="items-start justify-start" className_="modal-add-playlist-anim h-100 rounded-none" >
+                        <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none" >
                             <ImgModal path={path} />
                         </ModalSET>, document.body)}
                     <img src={path} className="bg-color-dark max-w-[45%] rounded-lg" onClick={swap} />

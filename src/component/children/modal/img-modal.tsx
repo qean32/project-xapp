@@ -8,7 +8,7 @@ interface Props {
 export const ImgModal: React.FC<Props> = ({ path }: Props) => {
     return (
         <>
-            <img src={path} alt="" className='max-h-[100%]' />
+            <img src={path} alt="" className='max-w-[550px]' />
         </>
     )
 }

@@ -7,11 +7,10 @@ import { changeTitle } from "../lib/function"
 
 export const Chat = () => {
     changeTitle('мессенджер')
-    
+
     return (
         <main>
             <LeftNavigate />
-            <RightClickMessageWindowComponent />
             <DftSETPage>
 
                 <div className="px-12 pt-8 flex flex-col justify-between h-100">
@@ -27,10 +26,11 @@ export const Chat = () => {
 
 const GroupMessages: React.FC<{}> = React.memo(() => {
     return (
-        <div className="flex flex-col-reverse gap-5 py-6 overflow-y-scroll">
-            <Message />
-            <Message />
-            <Message />
+        <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll">
+            <RightClickMessageWindowComponent />
+            <Message id={1} />
+            <Message id={2} />
+            <Message id={3} />
         </div>
     )
 })

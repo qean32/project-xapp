@@ -4,15 +4,16 @@ import { setSelectMessage } from '../../store/right-click-message-window'
 import { FileInMessage, MessageRead } from "../ui";
 
 type Props = {
+    id: number
 }
 
-export const Message: React.FC<Props> = ({ }: Props) => {
+export const Message: React.FC<Props> = ({ id }: Props) => {
     const dispatch = useAppDispatch()
 
     const rightClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()
         // @ts-ignore
-        dispatch(setSelectMessage({ position: { top: e.pageY + 'px', left: e.pageX + 'px' }, message: {} }))
+        dispatch(setSelectMessage({ position: { top: e.pageY + 'px', left: e.pageX + 'px' }, message: { id: id } }))
     }
 
     return (
@@ -29,7 +30,7 @@ export const Message: React.FC<Props> = ({ }: Props) => {
                     <FileInMessage path="http://localhost:3000/789429383.rar" />
                 </div>
 
-                <div className="flex gap-3 flex-wrap">
+                <div className="flex items-start gap-3 flex-wrap">
                     <FileInMessage path="https://i.pinimg.com/736x/0d/68/64/0d68647fbd2514040becbaab2de3a8dc.jpg" />
                     <FileInMessage path="https://i.pinimg.com/736x/0d/68/64/0d68647fbd2514040becbaab2de3a8dc.jpg" />
                 </div>

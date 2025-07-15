@@ -6,18 +6,18 @@ interface Props {
     children: React.ReactNode
     fn: () => void
     className?: string
-    className_?: string
+    classNameWindow?: string
 }
 
 
-export const ModalSET: React.FC<Props> = ({ children, fn, className, className_ }: Props) => {
+export const ModalSET: React.FC<Props> = ({ children, fn, className, classNameWindow }: Props) => {
     return (
         <div className={cn('flex fixed z-20 top-0', className)} style={{ inset: '0 0 0 0' }} >
             <div onClick={fn}>
                 <Shadow />
             </div>
 
-            <div className={cn("modal z-30", className_)} >
+            <div className={cn("modal z-30", classNameWindow)} >
                 {children}
             </div>
         </div>

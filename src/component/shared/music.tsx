@@ -26,7 +26,7 @@ export const Music: React.FC<Props> = ({ className = 'music pl-9', music =
     return (
         <>
             {bool && createPortal(
-                <ModalSET fn={swap} className="items-start justify-start" className_="modal-add-playlist-anim h-100 rounded-none" >
+                <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none" >
                     <PlayListModal fn={() => { }} />
                 </ModalSET>, document.body)}
 
