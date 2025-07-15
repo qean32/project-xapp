@@ -31,7 +31,7 @@ export const AuthForm: React.FC<Props> = ({ className, on }: Props) => {
                     <p onClick={on.off}> нет аккаунта? --регистрация</p>
                 </div>
 
-                <Button title="вход" function_={form.handleSubmit(onSubmit)} />
+                <Button place="вход" function_={form.handleSubmit(onSubmit)} />
             </form>
         </FormProvider>
     )

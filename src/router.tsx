@@ -15,7 +15,6 @@ export const Router = () => {
             <Provider store={store} >
                 <BottomTool />
                 <TopMenu />
-
                 <Routes>
 
                     <Route path="" element={<_.Main />} />

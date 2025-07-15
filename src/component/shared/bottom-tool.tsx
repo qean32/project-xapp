@@ -14,8 +14,9 @@ export const BottomTool: React.FC<Props> = ({ className }: Props) => {
     const { current } = useAppSelector(state => state.music)
     const dispath = useAppDispatch()
     const { bool, on, off } = useBoolean(false)
-    const clickHandler = (e: any) => {
+    const clickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (current.length) {
+            // @ts-ignore
             dispath(swapOnlyCurrent({ ...current, currentTime: (e.pageX / e.target.offsetWidth) * current.length, progress: (e.pageX / e.target.offsetWidth) * current.length }))
         }
     }

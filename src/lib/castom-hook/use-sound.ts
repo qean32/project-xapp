@@ -2,14 +2,25 @@ import React from "react";
 import { MusicDto } from "../../model";
 import { useBoolean } from "./use-boolean";
 import { useAppSelector, useAppDispatch } from '../../lib/castom-hook/redux'
-import { swapOnlyCurrent } from '../../store/music'
+import { swapOnlyCurrent, swapMusic } from '../../store/music'
 
 
 export const useSound = () => {
     const audioElem: any = React.useRef();
     const { bool: isPlay, swap } = useBoolean(false)
-    const { current, playList } = useAppSelector((state) => state.music)
+    const { current, playList, primePlayList } = useAppSelector((state) => state.music)
+    const { mode } = useAppSelector((state) => state.modeSound)
     const dispatch = useAppDispatch()
+    function shuffle(array: any) {
+        return [...array].sort(() => Math.random() - 0.5);
+    }
+    React.useEffect(() => {
+        if (mode == "random-play") {
+            dispatch(swapMusic({ current, primePlayList, playList: shuffle(playList) }))
+        } else if (playList != primePlayList) {
+            dispatch(swapMusic({ current, primePlayList, playList: primePlayList }))
+        }
+    }, [mode])
 
     const play = () => {
         swap()

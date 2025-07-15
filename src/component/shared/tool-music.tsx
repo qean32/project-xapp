@@ -16,20 +16,29 @@ interface Props {
 export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, small = false }: Props) => {
     const { audioElem, back, current, next, play, isPlay, onPlaying } = useSound();
     const { value } = useAppSelector(state => state.audioValue);
+    const { mode } = useAppSelector(state => state.modeSound);
+
+    const modeSound = React.useMemo(() => new Map([
+        ['repeat', next],
+        ['repeat-music', () => { }],
+        ['random-play', next],
+    ]), [])
+    const endAudio = () => {
+        // @ts-ignore
+        modeSound.get(mode)()
+    }
+
     React.useEffect(() => {
         if (current.currentTime)
             audioElem.current.currentTime = current.currentTime;
     }, [current.currentTime])
     React.useEffect(() => {
-        if (audioElem.current.volume) {
+        if (audioElem.current.volume)
             audioElem.current.volume = value
-            console.log(audioElem.current.volume)
-        }
     }, [value])
-
     return (
-        <div className={cn('relative flex gap-1 items-end pointer-events-none child-fill-event trans-5', className)}>
-            <audio src={current.link} ref={audioElem} onTimeUpdate={onPlaying} />
+        <div className={cn('relative flex gap-1 items-end pointer-events-none child-fill-event trans-5', className)} >
+            <audio src={current.link} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endAudio} />
             <AudioValue />
             {left && <ToolModeSound />}
 

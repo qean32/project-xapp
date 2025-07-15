@@ -32,7 +32,7 @@ export const RegistrationForm: React.FC<Props> = ({ className, on }: Props) => {
                 <div className="regwarning">
                     <p onClick={on.on}> есть аккаунт? --войти</p>
                 </div>
-                <Button title="регистрация" function_={form.handleSubmit(onSubmit)} />
+                <Button place="регистрация" function_={form.handleSubmit(onSubmit)} />
             </form>
         </FormProvider>
     )

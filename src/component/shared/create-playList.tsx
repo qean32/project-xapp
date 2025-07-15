@@ -20,7 +20,7 @@ export const CreatePlayList: React.FC<Props> = ({ }: Props) => {
                 <>
                     <div className='flex flex-col px-5 gap-3 create-playlist-anim'>
                         <InputText name='name' title='название' classNameInput='input-padding' />
-                        <Button title='создать' function_={() => { }} />
+                        <Button place='создать' function_={() => { }} />
                     </div>
                 </>
             }
