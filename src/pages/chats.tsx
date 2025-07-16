@@ -1,22 +1,28 @@
-import { DftSETPage, GroupContainerLink } from "../component/hoc"
+import { DftSETPage, GroupContainer } from "../component/hoc"
 import { LeftNavigate } from "../component/general"
+import { changeTitle, getDataId } from "../lib/function"
 import { Chat } from "../component/shared"
-import { changeTitle } from "../lib/function"
+import { useNavigate } from "react-router-dom"
 
 export const Chats = () => {
     changeTitle('мессенджер')
+    const navigate = useNavigate();
+    const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+        navigate('/chat/' + getDataId(e.target))
+    }
 
     return (
         <main>
             <LeftNavigate />
             <DftSETPage>
 
-                <GroupContainerLink link="/chat/">
-                    {[1, 2, 4].map(item => {
-                        
-                        return <Chat key={item} />
-                    })}
-                </GroupContainerLink>
+                <GroupContainer
+                    Component={Chat}
+                    clickHandler={clickHandler}
+                    fatchFn={() => { }}
+                    search=""
+                    componentPropsName="data"
+                />
             </DftSETPage>
         </main>
     )

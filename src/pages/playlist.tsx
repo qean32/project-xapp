@@ -1,5 +1,5 @@
 import { LeftNavigate } from "../component/general"
-import { DftSETPage, GroupContainer } from "../component/hoc"
+import { DftSETPage, GroupContainerAllData } from "../component/hoc"
 import { MusicPlayList } from "../component/shared"
 import { ResultSearch, Search } from "../component/ui"
 import { testPlaylist } from "../export"
@@ -21,12 +21,12 @@ export const PlayList = () => {
                 <Search fn={searchFuncttion} />
                 <ResultSearch />
 
-                <GroupContainer fn={selectFn}>
-                    {results && results.map(item => {
-
-                        return <MusicPlayList music={item} key={item.link} />
-                    })}
-                </GroupContainer>
+                <GroupContainerAllData
+                    clickHandler={selectFn}
+                    Component={MusicPlayList}
+                    array={results}
+                    componentPropsName="music"
+                />
             </DftSETPage>
         </main >
     )

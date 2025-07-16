@@ -8,7 +8,6 @@ interface Props {
 
 
 export const DftSETPage: React.FC<Props> = React.memo(({ children }: Props) => {
-    console.log('render2')
     return (
         <>
             <div className="flex gap-12 justify-center adaptive-center-parent" style={{ flex: 1 }}>
