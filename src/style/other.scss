@@ -101,3 +101,24 @@
 .carousel-img {
     transform: translateY(-70px);
 }
+
+.notification-anim {
+    opacity: 1;
+    animation: notification-anim-anim .6s;
+}
+
+@keyframes notification-anim-anim {
+    0% {
+        opacity: .6;
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

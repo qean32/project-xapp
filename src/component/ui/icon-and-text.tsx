@@ -6,14 +6,15 @@ interface Props {
     text: string
     icon: string
     iconSize?: 'small' | 'medium' | 'big'
+    dataId?: string
 }
 
 
-export const IconAndAText: React.FC<Props> = ({ className, text, icon, iconSize = 'small' }: Props) => {
+export const IconAndAText: React.FC<Props> = React.memo(({ className, text, icon, iconSize = 'small', dataId }: Props) => {
     return (
-        <div className={cn('flex justify-center items-center gap-3 cursor-pointer', className)}>
-            <img className={iconSize} src={icon} alt="" />
-            <p className='h-100 adaptive-icon-and-text'>{text}</p>
+        <div data-id={dataId} className={cn('flex justify-center items-center gap-3 cursor-pointer', className)}>
+            <img className={cn(iconSize, 'pointer-events-none')} src={icon} alt="" />
+            <p className='h-100 adaptive-icon-and-text pointer-events-none'>{text}</p>
         </div >
     )
-}
+})
