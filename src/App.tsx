@@ -16,10 +16,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   // @ts-ignore
   !window.electron?.overlay ?
 
+    // <React.StrictMode >
     <HookFormProvider>
 
       <Router />
     </HookFormProvider>
+    // </React.StrictMode>
     :
 
     // <React.StrictMode >
