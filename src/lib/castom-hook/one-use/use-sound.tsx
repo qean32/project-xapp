@@ -1,9 +1,9 @@
 import React from "react";
-import { MusicDto } from "../../model";
-import { useBoolean } from "./use-boolean";
-import { useAppSelector, useAppDispatch } from '../../lib/castom-hook/redux'
-import { swapOnlyCurrent, swapMusic } from '../../store/music'
-import { rndArray } from "../function";
+import { MusicDto } from "../../../model";
+import { useBoolean } from "../use-boolean";
+import { useAppSelector, useAppDispatch } from '../redux'
+import { swapOnlyCurrent, swapMusic } from '../../../store/music'
+import { rndArray } from "../../function";
 
 
 export const useSound = () => {

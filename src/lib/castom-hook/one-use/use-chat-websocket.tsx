@@ -1,8 +1,8 @@
 import React from "react"
-import { MessageDto } from "../../model"
+import { MessageDto } from "../../../model"
 import io from 'socket.io-client'
-import { en } from "../../export"
-import { useDebounce } from "./"
+import { en } from "../../../export"
+import { useDebounce } from ".."
 
 export const useChatWebsocket = (chatId: number) => {
     const [messages, setMessages] = React.useState<MessageDto[]>([]);

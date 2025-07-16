@@ -1,7 +1,7 @@
 import React from "react";
 import { useBoolean } from "./use-boolean";
 
-export function useDebounce(fn: () => void, daley: number = 400) {
+export function useTrotlle(fn: () => void, daley: number = 400) {
     const { bool, off, on } = useBoolean(true)
 
     const returnFn = () => {

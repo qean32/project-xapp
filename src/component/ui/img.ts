@@ -37,7 +37,7 @@ import animalhideImg from '../../../public/svg/animal-hide.svg'
 import sneakersImg from '../../../public/svg/sneakers.svg'
 import musicImg from '../../../public/svg/music.svg'
 
-import logoImg from '../../../public/favicon/favicon-32x32.png'
+import logoImg from '../../../public/svg/logo.svg'
 
 
 export {

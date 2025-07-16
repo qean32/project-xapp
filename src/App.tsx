@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Router } from './router'
 // import './style/core/core.css';
@@ -17,22 +16,20 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   // @ts-ignore
   !window.electron?.overlay ?
 
-    <React.StrictMode >
-      <HookFormProvider>
+    <HookFormProvider>
 
-        <Router />
-      </HookFormProvider>
-    </React.StrictMode>
+      <Router />
+    </HookFormProvider>
     :
 
-    <React.StrictMode >
-      <BrowserRouter>
-        {/* <HashRouter> */}
-        <Provider store={store} >
+    // <React.StrictMode >
+    <BrowserRouter>
+      {/* <HashRouter> */}
+      <Provider store={store} >
 
-          <Overlay />
-        </Provider>
-        {/* </HashRouter> */}
-      </BrowserRouter>
-    </React.StrictMode >
+        <Overlay />
+      </Provider>
+      {/* </HashRouter> */}
+    </BrowserRouter>
+  // </React.StrictMode >
 )

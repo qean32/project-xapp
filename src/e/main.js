@@ -18,7 +18,7 @@ function createMainWindow() {
     const mainWindow = new BrowserWindow({
         autoHideMenuBar: true,
         titleBarStyle: 'hidden',
-        icon: path.join(app.getAppPath(), 'public/favicon/', 'favicon-32x32.png'),
+        icon: path.join(app.getAppPath(), 'public/favicon/', 'favicon.ico'),
         width: 620,
         webPreferences: {
             nodeIntegration: true,
