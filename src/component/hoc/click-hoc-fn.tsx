@@ -8,11 +8,10 @@ interface Props {
 }
 
 
-export const ClickHocFn: React.FC<Props> = React.memo(({ className, children, fn }: Props) => {
+export const ClickHocFn: React.FC<Props> = ({ className, children, fn }: Props) => {
     return (
         <div className={cn('fit-content', className)} onClick={fn} >
             {children}
         </div>
     )
 }
-)

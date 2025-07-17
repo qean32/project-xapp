@@ -1,6 +1,6 @@
 import React from "react";
 import { useMessage } from "../../lib/castom-hook";
-import { sendmessageImg, uploadfilemessageImg } from "../ui/img";
+import { sendmessageImg, uploadfilemessageImg } from "../import";
 import { Button } from "../ui";
 
 type Props = {

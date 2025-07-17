@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '../../lib/function'
-import { readitImg, shippedImg } from './img'
+import { readitImg, shippedImg } from '../import'
 
 interface Props {
     read: boolean

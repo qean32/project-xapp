@@ -7,7 +7,7 @@ import { useBoolean } from '../../lib/castom-hook'
 import { createPortal } from 'react-dom'
 import { ModalSET } from './modal-set'
 import { PlayListModal } from '../children'
-import { arrowImg, communityImg, homeImg, logoImg, messageImg, playlistImg } from '../ui/img'
+import { arrowImg, communityImg, homeImg, logoImg, messageImg, playlistImg, audionotification } from '../import'
 
 interface Props {
     className?: string
@@ -16,8 +16,8 @@ interface Props {
 
 export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) => {
     const { bool: notification, swap: swapNotification } = useBoolean(false)
-    const navigate = useNavigate()
     const { bool, swap } = useBoolean(false)
+    const navigate = useNavigate()
 
     const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         if (getDataId(e.target) == '-1') {
@@ -34,17 +34,16 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
     }
 
     React.useEffect(() => {
+        if (notification) {
+            audionotification.volume = 0.0
+            audionotification.play()
+        }
+    }, [notification])
+
+    React.useEffect(() => {
         setTimeout(() => {
             swapNotification()
         }, 2000);
-
-        // setTimeout(() => {
-        //     swapNotification()
-        // }, 5000);
-
-        // setTimeout(() => {
-        //     swapNotification()
-        // }, 7000);
     }, [])
 
     return (
@@ -58,11 +57,11 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
                 <IconAndAText icon={homeImg} text="главная" dataId='/' />
 
                 <div className='relative'>
-                    <IconAndAText icon={messageImg} text="мессенджер" dataId='' />
+                    <IconAndAText icon={messageImg} text="мессенджер" dataId='/chats' />
                     {notification && <div className={cn("rounded-full w-2 h-2 bg-blue-700 absolute top-1 -right-3", (notification && 'notification-anim'))}></div>}
                 </div>
 
-                <IconAndAText icon={communityImg} text="сообщество" dataId='community' />
+                <IconAndAText icon={communityImg} text="сообщество" dataId='/community' />
                 <ClickHocFn fn={swap}><IconAndAText icon={playlistImg} text="плейлисты" /></ClickHocFn>
 
                 <img src={logoImg} alt="" className='cursor-pointer' width={22} />

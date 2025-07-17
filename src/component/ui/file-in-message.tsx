@@ -1,6 +1,6 @@
 import React from "react"
 import { IsImageFile } from "../../lib/function"
-import { uploadfilemessageImg } from "./img"
+import { uploadfilemessageImg } from "../import"
 import { createPortal } from "react-dom"
 import { useBoolean } from "../../lib/castom-hook"
 import { ImgModal } from "../children"

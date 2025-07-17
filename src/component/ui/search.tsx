@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '../../lib/function'
-import { searchImg } from './img'
+import { searchImg } from '../import'
 
 interface Props {
     className?: string

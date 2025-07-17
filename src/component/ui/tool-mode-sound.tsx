@@ -2,7 +2,7 @@ import React from 'react'
 import { useAppSelector, useAppDispatch } from '../../lib/castom-hook/redux'
 import { swap } from '../../store/mode-sound'
 import { cn } from '../../lib/function'
-import { randomplayImg, repeatImg, repeatmusicImg } from './img'
+import { randomplayImg, repeatImg, repeatmusicImg } from '../import'
 
 interface Props {
     className?: string

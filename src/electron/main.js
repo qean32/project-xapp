@@ -22,7 +22,7 @@ function createMainWindow() {
         width: 620,
         webPreferences: {
             nodeIntegration: true,
-            preload: path.join(app.getAppPath(), 'src/e/', 'preload.js')
+            preload: path.join(app.getAppPath(), 'src/electron/', 'preload.js')
         },
         minWidth: 620,
         minHeight: 130
@@ -52,15 +52,15 @@ function createOverlayWindow() {
     const overlayWindow = new BrowserWindow({
         transparent: true,
         // alwaysOnTop: true,
-        icon: path.join(app.getAppPath(), 'src/e/', 'lock.svg'),
         // resizable: false,
+        icon: path.join(app.getAppPath(), 'src/electron/', 'lock.svg'),
         skipTaskbar: true,
         x: 20,
         y: 20,
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
-            preload: path.join(app.getAppPath(), 'src/e/', 'preload-overlay.js')
+            preload: path.join(app.getAppPath(), 'src/electron/', 'preload-overlay.js')
         },
         height: 35,
         width: 160,

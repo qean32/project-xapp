@@ -2,7 +2,7 @@ import React from 'react'
 import { useBoolean } from '../../lib/castom-hook'
 import { cn, generateId, renameFile } from '../../lib/function'
 import { useFormContext } from 'react-hook-form'
-import { acceptImg, lockImg, unlockImg, uploadImg } from './img'
+import { acceptImg, lockImg, unlockImg, uploadImg } from '../import'
 
 export const InputText = ({ title, max, validate = true, className, name, classNameInput }: {
     title: string

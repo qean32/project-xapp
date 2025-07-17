@@ -3,7 +3,7 @@ import { cn } from '../../lib/function'
 import { useAppDispatch, useAppSelector } from '../../lib/castom-hook/redux'
 import { change } from '../../store/audio-value'
 import { useBoolean, useDebounceFunction } from '../../lib/castom-hook'
-import { soundvalue_img } from '../ui/img'
+import { soundvalue_img } from '../import'
 
 interface Props {
     className?: string

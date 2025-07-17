@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "src/e/main.js",
+  "main": "src/electron/main.js",
   "scripts": {
     "dev": "vite",
     "scss": "npx sass ./src/style/core.scss:src/style/core/core.css",

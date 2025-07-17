@@ -4,7 +4,7 @@ import React from 'react'
 import { cn, getUrl } from '../../lib/function'
 import { useBoolean } from '../../lib/castom-hook'
 import { IpcEventNameDto } from '../../model'
-import { changewindowbigImg, changewindowsmallImg, crossImg, hideImg } from '../ui/img'
+import { changewindowbigImg, changewindowsmallImg, crossImg, hideImg } from '../import'
 
 interface Props {
     className?: string

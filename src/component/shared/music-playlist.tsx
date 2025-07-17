@@ -1,7 +1,7 @@
 import React from 'react'
 import { cn } from '../../lib/function'
 import { MusicDto } from '../../model'
-import { downloadImg, trashImg } from '../ui/img'
+import { downloadImg, trashImg } from '../import'
 
 interface Props {
     className?: string

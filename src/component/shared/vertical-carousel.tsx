@@ -1,5 +1,5 @@
 import React from "react";
-import { empielogoImg, animalhideImg, sneakersImg, musicImg } from "../ui/img";
+import { empielogoImg, animalhideImg, sneakersImg, musicImg } from "../import";
 
 export const VerticalCarousel: React.FC<{}> = React.memo(() => {
     const [index, setIndex] = React.useState<number>(0)

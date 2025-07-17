@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '../../lib/function'
-import { useHandlerScroll } from '../../lib/castom-hook';
+import { useHandlerScroll, useHookScroll } from '../../lib/castom-hook';
 import { testPlaylist } from '../../export';
 // import { Loader } from '../ui';
 
@@ -14,11 +14,13 @@ interface Props {
 
 
 export const GroupContainerAllData: React.FC<Props> = ({ className, Component, clickHandler, componentPropsName, array }: Props) => {
+    const ref = React.useRef<HTMLDivElement | null>(null)
+    useHookScroll(ref)
 
     return (
         <>
             {/* <Loader /> */}
-            <div className={cn("flex flex-col max-h-[90%] relative overflow-scroll", className)} onClick={clickHandler}>
+            <div className={cn("flex flex-col max-h-[90%] relative overflow-scroll", className)} onClick={clickHandler} ref={ref} >
                 {array && array.map((item, i) => {
 
                     return <Component key={i} {...{ [componentPropsName]: item }} />
@@ -43,6 +45,7 @@ interface Props_ {
 export const GroupContainer: React.FC<Props_> = ({ className, search = '', Component, clickHandler, componentPropsName }: Props_) => {
     const { bool, refHandler, refParent } = useHandlerScroll()
     const [array, setArray] = React.useState(testPlaylist)
+    useHookScroll(refParent)
 
     React.useEffect(() => {
         if (search)

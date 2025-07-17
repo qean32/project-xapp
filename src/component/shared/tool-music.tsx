@@ -2,7 +2,7 @@ import React from 'react'
 import { ToolModeSound } from '../ui'
 import { cn } from '../../lib/function'
 import { useSound } from '../../lib/castom-hook'
-import { nextarrowImg, nextmainarrowImg, pauseImg } from '../ui/img'
+import { nextarrowImg, nextmainarrowImg, pauseImg } from '../import'
 import { AudioValue } from './audio-value'
 import { useAppSelector } from '../../lib/castom-hook/redux'
 

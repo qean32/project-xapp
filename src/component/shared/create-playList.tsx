@@ -1,6 +1,6 @@
 import React from 'react'
 import { useBoolean } from '../../lib/castom-hook'
-import { plusImg } from '../ui/img';
+import { plusImg } from '../import';
 import { CreatePlayListFormComponent } from '../children';
 
 interface Props {

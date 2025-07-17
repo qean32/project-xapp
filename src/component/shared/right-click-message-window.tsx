@@ -1,7 +1,7 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
 import { useAppSelector } from '../../lib/castom-hook/redux'
-import { editImg, trashImg } from '../ui/img'
+import { editImg, trashImg } from '../import'
 
 
 export const RightClickMessageWindowComponent: React.FC<{}> = () => {

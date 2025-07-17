@@ -24,6 +24,7 @@ export const Router = () => {
                     <Route path="chats" element={<_.Chats />} />
                     <Route path="auth" element={<_.Auth />} />
                     <Route path="overlay" element={<_.Overlay />} />
+                    <Route path="*" element={<_.P404 />} />
                 </Routes>
             </Provider>
         </BrowserRouter>

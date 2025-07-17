@@ -2,7 +2,7 @@ import React from 'react'
 import { generateId, renameFile } from '../../../lib/function'
 import { Button } from '../../ui'
 import { useBoolean } from '../../../lib/castom-hook'
-import { plusImg, uploadImg } from '../../ui/img'
+import { plusImg, uploadImg } from '../../import'
 
 interface Props {
 }

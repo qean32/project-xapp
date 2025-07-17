@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 import { PlayListModal } from '../children'
 import { ModalSET } from '../general'
 import { MusicDto } from '../../model'
-import { downloadImg, playlistImg } from '../ui/img'
+import { downloadImg, playlistImg } from '../import'
 
 interface Props {
     className?: string
