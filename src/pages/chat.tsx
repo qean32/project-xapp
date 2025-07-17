@@ -6,7 +6,7 @@ import { EnterMessage } from "../component/shared"
 import { Message, RightClickMessageWindowComponent } from "../component/shared"
 import React from 'react'
 import { changeTitle } from "../lib/function"
-import { useChat, useHandlerScroll } from "../lib/castom-hook"
+import { useChat, useHandlerScroll, useHookScroll } from "../lib/castom-hook"
 
 export const Chat = () => {
     changeTitle('мессенджер')
@@ -40,6 +40,7 @@ const GroupMessages: React.FC<{}> = React.memo(() => {
         viewMessage,
     } = useChat(1);
     const { bool, refHandler, refParent } = useHandlerScroll(70, "bottom")
+    useHookScroll(refParent)
 
     React.useEffect(() => {
         if (bool) {
@@ -48,9 +49,10 @@ const GroupMessages: React.FC<{}> = React.memo(() => {
     }, [bool])
 
     return (
-        <div className="flex flex-col-reverse relative gap-5 py-6 pb-11 overflow-y-scroll" ref={refParent} >
+        <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll" ref={refParent} >
             <RightClickMessageWindowComponent />
-            {valueTyping && <p className="fixed top-2 py-2">Собеседник печатает...</p>}
+
+            {valueTyping && <p className="fixed top-3 py-2">Собеседник печатает...</p>}
 
             {messages && messages.map((item) => {
 

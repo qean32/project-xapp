@@ -45,7 +45,7 @@ export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, sma
             <AudioValue />
             {left && <ToolModeSound />}
 
-            <div className='flex gap-1'>
+            <div className='flex'>
                 <img width={small ? '16px' : '24px'} className='cursor-pointer' src={nextarrowImg} alt="" onClick={back} style={{ transform: 'scaleX(-1)' }} />
                 <img width={small ? '16px' : '55px'} className='cursor-pointer' src={isPlay ? pauseImg : nextmainarrowImg} alt="" onClick={play} />
                 <img width={small ? '16px' : '24px'} className='cursor-pointer' src={nextarrowImg} alt="" onClick={next} />
