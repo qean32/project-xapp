@@ -137,9 +137,19 @@ main {
   }
 }
 
+.adaptive-bottom-tool {
+  width: 790px;
+  transform: translateX(-60px);
+}
+
 @media screen and (max-width: 1277px) {
   .right-side-adaptive {
     display: none;
+  }
+
+  .adaptive-bottom-tool {
+    width: 700px;
+    transform: translateX(35px);
   }
 
   main {
@@ -148,9 +158,13 @@ main {
 }
 
 @media screen and (max-width: 1055px) {
-
   .adaptive-center-parent {
     justify-content: end !important;
+  }
+
+  .adaptive-bottom-tool {
+    width: 800px;
+    transform: translateX(35px);
   }
 }
 
@@ -158,11 +172,21 @@ main {
   .adaptive-center {
     width: 100%;
   }
+
+  .adaptive-bottom-tool {
+    width: 780px !important;
+    transform: translateX(5px);
+  }
 }
 
 @media screen and (max-width: 820px) {
   .adaptive-icon-and-text {
     display: none;
+  }
+
+  .adaptive-bottom-tool {
+    width: 720px !important;
+    transform: translateX(5px);
   }
 }
 
@@ -173,5 +197,10 @@ main {
 
   .adaptive-bottom-tool {
     justify-content: center !important;
+  }
+
+  .adaptive-bottom-tool {
+    width: 600px !important;
+    transform: translateX(5px);
   }
 }

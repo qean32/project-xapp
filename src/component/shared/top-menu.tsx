@@ -26,7 +26,7 @@ export const TopMenu: React.FC<Props> = ({ className }: Props) => {
     return (
         <>
             <div className='fixed top-0 w-100 z-10 pt-2'>
-                <div className={cn('gap-2 pr-2 pl-8 cursor-pointer flex', className)} >
+                <div className={cn('gap-2 pr-2 pl-8 cursor-pointer flex', className)} style={{ transform: 'translateY(-2px)' }}>
                     <div id='top-bar'></div>
                     <img onClick={() => clickHandler('HIDE')} className='medium' src={hideImg} style={{ transform: 'translateY(-2px)' }} alt="" />
 

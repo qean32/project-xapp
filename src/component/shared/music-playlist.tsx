@@ -9,7 +9,7 @@ interface Props {
 }
 
 
-export const MusicPlayList: React.FC<Props> = ({ className = 'music pl-9', music =
+export const MusicPlayList: React.FC<Props> = ({ className = 'music', music =
     {
         link: 'https://cdn2.deliciousoranges.com/s1/get/cuts/d4/87/d4870c957a77b4f9ce597548a2ebfbb6/73433358/Serega_pirat_-_Masha_b128f0d151.mp3',
         author: 'Serega Pirat',
@@ -19,7 +19,7 @@ export const MusicPlayList: React.FC<Props> = ({ className = 'music pl-9', music
 }: Props) => {
     return (
         <>
-            <div className={cn('flex justify-between items-center py-3 pr-7 cursor-pointer transition03', className)}>
+            <div className={cn('flex justify-between items-center py-3 pr-7 pl-8 cursor-pointer transition03', className)}>
                 <div className='flex gap-5 overflow-hidden justify-center items-center'>
                     <div className="small-ava" style={{ backgroundImage: `url(${music.ava})` }} ></div>
                     <div className="flex flex-col justify-between p-1 max-w-[85%]">
