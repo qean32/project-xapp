@@ -15,5 +15,5 @@ export const useMessage = () => {
         setMessage(e.target.value)
     }
 
-    return { message, files, changeHandlerFile, changeHandlerMessage }
+    return { message, files, changeHandlerFile, changeHandlerMessage, setMessage }
 }

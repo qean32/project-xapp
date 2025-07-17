@@ -4,8 +4,12 @@ import io from 'socket.io-client'
 import { en } from "../../../export"
 import { useDebounce } from ".."
 
-export const useChatWebsocket = (chatId: number) => {
-    const [messages, setMessages] = React.useState<MessageDto[]>([]);
+export const useChat = (chatId: number) => {
+    const [messages, setMessages] = React.useState<MessageDto[]>([
+        { chatId: 1, hashMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis temporibus aut accusantium.', id: 1, isView: true },
+        { chatId: 1, hashMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis temporibus aut accusantium.', id: 2, isView: false },
+        { chatId: 1, hashMessage: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis temporibus aut accusantium.', id: 3, isView: false },
+    ]);
     const [offset, setOffset] = React.useState<number>(0);
     // const { bool: companionTyping, swap } = useBoolean(false)
 

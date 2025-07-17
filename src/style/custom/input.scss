@@ -90,7 +90,6 @@ input[type=comment] {
     }
 }
 
-
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
@@ -106,10 +105,6 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-runnable-track {
     height: 14px !important;
     background: $bg-color-dark;
-}
-
-#p-0 {
-    padding: 0 !important;
 }
 
 input[type="range"]::-moz-range-track {
@@ -128,7 +123,6 @@ input[type="range"]::-webkit-slider-thumb {
 
     box-shadow: -407px 0 0 400px $bg-color-light;
 }
-
 
 input[type="range"]::-moz-range-thumb {
     height: 14px;

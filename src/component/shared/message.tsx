@@ -1,19 +1,19 @@
 import { cn } from "../../lib/function";
+import { MessageDto } from "../../model";
 import { useAppDispatch } from "../../store";
 import { setSelectMessage } from '../../store/right-click-message-window'
 import { FileInMessage, MessageRead } from "../ui";
 
 type Props = {
-    id: number
+    message: MessageDto
 }
 
-export const Message: React.FC<Props> = ({ id }: Props) => {
+export const Message: React.FC<Props> = ({ message }: Props) => {
     const dispatch = useAppDispatch()
 
     const rightClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()
-        // @ts-ignore
-        dispatch(setSelectMessage({ position: { top: e.pageY + 'px', left: e.pageX + 'px' }, message: { id: id } }))
+        dispatch(setSelectMessage({ position: { top: e.pageY + 'px', left: e.pageX + 'px' }, message: message }))
     }
 
     return (
@@ -21,9 +21,9 @@ export const Message: React.FC<Props> = ({ id }: Props) => {
             <div className="small-ava" style={{ backgroundImage: `url(${'zxczxc'})` }}></div>
 
             <div className={cn("messagecontext cursor-pointer relative p-5 m-line flex flex-col gap-3", (false && 'm-reverse transform-reverse'))}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis temporibus aut accusantium.</p>
+                <p>{message.hashMessage}</p>
 
-                <MessageRead read={false} />
+                <MessageRead read={message.isView} />
 
                 <div>
                     <FileInMessage path="http://localhost:3000/789429383.rar" />

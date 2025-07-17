@@ -47,12 +47,13 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
     }, [])
 
     return (
-        <div className={cn('h-100 fit-content min-w-[60px]', className)} onClick={clickHandler} >
+        <div className={cn('h-100 fit-content min-w-[60px]', className)}>
             {bool && createPortal(
                 <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none" >
                     <PlayListModal fn={selectPlayListHandler} />
                 </ModalSET>, document.body)}
-            <div className="flex flex-col gap-5 pl-5 bg-color-dark items-start p-5 h-100 pt-10">
+
+            <div className="flex flex-col gap-5 pl-5 bg-color-dark items-start p-5 h-100 pt-10" onClick={clickHandler} >
                 <IconAndAText icon={arrowImg} text="назад" dataId='-1' />
                 <IconAndAText icon={homeImg} text="главная" dataId='/' />
 

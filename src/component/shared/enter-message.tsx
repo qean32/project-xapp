@@ -1,29 +1,44 @@
 import React from "react";
 import { useMessage } from "../../lib/castom-hook";
 import { sendmessageImg, uploadfilemessageImg } from "../import";
-import { Button } from "../ui";
+import { Button, ChangeMessage } from "../ui";
+import { useAppDispatch, useAppSelector } from "../../lib/castom-hook/redux";
+import { unsetMessage } from "../../store/change-message";
 
 type Props = {
 }
 
 export const EnterMessage: React.FC<Props> = ({ }: Props) => {
-    const { changeHandlerFile, changeHandlerMessage, files, message } = useMessage();
+    const { changeHandlerFile, changeHandlerMessage, files, message, setMessage } = useMessage();
+    const { hashMessage } = useAppSelector(state => state.changeMessage)
+    const dispatch = useAppDispatch()
 
-    const submitHandler = (e: React.SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
-        e.preventDefault()
+    React.useEffect(() => {
+        setMessage(hashMessage)
+    }, [hashMessage])
 
+    const submitHandler = () => {
+        if (hashMessage) {
+        }
+
+        dispatch(unsetMessage())
         console.log(message, files)
     }
 
-    return (
-        <div className="plate-color bg-color-light py-1 pl-2 rounded-lg mb-5">
-            <form className='w-100 flex gap-4 z-10' onSubmit={submitHandler} >
+    const clickHandler = React.useCallback(() => {
+        dispatch(unsetMessage())
+    }, [])
 
+    return (
+        <div className="plate-color bg-color-light py-1 pl-2 rounded-md mb-5">
+            {hashMessage && <ChangeMessage clickHandler={clickHandler} />}
+
+            <form className='w-100 flex gap-4 z-10' onSubmit={submitHandler} >
                 <InputFile changeHandler={changeHandlerFile} />
                 <input type='comment' className='input-commnet' placeholder='сообщение'
                     value={message} onChange={changeHandlerMessage} />
 
-                <Button place={<img src={sendmessageImg} width={'36px'} alt="" />} function_={() => { }} />
+                <Button place={<img src={sendmessageImg} width={'36px'} alt="" />} function_={submitHandler} />
             </form>
         </div >
     );

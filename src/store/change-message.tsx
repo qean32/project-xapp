@@ -17,6 +17,9 @@ const changeMessageSlice = createSlice({
         },
         unsetMessage: (state: changeMessageSliceDto) => {
             state.isView = false
+            state.hashMessage = ''
+            state.id = 0
+            state.chatId = 0
         }
     }
 })

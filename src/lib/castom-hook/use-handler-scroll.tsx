@@ -1,7 +1,7 @@
 import React from "react";
 import { useBoolean } from ".";
 
-export const useHandlerScroll = (daley: number = 100) => {
+export const useHandlerScroll = (daley: number = 100, direction: 'top' | 'bottom' = 'top') => {
     const { on, off, bool } = useBoolean(false);
     const refParent = React.useRef<HTMLDivElement | null>(null)
     const refHandler = React.useRef<HTMLDivElement | null>(null)
@@ -13,13 +13,13 @@ export const useHandlerScroll = (daley: number = 100) => {
 
         if (nodeHandler && nodeParent) {
             const fn = () => {
-                // @ts-ignore
-                nodeHandler.getBoundingClientRect().top < nodeParent?.getBoundingClientRect().height + daley ?
+                nodeHandler.getBoundingClientRect()[direction] < nodeParent?.getBoundingClientRect().height + daley
+                    ||
+                    nodeHandler.getBoundingClientRect()[direction] > daley ?
                     on()
                     :
                     off()
             }
-            // @ts-ignore
             nodeParent.addEventListener('scroll', fn, { signal: controller.signal })
 
             return function () {
