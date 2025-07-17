@@ -7,7 +7,7 @@ import { useBoolean } from '../../lib/castom-hook'
 import { createPortal } from 'react-dom'
 import { ModalSET } from './modal-set'
 import { PlayListModal } from '../children'
-import { arrowImg, communityImg, homeImg, logoImg, messageImg, playlistImg, audionotification } from '../import'
+import { arrowImg, communityImg, homeImg, logoImg, messageImg, playlistImg, notificationsound } from '../import'
 
 interface Props {
     className?: string
@@ -33,10 +33,13 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
         swap()
     }
 
+    const ref = React.useRef(null)
     React.useEffect(() => {
-        if (notification) {
-            audionotification.volume = 0.0
-            audionotification.play()
+        if (notification && ref.current) {
+            // @ts-ignore
+            ref.current.volume = 0.0
+            // @ts-ignore
+            ref.current.play()
         }
     }, [notification])
 
@@ -52,6 +55,7 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
                 <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none" >
                     <PlayListModal fn={selectPlayListHandler} />
                 </ModalSET>, document.body)}
+            <audio src={notificationsound} ref={ref} />
 
             <div className="flex flex-col gap-5 pl-5 bg-color-dark items-start p-5 h-100 pt-10" onClick={clickHandler} >
                 <IconAndAText icon={arrowImg} text="назад" dataId='-1' />

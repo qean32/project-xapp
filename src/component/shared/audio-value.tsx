@@ -25,7 +25,16 @@ export const AudioValue: React.FC<Props> = ({ className }: Props) => {
         // </div>
 
         <div className={cn('pointer-events-auto', className)}>
-            <img src={(value > 0.5) ? soundvalue_img : soundvalue_img} alt="" className='cursor-pointer m-1' width={22}
+            <img src={
+                value ?
+                    soundvalue_img
+                    :
+                    soundvalue_img
+            } alt=""
+                className='cursor-pointer mb-1'
+                width={21}
+                style={{ transform: 'translateX(2px)' }
+                }
                 onMouseEnter={on} onMouseLeave={off} />
             <div className={cn('absolute w-[130px] bg-color p-4 -top-3 -left-12 z-40 rounded-lg opacity-0 transition03',
                 (bool && 'opacity-100'))}

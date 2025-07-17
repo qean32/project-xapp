@@ -44,7 +44,6 @@ const GroupMessages: React.FC<{}> = React.memo(() => {
 
     React.useEffect(() => {
         if (bool) {
-            console.log('bool')
         }
     }, [bool])
 

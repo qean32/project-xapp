@@ -14,7 +14,7 @@ export const ChangeMessage: React.FC<Props> = ({ className, clickHandler }: Prop
 
     return (
         <div className={cn('relative', className)}>
-            <img src={crossImg} alt="" className="cursor-pointer absolute right-1 top-1" onClick={clickHandler} />
+            <img src={crossImg} alt="" className="cursor-pointer absolute right-2 top-1" onClick={clickHandler} />
             <p className="p-1">{hashMessage}</p>
         </div>
     )

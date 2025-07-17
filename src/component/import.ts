@@ -40,13 +40,11 @@ import musicImg from '../../public/svg/music.svg'
 import logoImg from '../../public/svg/logo.svg'
 
 import notificationsound from '../../public/notification-sound.mp3'
-const audionotification = new Audio(notificationsound)
-
 
 export {
     logoImg,
 
-    audionotification,
+    notificationsound,
 
     empielogoImg,
     animalhideImg,
