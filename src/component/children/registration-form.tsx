@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { cn, saveUser } from '../../lib/function'
 import { InputEmail, InputText, InputPassword, Button } from '../ui'
 import { TypeUseBoolen } from '../../lib/castom-hook'
@@ -19,11 +19,10 @@ export const RegistrationForm: React.FC<Props> = ({ className, on }: Props) => {
         resolver: zodResolver(registrationSchema),
         mode: 'onChange'
     })
-    const [error, setError] = useState<string>()
+    const [error, setError] = React.useState<string>()
     const navigate = useNavigate()
 
     const onSubmit: SubmitHandler<RegistrationFormDto> = (data) => {
-        // console.log(data)
         requestPost('/auth/registration', data)
             // @ts-ignore
             .then(data => saveUser(data))
