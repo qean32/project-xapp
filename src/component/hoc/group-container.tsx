@@ -43,7 +43,7 @@ interface Props_ {
 
 // @ts-ignore
 export const GroupContainer: React.FC<Props_> = ({ className, search = '', Component, clickHandler, componentPropsName }: Props_) => {
-    const { refHandler, refParent, finaldata: array, offset } = useDinamickPagination(() => userService.getUsers(offset), ['community'], 5)
+    const { refHandler, refParent, finaldata: array, offset } = useDinamickPagination(() => userService.getUsers(offset, 2), ['community'], 2)
 
     React.useEffect(() => {
         if (search)
