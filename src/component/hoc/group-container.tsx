@@ -1,7 +1,7 @@
 import React from 'react'
 import { cn } from '../../lib/function'
-import { useHandlerScroll, useHookScroll } from '../../lib/castom-hook';
-import { testPlaylist } from '../../export';
+import { useDinamickPagination, useHookScroll } from '../../lib/castom-hook';
+import { userService } from '../../service/user-service';
 // import { Loader } from '../ui';
 
 interface Props {
@@ -43,19 +43,12 @@ interface Props_ {
 
 // @ts-ignore
 export const GroupContainer: React.FC<Props_> = ({ className, search = '', Component, clickHandler, componentPropsName }: Props_) => {
-    const { bool, refHandler, refParent } = useHandlerScroll()
-    const [array, setArray] = React.useState(testPlaylist)
-    useHookScroll(refParent)
+    const { refHandler, refParent, finaldata: array, offset } = useDinamickPagination(() => userService.getUsers(offset), ['community'], 5)
 
     React.useEffect(() => {
         if (search)
             console.log(search)
     }, [search])
-    React.useEffect(() => {
-        if (bool) {
-            setArray(prev => [...prev, ...prev])
-        }
-    }, [bool])
 
     return (
         <>

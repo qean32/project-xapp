@@ -3,34 +3,14 @@ import { Router } from './router'
 // import './style/core/core.css';
 import './style/core.scss';
 import { HookFormProvider } from './component/general';
-import { Overlay } from './pages';
-import { Provider } from 'react-redux';
-import {
-  BrowserRouter,
-  // HashRouter
-} from 'react-router-dom';
-import { store } from './store';
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  // @ts-ignore
-  !window.electron?.overlay ?
+  <QueryClientProvider client={new QueryClient()}>
+    <HookFormProvider>
 
-    <QueryClientProvider client={new QueryClient()}>
-      <HookFormProvider>
-
-        <Router />
-      </HookFormProvider>
-    </QueryClientProvider>
-    :
-
-    <BrowserRouter>
-      {/* <HashRouter> */}
-      <Provider store={store} >
-
-        <Overlay />
-      </Provider>
-      {/* </HashRouter> */}
-    </BrowserRouter>
+      <Router />
+    </HookFormProvider>
+  </QueryClientProvider>
 )

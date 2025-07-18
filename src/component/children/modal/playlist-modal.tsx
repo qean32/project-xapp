@@ -21,7 +21,7 @@ export const PlayListModal: React.FC<Props> = ({ fn }: Props) => {
 
     return (
         <div className='relative w-100'>
-            <div className="flex py-10 w-[100] pointer-events-auto flex-col justify-center items-center min-w-[400px]" onClick={fn} >
+            <div className="flex py-10 overflow-scroll   w-[100] pointer-events-auto flex-col justify-center items-center min-w-[400px]" onClick={fn} >
                 {finaldata && finaldata.map(item => {
 
                     return <PlayList playlist={item} key={item.id} />

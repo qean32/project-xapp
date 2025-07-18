@@ -28,8 +28,8 @@ function createMainWindow() {
         minHeight: 130
     });
     mainWindow.webContents.openDevTools();
-
     mainWindow.loadURL(extenation.get('dev'));
+    
     ipcMain.on('CLOSE', () => {
         mainWindow.close();
     })

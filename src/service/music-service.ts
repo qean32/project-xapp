@@ -3,7 +3,7 @@ const instance = 'music';
 
 export const musicService = {
     searchMusic: (query: string) => {
-        requestGet(`${instance}/search/${query}`)
+        return requestGet(`${instance}/search/${query}`)
     },
 
     createPlayList: (body: {
@@ -21,6 +21,6 @@ export const musicService = {
         urlMusic: string
     }
     ) => {
-        requestPost(`add-to-playlist`, body)
+        return requestPost(`add-to-playlist`, body)
     }
 }
