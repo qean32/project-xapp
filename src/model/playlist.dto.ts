@@ -4,3 +4,9 @@ export interface PlayListDto {
     urlMusicArray: string
     userId: number
 }
+
+export interface PlayListShortDto {
+    name: string
+    id: number
+    ava: string
+}

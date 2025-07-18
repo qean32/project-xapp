@@ -10,21 +10,21 @@ import {
   // HashRouter
 } from 'react-router-dom';
 import { store } from './store';
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // @ts-ignore
   !window.electron?.overlay ?
 
-    // <React.StrictMode >
-    <HookFormProvider>
+    <QueryClientProvider client={new QueryClient()}>
+      <HookFormProvider>
 
-      <Router />
-    </HookFormProvider>
-    // </React.StrictMode>
+        <Router />
+      </HookFormProvider>
+    </QueryClientProvider>
     :
 
-    // <React.StrictMode >
     <BrowserRouter>
       {/* <HashRouter> */}
       <Provider store={store} >
@@ -33,5 +33,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </Provider>
       {/* </HashRouter> */}
     </BrowserRouter>
-  // </React.StrictMode >
 )

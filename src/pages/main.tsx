@@ -8,9 +8,8 @@ import { changeTitle, selectMusic } from "../lib/function"
 import { usePage } from "../lib/castom-hook"
 
 export const Main = () => {
-    const dispatch = useAppDispatch()
-    usePage()
-
+    const dispatch = useAppDispatch();
+    usePage();
     const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => selectMusic(e, dispatch)
     changeTitle('главная')
 

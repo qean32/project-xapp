@@ -1,5 +1,5 @@
 export type { MessageDto } from './message.dto'
-export type { PlayListDto } from './playlist.dto'
+export type { PlayListDto, PlayListShortDto } from './playlist.dto'
 export type { SendMessageDto } from './send-message.dto'
 export type { UpdateMessageDto } from './update-message.dto'
 export type { UserDto } from './user.dto'

@@ -5,8 +5,8 @@ import { TypeUseBoolen } from '../../lib/castom-hook'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import { RegistrationFormDto, registrationSchema } from '../../model/schema'
-import { requestPost } from '../../lib/function/request'
 import { useNavigate } from 'react-router-dom'
+import { authService } from '../../service/auth-service'
 
 interface Props {
     className?: string
@@ -23,7 +23,7 @@ export const RegistrationForm: React.FC<Props> = ({ className, on }: Props) => {
     const navigate = useNavigate()
 
     const onSubmit: SubmitHandler<RegistrationFormDto> = (data) => {
-        requestPost('/auth/registration', data)
+        authService.registration(data)
             // @ts-ignore
             .then(data => saveUser(data))
             .then(() => navigate('/'))

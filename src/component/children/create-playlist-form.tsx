@@ -3,19 +3,25 @@ import { Button, InputText } from '../ui'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CreatePlayListForm, createPlayListSchema } from '../../model/schema'
+import { useAppDispatch } from '../../lib/castom-hook/redux'
+import { setNewPLaylist } from '../../store/new-playlist'
+import { musicService } from '../../service/music-service'
 
 interface Props {
 }
 
 
 export const CreatePlayListFormComponent: React.FC<Props> = ({ }: Props) => {
+    const dispatch = useAppDispatch()
     const form = useForm<CreatePlayListForm>({
         mode: 'onChange',
         resolver: zodResolver(createPlayListSchema)
     })
 
     const onSubmit: SubmitHandler<CreatePlayListForm> = (data) => {
-        console.log(data)
+        // @ts-ignore
+        musicService.createPlayList(data).then(data => dispatch(setNewPLaylist(data)));
+        form.reset()
     }
 
     return (

@@ -5,8 +5,8 @@ import { TypeUseBoolen } from '../../lib/castom-hook'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AuthFormDto, authSchema } from '../../model/schema'
-import { requestPost } from '../../lib/function/request'
 import { useNavigate } from 'react-router-dom'
+import { authService } from '../../service/auth-service'
 
 interface Props {
     className?: string
@@ -22,7 +22,7 @@ export const AuthForm: React.FC<Props> = ({ className, on }: Props) => {
     const [error, setError] = React.useState<string>()
 
     const onSubmit: SubmitHandler<AuthFormDto> = (data) => {
-        requestPost('/auth', data)
+        authService.login(data)
             // @ts-ignore
             .then(data => saveUser(data))
             .then(() => navigate('/'))

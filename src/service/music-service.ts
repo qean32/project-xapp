@@ -1,4 +1,4 @@
-import { requestDelete, requestGet, requestPost } from "../lib/function/request"
+import { requestGet, requestPost } from "../lib/function/request"
 const instance = 'music';
 
 export const musicService = {
@@ -7,22 +7,13 @@ export const musicService = {
     },
 
     createPlayList: (body: {
-        user: number
-        urlMusic: string
+        name: string
     }) => {
-        requestPost(`${instance}/create-playlist`, body)
+        return requestPost(`${instance}/create-playlist`, body)
     },
 
-    createLike: (body: {
-        user: number
-        urlMusic: string
-    }
-    ) => {
-        requestPost(`create-like`, body)
-    },
-
-    removeLike: (id: number) => {
-        requestDelete(`remove-like/${id}`)
+    getPlayLists: () => {
+        return requestGet(`${instance}/playlists`)
     },
 
     addToPlayList: (body: {

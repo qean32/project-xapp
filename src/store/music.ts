@@ -20,7 +20,7 @@ const initialState: MusicSliceDto = {
     primePlayList: []
 }
 
-const MusicSlice = createSlice({
+const musicSlice = createSlice({
     name: 'music',
     initialState,
     reducers: {
@@ -36,5 +36,5 @@ const MusicSlice = createSlice({
     }
 })
 
-export const MusicResucer = MusicSlice.reducer
-export const { swapMusic, swapOnlyCurrent } = MusicSlice.actions
+export const musicResucer = musicSlice.reducer
+export const { swapMusic, swapOnlyCurrent } = musicSlice.actions

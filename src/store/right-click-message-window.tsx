@@ -13,7 +13,7 @@ type RightClickMessageWindowDto = {
     view: boolean
 }
 
-const RightClickMessageSlice = createSlice({
+const rightClickMessageSlice = createSlice({
     name: 'change-message-window',
     initialState,
     reducers: {
@@ -34,5 +34,5 @@ const RightClickMessageSlice = createSlice({
     }
 })
 
-export const RightClickMessageReducer = RightClickMessageSlice.reducer
-export const { setSelectMessage } = RightClickMessageSlice.actions
+export const rightClickMessageReducer = rightClickMessageSlice.reducer
+export const { setSelectMessage } = rightClickMessageSlice.actions
