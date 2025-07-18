@@ -8,7 +8,7 @@ import { VerticalCarousel } from "../component/shared"
 
 export const Auth = () => {
     changeTitle('вход')
-    const authWindow = useBoolean(false)
+    const authWindow = useBoolean(true)
     const on = useBoolean(true)
 
     React.useEffect(() => {

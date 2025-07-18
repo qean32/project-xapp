@@ -1,15 +1,14 @@
-// @ts-nocheck
-
 import { LeftNavigate } from "../component/general"
 import { DftSETPage } from "../component/hoc"
 import { EnterMessage } from "../component/shared"
 import { Message, RightClickMessageWindowComponent } from "../component/shared"
 import React from 'react'
 import { changeTitle } from "../lib/function"
-import { useChat, useHandlerScroll, useHookScroll } from "../lib/castom-hook"
+import { useChat, useHandlerScroll, useHookScroll, usePage } from "../lib/castom-hook"
 
 export const Chat = () => {
     changeTitle('мессенджер')
+    usePage()
 
     return (
         <main>
@@ -17,6 +16,7 @@ export const Chat = () => {
             <DftSETPage>
 
                 <div className="px-12 pt-8 flex flex-col justify-between h-100">
+
                     <GroupMessages />
                     <EnterMessage />
                 </div>

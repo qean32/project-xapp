@@ -39,6 +39,7 @@ export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, sma
     React.useEffect(() => {
         isNewAudio && play()
     }, [isNewAudio])
+
     return (
         <div className={cn('relative flex gap-1 items-end pointer-events-none child-fill-event trans-5', className)} >
             <audio src={current.link} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endAudio} />

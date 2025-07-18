@@ -1,10 +1,12 @@
 import { ToolMusic } from "../component/shared"
-import { useBoolean } from "../lib/castom-hook";
+import { useBoolean, usePage } from "../lib/castom-hook";
 import { changeTitle, cn } from "../lib/function"
 import { IpcEventNameDto } from "../model";
 
 export const Overlay = () => {
     changeTitle('');
+    usePage();
+
     const { bool, swap } = useBoolean(true)
     const hoverHandler = (key: IpcEventNameDto) => {
         // @ts-ignore

@@ -4,9 +4,12 @@ import { DftSETPage, GroupContainer } from "../component/hoc"
 import { User } from "../component/shared"
 import { ResultSearch, Search } from "../component/ui"
 import { changeTitle, getDataId } from "../lib/function"
+import { usePage } from "../lib/castom-hook"
 
 export const Community = () => {
     changeTitle('сообщество')
+    usePage()
+
     const navigate = useNavigate();
     const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         navigate('/chat/' + getDataId(e.target))

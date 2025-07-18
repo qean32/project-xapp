@@ -33,8 +33,6 @@ export const AudioValue: React.FC<Props> = ({ className }: Props) => {
             } alt=""
                 className='cursor-pointer mb-1'
                 width={21}
-                style={{ transform: 'translateX(2px)' }
-                }
                 onMouseEnter={on} onMouseLeave={off} />
             <div className={cn('absolute w-[130px] bg-color p-4 -top-3 -left-12 z-40 rounded-lg opacity-0 transition03',
                 (bool && 'opacity-100'))}

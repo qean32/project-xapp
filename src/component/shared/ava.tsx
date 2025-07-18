@@ -7,10 +7,11 @@ import { ModalSET } from '../general'
 
 interface Props {
     className?: string
+    avaPath: string
 }
 
 
-export const Ava: React.FC<Props> = ({ className }: Props) => {
+export const Ava: React.FC<Props> = ({ className, avaPath }: Props) => {
     const { bool, swap } = useBoolean(false)
 
     return (
@@ -20,7 +21,11 @@ export const Ava: React.FC<Props> = ({ className }: Props) => {
                     <UploadImgChild />
                 </ModalSET>, document.body)}
 
-            <div className={cn('ava small-ava bg-color-light cursor-pointer', className)} onClick={swap}>
+            <div
+                className={cn('ava small-ava bg-color-light cursor-pointer', className)}
+                onClick={swap}
+                style={{ backgroundImage: `url(${avaPath})` }}
+            >
             </div>
         </>
     )

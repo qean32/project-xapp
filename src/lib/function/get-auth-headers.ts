@@ -6,6 +6,6 @@ export const getAuthHeaders = (file: boolean = false) => {
         :
         {
             'Content-Type': 'application/json',
-            'Authorization': `${accessTokenWord} ${JSON.parse(localStorage.getItem(tokenStorage) as string).access}`
+            // 'Authorization': `${accessTokenWord} ${JSON.parse(localStorage.getItem(tokenStorage) as string).access}`
         }
 }

@@ -30,17 +30,19 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
     }, [])
 
     return (
-        <div className="bg-color-light py-1 pt-3 pl-2 rounded-md mb-5">
-            {hashMessage && <ChangeMessage clickHandler={clickHandler} />}
+        <div className="pt-5 plate-color">
+            <div className="enter-message bg-color-light py-1 pt-3 pl-2 rounded-md mb-5">
+                {hashMessage && <ChangeMessage clickHandler={clickHandler} />}
 
-            <form className='w-100 flex gap-4 z-10' onSubmit={submitHandler} >
-                <InputFile changeHandler={changeHandlerFile} />
-                <input type='comment' className='input-commnet' placeholder='сообщение'
-                    value={message} onChange={changeHandlerMessage} />
+                <form className='w-100 flex gap-4 z-10' onSubmit={submitHandler} >
+                    <InputFile changeHandler={changeHandlerFile} />
+                    <input type='comment' placeholder='сообщение'
+                        value={message} onChange={changeHandlerMessage} />
 
-                <Button place={<img src={sendmessageImg} width={'36px'} alt="" />} function_={submitHandler} />
-            </form>
-        </div >
+                    <Button place={<img src={sendmessageImg} width={'36px'} alt="" />} function_={submitHandler} />
+                </form>
+            </div >
+        </div>
     );
 }
 

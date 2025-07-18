@@ -6,6 +6,7 @@ import { changeMessageResucer } from './change-message'
 import { createStateSyncMiddleware, initMessageListener, withReduxStateSync } from 'redux-state-sync'
 import { MusicResucer } from './music'
 import { audioValueReducer } from './audio-value'
+import { UserReducer } from './user'
 
 
 const rootReducer = withReduxStateSync(
@@ -15,6 +16,7 @@ const rootReducer = withReduxStateSync(
         changeMessage: changeMessageResucer,
         music: MusicResucer,
         audioValue: audioValueReducer,
+        user: UserReducer,
     })
 )
 
