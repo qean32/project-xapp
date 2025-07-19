@@ -15,5 +15,5 @@ const newPlaylistSlice = createSlice({
     }
 })
 
-export const newPlaylistResucer = newPlaylistSlice.reducer
+export const newPlaylistReducer = newPlaylistSlice.reducer
 export const { setNewPLaylist } = newPlaylistSlice.actions

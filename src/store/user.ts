@@ -3,7 +3,7 @@ import { UserDto } from '../model'
 
 const initialState: UserDto = { id: 0, ava: '', name: '' }
 
-const UserSlice = createSlice({
+const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
@@ -15,5 +15,5 @@ const UserSlice = createSlice({
     }
 })
 
-export const UserReducer = UserSlice.reducer
-export const { setUser } = UserSlice.actions
+export const userReducer = userSlice.reducer
+export const { setUser } = userSlice.actions

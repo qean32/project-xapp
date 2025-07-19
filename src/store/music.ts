@@ -36,5 +36,5 @@ const musicSlice = createSlice({
     }
 })
 
-export const musicResucer = musicSlice.reducer
+export const musicReducer = musicSlice.reducer
 export const { swapMusic, swapOnlyCurrent } = musicSlice.actions

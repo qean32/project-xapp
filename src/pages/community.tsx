@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom"
 import { LeftNavigate } from "../component/general"
 import { DftSETPage, GroupContainer } from "../component/hoc"
-import { User } from "../component/shared"
-import { ResultSearch, Search } from "../component/ui"
+import { SearchGroup, User } from "../component/shared"
 import { changeTitle, getDataId } from "../lib/function"
 import { usePage } from "../lib/castom-hook"
+import React from "react"
+import { userService } from "../service/user-service"
 
 export const Community = () => {
-    changeTitle('сообщество')
-    usePage()
+    changeTitle('сообщество');
+    usePage();
 
     const navigate = useNavigate();
     const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -19,15 +20,14 @@ export const Community = () => {
         <main>
             <LeftNavigate />
             <DftSETPage>
-                <Search fn={() => { }} />
-                <ResultSearch />
+                <SearchGroup />
 
                 <GroupContainer
                     Component={User}
                     clickHandler={clickHandler}
-                    fatchFn={() => { }}
-                    search=""
+                    fatchFn={userService.getUsers}
                     componentPropsName="user"
+                    take={4}
                 />
             </DftSETPage >
         </main >

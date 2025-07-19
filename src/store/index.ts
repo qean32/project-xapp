@@ -2,23 +2,25 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { modeSoundReducer } from './mode-sound'
 import { useDispatch } from 'react-redux'
 import { rightClickMessageReducer } from './right-click-message-window'
-import { changeMessageResucer } from './change-message'
+import { changeMessageReducer } from './change-message'
 import { createStateSyncMiddleware, initMessageListener, withReduxStateSync } from 'redux-state-sync'
-import { musicResucer } from './music'
+import { musicReducer } from './music'
 import { audioValueReducer } from './audio-value'
-import { UserReducer } from './user'
-import { newPlaylistResucer } from './new-playlist'
+import { userReducer } from './user'
+import { newPlaylistReducer } from './new-playlist'
+import { searchReducer } from './search'
 
 
 const rootReducer = withReduxStateSync(
     combineReducers({
         modeSound: modeSoundReducer,
         rightClickMessageWindow: rightClickMessageReducer,
-        changeMessage: changeMessageResucer,
-        music: musicResucer,
+        changeMessage: changeMessageReducer,
+        music: musicReducer,
         audioValue: audioValueReducer,
-        user: UserReducer,
-        newPlaylist: newPlaylistResucer,
+        user: userReducer,
+        newPlaylist: newPlaylistReducer,
+        search: searchReducer,
     })
 )
 

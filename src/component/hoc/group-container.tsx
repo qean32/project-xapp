@@ -1,7 +1,7 @@
 import React from 'react'
 import { cn } from '../../lib/function'
 import { useDinamickPagination, useHookScroll } from '../../lib/castom-hook';
-import { userService } from '../../service/user-service';
+import { useAppSelector } from '../../lib/castom-hook/redux';
 // import { Loader } from '../ui';
 
 interface Props {
@@ -36,19 +36,16 @@ interface Props_ {
     className?: string
     Component: React.ReactNode | React.FC | any
     fatchFn: Function
-    search?: string
     clickHandler: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
     componentPropsName: string
+    take: number
 }
 
 // @ts-ignore
-export const GroupContainer: React.FC<Props_> = ({ className, search = '', Component, clickHandler, componentPropsName }: Props_) => {
-    const { refHandler, refParent, finaldata: array, offset } = useDinamickPagination(() => userService.getUsers(offset, 2), ['community'], 2)
+export const GroupContainer: React.FC<Props_> = ({ className, Component, clickHandler, componentPropsName, fatchFn, take }: Props_) => {
+    const { search } = useAppSelector(state => state.search);
+    const { refHandler, refParent, finaldata: array, offset } = useDinamickPagination(() => fatchFn(offset, take, search), ['community'], 0, search);
 
-    React.useEffect(() => {
-        if (search)
-            console.log(search)
-    }, [search])
 
     return (
         <>

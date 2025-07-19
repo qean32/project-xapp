@@ -9,12 +9,12 @@ import { useAppDispatch } from "../lib/castom-hook/redux"
 
 
 export const PlayList = () => {
-    changeTitle('плейлист')
+    changeTitle('плейлист');
     usePage();
 
-    const { results, searchFuncttion } = useSearch(testPlaylist, 'name', 'author')
-    const dispatch = useAppDispatch()
-    const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => selectMusic(e, dispatch)
+    const { results, searchFuncttion } = useSearch(testPlaylist, 'name', 'author');
+    const dispatch = useAppDispatch();
+    const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => selectMusic(e, dispatch);
 
     return (
         <main>
@@ -31,5 +31,5 @@ export const PlayList = () => {
                 />
             </DftSETPage>
         </main >
-    )
+    );
 }

@@ -24,5 +24,5 @@ const changeMessageSlice = createSlice({
     }
 })
 
-export const changeMessageResucer = changeMessageSlice.reducer
+export const changeMessageReducer = changeMessageSlice.reducer
 export const { changeMessage, unsetMessage } = changeMessageSlice.actions
