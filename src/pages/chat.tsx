@@ -1,6 +1,6 @@
 import { LeftNavigate } from "../component/general"
 import { DftSETPage } from "../component/hoc"
-import { EnterMessage, UserTyping } from "../component/shared"
+import { EnterMessage } from "../component/shared"
 import { Message, RightClickMessageWindowComponent } from "../component/shared"
 import React from 'react'
 import { changeTitle } from "../lib/function"
@@ -30,7 +30,7 @@ export const Chat = () => {
 type Props = {}
 
 const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
-    const { messages, getPrevMessage } = useChat();
+    const { messages } = useChat({ getData: true });
     // @ts-ignore
     const { id }: { id: number } = useParams()
     const { refHandler, refParent } = useHandlerScroll(70, "bottom")
@@ -39,7 +39,6 @@ const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
     return (
         <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll" ref={refParent} >
             <RightClickMessageWindowComponent />
-            <UserTyping />
             {messages && messages.map((item) => {
 
                 return <Message userId={id} message={item} key={item?.id} />

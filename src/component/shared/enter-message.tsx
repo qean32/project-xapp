@@ -4,12 +4,13 @@ import { sendmessageImg, uploadfilemessageImg } from "../import";
 import { Button, ChangeMessage } from "../ui";
 import { useAppDispatch, useAppSelector } from "../../lib/castom-hook/redux";
 import { unsetMessage } from "../../store/change-message";
+import { UserTyping } from ".";
 
 type Props = {
 }
 
 export const EnterMessage: React.FC<Props> = ({ }: Props) => {
-    const { updateMessage, sendMessage, typing } = useChat(false, false);
+    const { updateMessage, sendMessage, typing, valueTyping } = useChat({ isTyping: true });
     const { changeHandlerFile, changeHandlerMessage, files, message, unset, setMessage } = useMessage();
     const changeMessage = useAppSelector(state => state.changeMessage)
     const { id } = useUserInfo()
@@ -26,6 +27,7 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
         if (changeMessage.hashMessage) {
             updateMessage({ ...changeMessage, hashMessage: message })
             dispatch(unsetMessage())
+            unset()
             return
         }
 
@@ -46,6 +48,8 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
 
     return (
         <div className="pt-5 plate-color">
+            <UserTyping valueTyping={valueTyping} />
+
             <div className="enter-message bg-color-light py-1 pt-3 pl-2 rounded-md mb-5">
                 {changeMessage.hashMessage && <ChangeMessage clickHandler={clickHandler} />}
 

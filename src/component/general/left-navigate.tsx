@@ -52,24 +52,26 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
     return (
         <div className={cn('h-100 fit-content min-w-[60px]', className)}>
             {bool && createPortal(
-                <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none" >
+                <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none">
                     <PlayListModal fn={selectPlayListHandler} />
                 </ModalSET>, document.body)}
             <audio src={notificationsound} ref={ref} />
 
-            <div className="flex flex-col gap-5 pl-5 bg-color-dark items-start p-5 h-100 pt-10" onClick={clickHandler} >
-                <IconAndAText icon={arrowImg} text="назад" dataId='-1' />
-                <IconAndAText icon={homeImg} text="главная" dataId='/' />
+            <div className="h-100 bg-color-dark">
+                <div className='flex flex-col gap-5 pl-5 items-start p-5 pt-10' onClick={clickHandler}>
+                    <IconAndAText icon={arrowImg} text="назад" dataId='-1' />
+                    <IconAndAText icon={homeImg} text="главная" dataId='/' />
 
-                <div className='relative'>
-                    <IconAndAText icon={messageImg} text="мессенджер" dataId='/chats' />
-                    {notification && <div className={cn("rounded-full w-2 h-2 bg-blue-700 absolute top-1 -right-3", (notification && 'notification-anim'))}></div>}
+                    <div className='relative'>
+                        <IconAndAText icon={messageImg} text="мессенджер" dataId='/chats' />
+                        {notification && <div className={cn("rounded-full w-2 h-2 bg-blue-700 absolute top-1 -right-3", (notification && 'notification-anim'))}></div>}
+                    </div>
+
+                    <IconAndAText icon={communityImg} text="сообщество" dataId='/community' />
+                    <ClickHocFn fn={swap}><IconAndAText icon={playlistImg} text="плейлисты" /></ClickHocFn>
+
+                    <img src={logoImg} alt="" className='cursor-pointer' width={22} />
                 </div>
-
-                <IconAndAText icon={communityImg} text="сообщество" dataId='/community' />
-                <ClickHocFn fn={swap}><IconAndAText icon={playlistImg} text="плейлисты" /></ClickHocFn>
-
-                <img src={logoImg} alt="" className='cursor-pointer' width={22} />
             </div>
         </div>
     )
