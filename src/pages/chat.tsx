@@ -1,6 +1,6 @@
 import { LeftNavigate } from "../component/general"
 import { DftSETPage } from "../component/hoc"
-import { EnterMessage } from "../component/shared"
+import { EnterMessage, UserTyping } from "../component/shared"
 import { Message, RightClickMessageWindowComponent } from "../component/shared"
 import React from 'react'
 import { changeTitle } from "../lib/function"
@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom"
 export const Chat = () => {
     changeTitle('мессенджер');
     usePage();
-    const socket = useChat();
 
     return (
         <main>
@@ -19,11 +18,8 @@ export const Chat = () => {
 
                 <div className="px-12 pt-8 flex flex-col justify-between h-100">
 
-                    <GroupMessages socket={socket} />
-                    <EnterMessage
-                        updateMessage={socket.updateMessage}
-                        sendMessage={socket.sendMessage}
-                    />
+                    <GroupMessages />
+                    <EnterMessage />
                 </div>
 
             </DftSETPage>
@@ -31,9 +27,10 @@ export const Chat = () => {
     )
 }
 
-type Props = { socket: ReturnType<typeof useChat> }
+type Props = {}
 
-const GroupMessages: React.FC<Props> = React.memo(({ socket }: Props) => {
+const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
+    const { messages, getPrevMessage } = useChat();
     // @ts-ignore
     const { id }: { id: number } = useParams()
     const { refHandler, refParent } = useHandlerScroll(70, "bottom")
@@ -42,12 +39,10 @@ const GroupMessages: React.FC<Props> = React.memo(({ socket }: Props) => {
     return (
         <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll" ref={refParent} >
             <RightClickMessageWindowComponent />
+            <UserTyping />
+            {messages && messages.map((item) => {
 
-            {socket.valueTyping && <p className="fixed top-3 py-2">Собеседник печатает...</p>}
-
-            {socket.messages && socket.messages.map((item) => {
-
-                return <Message userId={id} message={item} key={item.id} />
+                return <Message userId={id} message={item} key={item?.id} />
             })}
 
             <div className="w-100 min-h-[1px]" ref={refHandler} ></div>

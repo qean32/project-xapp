@@ -36,6 +36,8 @@ export const customAttribute = {
     dataId: 'data-id'
 }
 
+export const serverWork = 'serverWork!'
+
 export const testPlaylist: MusicDto[] = [
     {
         link: "https://cdn8.deliciousoranges.com/s1/get/cuts/8d/a0/8da055bc2698e2d3f2fcebefc72c445d/67056433/Serega_pirat_-_am_fp_b128f0d165.mp3",

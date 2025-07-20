@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { MessageDto, positionDto } from '../model'
 
 const initialState: RightClickMessageWindowDto = {
-    message: { chatId: 0, hashMessage: '', id: 0, isView: false },
+    message: { chatId: 0, hashMessage: '', id: 0, isView: false, from: 0, to: 0, files: '' },
     position: { top: '0px', left: '0px' },
     view: false
 }
@@ -30,9 +30,14 @@ const rightClickMessageSlice = createSlice({
 
             state.view = true
             state.message = payload.payload.message
+        },
+        unsetSelectMessage: (state: RightClickMessageWindowDto) => {
+            state.message = { chatId: 0, hashMessage: '', id: 0, isView: false, from: 0, to: 0, files: '' }
+            state.position = { top: '0px', left: '0px' }
+            state.view = false
         }
     }
 })
 
 export const rightClickMessageReducer = rightClickMessageSlice.reducer
-export const { setSelectMessage } = rightClickMessageSlice.actions
+export const { setSelectMessage, unsetSelectMessage } = rightClickMessageSlice.actions

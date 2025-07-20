@@ -6,6 +6,9 @@ export function useRequest<T>(fetch_: any, RQkey: string[]) {
     const RQData: any = useQuery(RQkey, fetch_, { keepPreviousData: true, refetchOnWindowFocus: false })
 
     React.useEffect(() => {
+        if (RQData.data?.response) {
+            setFinalData([RQData.data?.response])
+        }
         RQData.data &&
             Array.isArray(RQData.data) &&
             setFinalData((prev: T[]) => [...prev, ...RQData.data])

@@ -15,7 +15,7 @@ export const FileInMessage: React.FC<Props> = ({ path }: Props) => {
     const { bool, swap } = useBoolean(false)
     return (
         <>
-            {IsImageFile(path) ?
+            {!IsImageFile(path) ?
                 <a className="py-2 flex gap-5 transform-right items-end" href={path} download={''} >
                     <img src={uploadfilemessageImg} alt="" width={'30px'} />
                     <p className="text-ellipsis w-[80%] overflow-hidden">{path.split('/').at(-1)}</p>

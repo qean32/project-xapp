@@ -3,7 +3,7 @@ import { MessageDto } from '../model'
 
 type changeMessageSliceDto = MessageDto
 
-const initialState: changeMessageSliceDto = { chatId: 0, hashMessage: '', id: 1, isView: false }
+const initialState: changeMessageSliceDto = { chatId: 0, hashMessage: '', id: 1, isView: false, from: 0, to: 0, files: '' }
 
 const changeMessageSlice = createSlice({
     name: 'change-message-window',
@@ -14,6 +14,9 @@ const changeMessageSlice = createSlice({
             state.hashMessage = payload.hashMessage
             state.id = payload.id
             state.isView = payload.isView
+            state.from = payload.from
+            state.to = payload.to
+            state.files = payload.files
         },
         unsetMessage: (state: changeMessageSliceDto) => {
             state.isView = false

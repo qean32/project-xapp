@@ -4,5 +4,5 @@ const imgsEnd: string[] = [
 
 export const IsImageFile = (path: string) => {
     // @ts-ignore
-    return !imgsEnd.includes(path.split('.').at(-1))
+    return imgsEnd.includes(path.split('.').at(-1))
 }
