@@ -2,15 +2,15 @@ import React from "react"
 import { useQuery } from "react-query"
 import { useHandlerScroll } from "."
 
-export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], offset_: number = 0, search: string) => {
+export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], skip_: number = 0, search: string) => {
     const { refHandler, refParent, bool } = useHandlerScroll(150)
 
-    const [offset, setOffset] = React.useState<number>(offset_)
+    const [skip, setSkip] = React.useState<number>(skip_)
     const [finaldata, setFinalData] = React.useState<T[]>([])
-    const RQData = useQuery([...RQkey, offset, search], () => fetch_(offset), { keepPreviousData: true, refetchOnWindowFocus: false })
+    const RQData = useQuery([...RQkey, skip, search], () => fetch_(skip), { keepPreviousData: true, refetchOnWindowFocus: false })
 
     React.useEffect(() => {
-        search ? setOffset(0) : setFinalData([])
+        search ? setSkip(0) : setFinalData([])
     }, [search])
 
     React.useEffect(() => {
@@ -27,10 +27,10 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], off
     React.useEffect(() => {
         if (bool && RQData.data.next) {
             setTimeout(() =>
-                setOffset((prev: number) => prev + 4)
+                setSkip((prev: number) => prev + 4)
                 , 600)
         }
     }, [bool])
 
-    return { RQData, offset, finaldata, refHandler, refParent }
+    return { RQData, skip, finaldata, refHandler, refParent }
 }

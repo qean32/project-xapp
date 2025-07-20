@@ -13,10 +13,9 @@ export const useHandlerScroll = (daley: number = 100, direction: 'top' | 'bottom
 
         if (nodeHandler && nodeParent) {
             const fn = () => {
-                console.log(nodeHandler.getBoundingClientRect()[direction], nodeParent?.getBoundingClientRect().height + daley)
-                nodeHandler.getBoundingClientRect()[direction] < nodeParent?.getBoundingClientRect().height + daley
+                (direction == 'top' && nodeHandler.getBoundingClientRect()[direction] < nodeParent?.getBoundingClientRect().height + daley)
                     ||
-                    (nodeHandler.getBoundingClientRect()[direction] > daley && direction == "bottom") ?
+                    (direction == "bottom" && nodeHandler.getBoundingClientRect()[direction] > daley) ?
                     on()
                     :
                     off()

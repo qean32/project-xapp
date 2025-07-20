@@ -2,8 +2,8 @@ import { requestGet, requestPatch } from "../lib/function/request"
 const instance = 'users'
 
 export const userService = {
-    getUsers: (offset: number, take: number, search: string) => {
-        return requestGet(`${instance}?offset=${offset}&take=${take}&search=${search}`)
+    getUsers: (skip: number, take: number, search: string) => {
+        return requestGet(`${instance}?skip=${skip}&take=${take}&search=${search}`)
     },
 
     searchUser: (query: string) => {

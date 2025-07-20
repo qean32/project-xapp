@@ -2,19 +2,19 @@ import { MusicDto } from './model'
 
 export const en = {
     connection: 'connection',
-    connected: 'connected',
+    // connected: 'connected',
 
-    server_send: "server_send",
-    server_view: "server_view",
-    server_typing: "server_typing",
-    server_update: "server_update",
-    server_remove: "server_remove",
+    serverSend: "serverSend",
+    serverView: "serverView",
+    serverTyping: "serverTyping",
+    serverUpdate: "serverUpdate",
+    serverRemove: "serverRemove",
 
-    client_send: "client_send",
-    client_typing: "client_typing",
-    client_view: "client_view",
-    client_update: "client_update",
-    client_remove: "client_remove"
+    clientSend: "clientSend",
+    clientTyping: "clientTyping",
+    clientView: "clientView",
+    clientUpdate: "clientUpdate",
+    clientRemove: "clientRemovee"
 }
 
 export const style = {

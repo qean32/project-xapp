@@ -1,16 +1,19 @@
 import React from "react";
-import { useMessage } from "../../lib/castom-hook";
+import { useMessage, useUserInfo } from "../../lib/castom-hook";
 import { sendmessageImg, uploadfilemessageImg } from "../import";
 import { Button, ChangeMessage } from "../ui";
 import { useAppDispatch, useAppSelector } from "../../lib/castom-hook/redux";
 import { unsetMessage } from "../../store/change-message";
 
 type Props = {
+    sendMessage: (data: { message: string, from: number, files: any }) => void
+    updateMessage: (message: string) => void
 }
 
-export const EnterMessage: React.FC<Props> = ({ }: Props) => {
-    const { changeHandlerFile, changeHandlerMessage, files, message, setMessage } = useMessage();
+export const EnterMessage: React.FC<Props> = ({ sendMessage, updateMessage }: Props) => {
+    const { changeHandlerFile, changeHandlerMessage, files, message, unset, setMessage } = useMessage();
     const { hashMessage } = useAppSelector(state => state.changeMessage)
+    const { id } = useUserInfo()
     const dispatch = useAppDispatch()
 
     React.useEffect(() => {
@@ -19,10 +22,13 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
 
     const submitHandler = () => {
         if (hashMessage) {
+            updateMessage(message)
+            dispatch(unsetMessage())
+            return
         }
 
-        dispatch(unsetMessage())
-        console.log(message, files)
+        sendMessage({ message: message, from: id, files: files })
+        unset()
     }
 
     const clickHandler = React.useCallback(() => {

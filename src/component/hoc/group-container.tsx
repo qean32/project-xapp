@@ -44,7 +44,7 @@ interface Props_ {
 // @ts-ignore
 export const GroupContainer: React.FC<Props_> = ({ className, Component, clickHandler, componentPropsName, fatchFn, take }: Props_) => {
     const { search } = useAppSelector(state => state.search);
-    const { refHandler, refParent, finaldata: array, offset } = useDinamickPagination(() => fatchFn(offset, take, search), ['community'], 0, search);
+    const { refHandler, refParent, finaldata: array, skip } = useDinamickPagination(() => fatchFn(skip, take, search), ['community'], 0, search);
 
 
     return (

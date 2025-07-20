@@ -1,8 +1,8 @@
 import { requestGet } from "../lib/function/request"
-const instance = 'message';
+const instance = 'http-message';
 
 export const messageService = {
-    getMessages: (offset: number, take: number = 10) => {
-        return requestGet(`${instance}/${offset}/${take}`)
+    getMessages: (skip: number, take: number = 10, to: number) => {
+        return requestGet(`${instance}?skip=${skip}&take=${take}&to=${to}`)
     }
 }

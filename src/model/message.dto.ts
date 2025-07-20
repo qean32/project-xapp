@@ -3,4 +3,7 @@ export interface MessageDto {
     chatId: number
     hashMessage: string
     isView: boolean
+    files?: string
+    to: number
+    from: number
 }

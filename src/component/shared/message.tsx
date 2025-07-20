@@ -1,4 +1,4 @@
-import { cn } from "../../lib/function";
+import { cn, IsImageFile } from "../../lib/function";
 import { MessageDto } from "../../model";
 import { useAppDispatch } from "../../store";
 import { setSelectMessage } from '../../store/right-click-message-window'
@@ -6,10 +6,12 @@ import { FileInMessage, MessageRead } from "../ui";
 
 type Props = {
     message: MessageDto
+    userId: number
 }
 
-export const Message: React.FC<Props> = ({ message }: Props) => {
+export const Message: React.FC<Props> = ({ message, userId }: Props) => {
     const dispatch = useAppDispatch()
+    const reverse = message.from != userId
 
     const rightClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()
@@ -17,22 +19,24 @@ export const Message: React.FC<Props> = ({ message }: Props) => {
     }
 
     return (
-        <div className={cn("flex gap-5", (false && 'transform-reverse'))} onContextMenu={rightClick} >
+        <div className={cn("flex gap-5", (reverse && 'reverse'))} onContextMenu={rightClick} >
             <div className="small-ava" style={{ backgroundImage: `url(${'zxczxc'})` }}></div>
 
-            <div className={cn("messagecontext cursor-pointer relative p-5 m-line flex flex-col gap-3", (false && 'm-reverse transform-reverse'))}>
+            <div className={cn("messagecontext cursor-pointer relative p-5 m-line flex flex-col gap-3", (reverse && 'm-reverse reverse'))}>
                 <p>{message.hashMessage}</p>
 
                 <MessageRead read={message.isView} />
 
                 <div>
-                    <FileInMessage path="http://localhost:3000/789429383.rar" />
-                    <FileInMessage path="http://localhost:3000/789429383.rar" />
+                    {message.files && message.files.split(', ').filter(item => !IsImageFile(item)).map(item => {
+                        return <FileInMessage path={`http://localhost:3000/${item}`} key={item} />
+                    })}
                 </div>
 
                 <div className="flex items-start gap-3 flex-wrap">
-                    <FileInMessage path="https://i.pinimg.com/736x/0d/68/64/0d68647fbd2514040becbaab2de3a8dc.jpg" />
-                    <FileInMessage path="https://i.pinimg.com/736x/0d/68/64/0d68647fbd2514040becbaab2de3a8dc.jpg" />
+                    {message.files && message.files.split(', ').filter(item => IsImageFile(item)).map(item => {
+                        return <FileInMessage path={`http://localhost:3000/${item}`} key={item} />
+                    })}
                 </div>
             </div>
         </div >

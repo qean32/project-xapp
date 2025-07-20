@@ -5,10 +5,12 @@ import { Message, RightClickMessageWindowComponent } from "../component/shared"
 import React from 'react'
 import { changeTitle } from "../lib/function"
 import { useChat, useHandlerScroll, useHookScroll, usePage } from "../lib/castom-hook"
+import { useParams } from "react-router-dom"
 
 export const Chat = () => {
-    changeTitle('мессенджер')
-    usePage()
+    changeTitle('мессенджер');
+    usePage();
+    const socket = useChat();
 
     return (
         <main>
@@ -17,8 +19,11 @@ export const Chat = () => {
 
                 <div className="px-12 pt-8 flex flex-col justify-between h-100">
 
-                    <GroupMessages />
-                    <EnterMessage />
+                    <GroupMessages socket={socket} />
+                    <EnterMessage
+                        updateMessage={socket.updateMessage}
+                        sendMessage={socket.sendMessage}
+                    />
                 </div>
 
             </DftSETPage>
@@ -26,36 +31,23 @@ export const Chat = () => {
     )
 }
 
+type Props = { socket: ReturnType<typeof useChat> }
 
-const GroupMessages: React.FC<{}> = React.memo(() => {
-    const {
-        getPrevMessage,
-        messages,
-        offset,
-        removeMessage,
-        sendMessage,
-        typing,
-        updateMessage,
-        valueTyping,
-        viewMessage,
-    } = useChat(1);
-    const { bool, refHandler, refParent } = useHandlerScroll(70, "bottom")
+const GroupMessages: React.FC<Props> = React.memo(({ socket }: Props) => {
+    // @ts-ignore
+    const { id }: { id: number } = useParams()
+    const { refHandler, refParent } = useHandlerScroll(70, "bottom")
     useHookScroll(refParent)
-
-    React.useEffect(() => {
-        if (bool) {
-        }
-    }, [bool])
 
     return (
         <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll" ref={refParent} >
             <RightClickMessageWindowComponent />
 
-            {valueTyping && <p className="fixed top-3 py-2">Собеседник печатает...</p>}
+            {socket.valueTyping && <p className="fixed top-3 py-2">Собеседник печатает...</p>}
 
-            {messages && messages.map((item) => {
+            {socket.messages && socket.messages.map((item) => {
 
-                return <Message message={item} key={item.id} />
+                return <Message userId={id} message={item} key={item.id} />
             })}
 
             <div className="w-100 min-h-[1px]" ref={refHandler} ></div>

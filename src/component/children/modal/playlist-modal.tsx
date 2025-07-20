@@ -17,7 +17,7 @@ export const PlayListModal: React.FC<Props> = ({ fn }: Props) => {
             setFinalData(prev => [...prev, newPlaylist])
         }
     }, [newPlaylist])
-    const { finaldata, setFinalData } = useRequest<PlayListShortDto>(musicService.getPlayLists(), ['my-playlists']);
+    const { finaldata, setFinalData } = useRequest<PlayListShortDto>(() => musicService.getPlayLists(), ['my-playlists']);
 
     return (
         <div className='relative w-100'>
