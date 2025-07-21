@@ -16,7 +16,7 @@ export const RightClickMessageWindowComponent: React.FC<{}> = () => {
         dispatch(changeMessage(message))
         dispatch(unsetSelectMessage())
     }
-    const { removeMessage } = useChat(false, false)
+    const { removeMessage } = useChat({})
     const removeHandler = () => {
         removeMessage(message.id)
         dispatch(unsetSelectMessage())

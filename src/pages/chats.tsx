@@ -22,7 +22,7 @@ export const Chats = () => {
                     Component={Chat}
                     clickHandler={clickHandler}
                     fatchFn={() => { }}
-                    search=""
+                    take={10}
                     componentPropsName="data"
                 />
             </DftSETPage>

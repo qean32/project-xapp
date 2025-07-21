@@ -12,7 +12,7 @@ type Props = {
 }
 
 export const FileInMessage: React.FC<Props> = ({ path }: Props) => {
-    const { bool, swap } = useBoolean(false)
+    const { boolean, swap } = useBoolean(false)
     return (
         <>
             {!IsImageFile(path) ?
@@ -22,7 +22,7 @@ export const FileInMessage: React.FC<Props> = ({ path }: Props) => {
                 </a>
                 :
                 <>
-                    {bool && createPortal(
+                    {boolean && createPortal(
                         <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none" >
                             <ImgModal path={path} />
                         </ModalSET>, document.body)}

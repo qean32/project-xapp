@@ -11,7 +11,7 @@ interface Props {
 export const UploadImgChild: React.FC<Props> = ({ }: Props) => {
     const id = generateId().toString()
     const [src, setSrc] = React.useState<any>([]);
-    const { bool, off, on } = useBoolean(false)
+    const { boolean, off, on } = useBoolean(false)
 
     const urls = src.map((file: any) => URL.createObjectURL(file));
 
@@ -55,7 +55,7 @@ export const UploadImgChild: React.FC<Props> = ({ }: Props) => {
                 onDragOver={e => dragStartHandler(e)}
                 onDrop={e => dropHandler(e)}
             >
-                {bool ? <img src={plusImg} alt="" width={50} /> : <img src={uploadImg} alt="" width={50} />}
+                {boolean ? <img src={plusImg} alt="" width={50} /> : <img src={uploadImg} alt="" width={50} />}
             </label>
         </>
     )

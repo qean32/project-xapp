@@ -6,12 +6,12 @@ import { FileInMessage, MessageRead } from "../ui";
 
 type Props = {
     message: MessageDto
-    userId: number
+    userId: string | undefined
 }
 
 export const Message: React.FC<Props> = ({ message, userId }: Props) => {
     const dispatch = useAppDispatch()
-    const reverse = message.from != userId
+    const reverse = message.from != (userId ?? 0)
 
     const rightClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()

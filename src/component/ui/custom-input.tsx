@@ -25,7 +25,7 @@ export const InputText = ({ title, max, validate = true, className, name, classN
     return (
         <div className={cn('w-100 relative', className)} >
             <label htmlFor={id} className='fill' >
-                <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
+                <p className={color.boolean ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
             <input type='text' id={id} {...register(name)} onFocus={() => color.on()} onBlur={check} className={classNameInput} />
@@ -61,13 +61,13 @@ export const InputPassword = ({ title, className, name }: {
     return (
         <div className={cn('w-100 relative', className)}>
 
-            <img src={view.bool ? unlockImg : lockImg} style={{ zIndex: '10' }} alt='' onClick={() => view.swap()} className='lockpass cursor-pointer' />
+            <img src={view.boolean ? unlockImg : lockImg} style={{ zIndex: '10' }} alt='' onClick={() => view.swap()} className='lockpass cursor-pointer' />
 
             <label htmlFor={id} className='fill' >
-                <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
+                <p className={color.boolean ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
-            <input type={view.bool ? 'text' : 'password'} id={id} {...register(name)}
+            <input type={view.boolean ? 'text' : 'password'} id={id} {...register(name)}
                 onFocus={() => color.on()} onBlur={check} />
             <p className={cn('inputwarning text-nowrap', (!textError && 'opacity-0'))}> {textError && textError} </p>
         </div>
@@ -112,7 +112,7 @@ export const InputEmail = ({ title, className, name }: {
         <div className={cn('w-100 relative', className)} >
 
             <label htmlFor={id} className='fill' >
-                <p className={color.bool ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
+                <p className={color.boolean ? 'opacity-60 transform-label' : 'opacity-80'}>{title}</p>
             </label>
 
             <input type='text' {...register(name)} onFocus={() => color.on()} onBlur={check} />

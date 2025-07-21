@@ -13,7 +13,7 @@ interface Props {
 export const BottomTool: React.FC<Props> = ({ className }: Props) => {
     const { current } = useAppSelector(state => state.music)
     const dispath = useAppDispatch()
-    const { bool, on, off } = useBoolean(false)
+    const { boolean, on, off } = useBoolean(false)
     const clickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (current.length) {
             // @ts-ignore
@@ -40,7 +40,7 @@ export const BottomTool: React.FC<Props> = ({ className }: Props) => {
                     onClick={clickHandler}
                     onMouseUp={off}
                     onMouseDown={on}
-                    onMouseMove={(e) => bool && changeHandler(e)} >
+                    onMouseMove={(e) => boolean && changeHandler(e)} >
                     <div className="bg-color w-0 h-100 transition01 pointer-events-none" style={{ width: `${current?.progress + "%"}` }} ></div>
                 </div>
             </div>

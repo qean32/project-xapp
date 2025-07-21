@@ -9,32 +9,32 @@ import { useParams } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
 
 export const useChat = ({ getData = false, isTyping = false, userRoom = false }: { userRoom?: boolean, getData?: boolean, isTyping?: boolean }) => {
-    const { id }: any = jwtDecode(getToken());
-    const { id: toId } = useParams();
+    const { userId }: any = jwtDecode(getToken());
+    const { id: toUserId } = useParams();
+    const roomId = getRoomId(Number(toUserId), userId)
 
     const { finaldata: messages, setFinalData: setMessages, skip, setSkip, refHandler, refParent }
         = getData ?
-            useDinamickPaginationChat<MessageDto>(() => messageService.getMessages(skip, 10, Number(toId)), ['messages'])
+            useDinamickPaginationChat<MessageDto>(() => messageService.getMessages(skip, 10, Number(toUserId)), ['messages'])
             :
-            { finaldata: [], setFinalData: () => { }, setSkip: () => { }, skip: 0 };
+            { finaldata: [], setFinalData: () => { }, setSkip: () => { }, skip: 0, refParent: null };
 
-    const { bool: companionTyping, on, off } = useBoolean(false)
+    const { boolean: companionTyping, on, off } = useBoolean(false)
     const debounceCompanionTyping = useDebounce(companionTyping, 600)
-    const roomId = getRoomId(Number(toId), id)
-    React.useEffect(() => {
-        const uUnread = messages.filter(item => !item.isView && item.from != id)
-        if (uUnread.length)
-            viewMessage(uUnread)
-    }, [messages])
 
     React.useEffect(() => {
-        socket.emit(en.connection, { roomId: (userRoom ? id : roomId) });
+        const userUnRead = messages.filter(item => !item.isView && item.from != userId)
+        if (userUnRead.length)
+            viewMessage(userUnRead)
+    }, [messages])
+    React.useEffect(() => {
+        socket.emit(en.connection, { roomId: (userRoom ? userId : roomId) });
         socket.on(en.serverSend, (payload: MessageDto) => {
             setSkip(prev => ++prev)
             setMessages(prev => [payload, ...prev])
         })
         socket.on(en.serverTyping, ({ user }: { user: number }) => {
-            if (user != id && isTyping) {
+            if (user != userId && isTyping) {
                 on()
 
                 setTimeout(() => {
@@ -64,15 +64,15 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
 
 
     const typing = () => {
-        socket.emit(en.clientTyping, { roomId, user: id })
+        socket.emit(en.clientTyping, { roomId, user: userId })
     }
 
     const sendMessage = (data: { message: string, from: number, files?: any }) => {
-        socket.emit(en.clientSend, { ...data, to: Number(toId) })
+        socket.emit(en.clientSend, { ...data, to: Number(toUserId) })
     }
 
     const removeMessage = (idMessage: number) => {
-        socket.emit(en.clientRemove, { id: idMessage, roomId: getRoomId(Number(toId), id) })
+        socket.emit(en.clientRemove, { id: idMessage, roomId })
     }
 
     const updateMessage = (message: MessageDto) => {

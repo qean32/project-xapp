@@ -12,11 +12,11 @@ interface Props {
 
 
 export const Ava: React.FC<Props> = ({ className, avaPath }: Props) => {
-    const { bool, swap } = useBoolean(false)
+    const { boolean, swap } = useBoolean(false)
 
     return (
         <>
-            {bool && createPortal(
+            {boolean && createPortal(
                 <ModalSET fn={swap} className="items-center justify-center" classNameWindow="modal-upload-anim" >
                     <UploadImgChild />
                 </ModalSET>, document.body)}

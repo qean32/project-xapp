@@ -4,7 +4,7 @@ import { EnterMessage } from "../component/shared"
 import { Message, RightClickMessageWindowComponent } from "../component/shared"
 import React from 'react'
 import { changeTitle } from "../lib/function"
-import { useChat, useHandlerScroll, useHookScroll, usePage } from "../lib/castom-hook"
+import { useChat, useHookScroll, usePage } from "../lib/castom-hook"
 import { useParams } from "react-router-dom"
 
 export const Chat = () => {
@@ -31,9 +31,8 @@ type Props = {}
 
 const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
     const { messages, refHandler, refParent } = useChat({ getData: true });
-    // @ts-ignore
-    const { id }: { id: number } = useParams()
-    // useHookScroll(refParent)
+    const { id } = useParams<{ id: string }>()
+    useHookScroll(refParent)
 
     return (
         <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll" ref={refParent} >

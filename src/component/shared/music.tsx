@@ -21,11 +21,11 @@ export const Music: React.FC<Props> = ({ className = 'music', music =
         name: 'Masha'
     }
 }: Props) => {
-    const { bool, swap } = useBoolean(false)
+    const { boolean, swap } = useBoolean(false)
 
     return (
         <>
-            {bool && createPortal(
+            {boolean && createPortal(
                 <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none" >
                     <PlayListModal fn={() => { }} />
                 </ModalSET>, document.body)}

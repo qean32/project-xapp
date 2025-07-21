@@ -17,14 +17,14 @@ export const Main = () => {
         <main>
             <LeftNavigate />
             <DftSETPage>
-                <Search fn={() => { }} />
+                <Search />
                 <ResultSearch />
 
                 <GroupContainer
                     Component={Music}
                     clickHandler={selectFn}
                     fatchFn={() => { }}
-                    search=""
+                    take={10}
                     componentPropsName="music"
                 />
             </DftSETPage>

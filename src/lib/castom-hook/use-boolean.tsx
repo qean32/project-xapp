@@ -1,16 +1,16 @@
 import React from "react"
 
 export const useBoolean = (initialValue: boolean = false) => {
-    const [bool, setBool] = React.useState<boolean>(initialValue)
+    const [boolean, setBoolean] = React.useState<boolean>(initialValue)
 
     const swap = () => {
-        setBool((prev: boolean) => !prev)
+        setBoolean((prev: boolean) => !prev)
     }
 
-    const on = () => setBool(true)
-    const off = () => setBool(false)
+    const on = () => setBoolean(true)
+    const off = () => setBoolean(false)
 
-    return { bool, swap, on, off }
+    return { boolean, swap, on, off }
 }
 
 export type TypeUseBoolen = ReturnType<typeof useBoolean>

@@ -18,8 +18,8 @@ export const Button = ({ place, function_, className }: {
     }
     return (
         <button className={cn("rounded-md transotion07 flex justify-center items-center", className)} onClick={fn} type="submit">
-            <div className={color.bool ? 'opacity-0' : ''}>{place}</div>
-            {color.bool && <span className="loader"></span>}
+            <div className={color.boolean ? 'opacity-0' : ''}>{place}</div>
+            {color.boolean && <span className="loader"></span>}
         </button>
     );
 }

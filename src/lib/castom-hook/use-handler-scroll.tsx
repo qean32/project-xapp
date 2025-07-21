@@ -2,7 +2,7 @@ import React from "react";
 import { useBoolean } from ".";
 
 export const useHandlerScroll = (daley: number = 100, direction: 'top' | 'bottom' = 'top') => {
-    const { on, off, bool } = useBoolean(false);
+    const { on, off, boolean } = useBoolean(false);
     const refParent = React.useRef<HTMLDivElement | null>(null)
     const refHandler = React.useRef<HTMLDivElement | null>(null)
     const controller = new AbortController
@@ -28,5 +28,5 @@ export const useHandlerScroll = (daley: number = 100, direction: 'top' | 'bottom
         }
     }, [])
 
-    return { bool, refHandler, refParent }
+    return { boolean, refHandler, refParent }
 }

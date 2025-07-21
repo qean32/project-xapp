@@ -13,7 +13,7 @@ interface Props {
 export const AudioValue: React.FC<Props> = ({ className }: Props) => {
     const dispatch = useAppDispatch();
     const { value } = useAppSelector(state => state.audioValue);
-    const { bool, on, off } = useBoolean(false)
+    const { boolean, on, off } = useBoolean(false)
     const change_ = (e: any) => {
         dispatch(change({ value: e.target.value / 100 }))
     }
@@ -35,7 +35,7 @@ export const AudioValue: React.FC<Props> = ({ className }: Props) => {
                 width={21}
                 onMouseEnter={on} onMouseLeave={off} />
             <div className={cn('absolute w-[130px] bg-color p-4 -top-3 -left-12 z-40 rounded-lg opacity-0 transition03',
-                (bool && 'opacity-100'))}
+                (boolean && 'opacity-100'))}
                 onMouseEnter={on} onMouseLeave={off}>
                 <input type="range" id='p-0' onChange={changeHandler} defaultValue={100} />
             </div>

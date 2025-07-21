@@ -4,10 +4,10 @@ import { useHandlerScroll } from "../use-handler-scroll"
 import { useBoolean } from "../use-boolean"
 
 export const useDinamickPaginationChat = <T,>(fetch_: Function, RQkey: string[], skip_: number = 0) => {
-    const { refHandler, refParent, bool } = useHandlerScroll(70, "bottom")
+    const { refHandler, refParent, boolean } = useHandlerScroll(70, "bottom")
 
     const [skip, setSkip] = React.useState<number>(skip_)
-    const { swap, bool: trigger } = useBoolean()
+    const { swap, boolean: trigger } = useBoolean()
     const [finaldata, setFinalData] = React.useState<T[]>([])
     const RQData = useQuery([...RQkey], () => fetch_(skip), { keepPreviousData: true, refetchOnWindowFocus: false })
 
@@ -20,19 +20,16 @@ export const useDinamickPaginationChat = <T,>(fetch_: Function, RQkey: string[],
     }, [RQData.data?.data])
 
     React.useEffect(() => {
-        if (bool && RQData.data.next) {
+        if (boolean && RQData.data.next) {
             setTimeout(() => {
                 setSkip((prev: number) => prev + 10);
                 swap()
             }, 1000)
         }
-    }, [bool])
+    }, [boolean])
     React.useEffect(() => {
         RQData.refetch()
     }, [trigger])
-    React.useEffect(() => {
-        console.log(skip)
-    }, [skip])
 
     return { RQData, skip, finaldata, refHandler, refParent, setFinalData, setSkip }
 }

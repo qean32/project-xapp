@@ -3,7 +3,7 @@ import { useQuery } from "react-query"
 import { useHandlerScroll } from "."
 
 export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], skip_: number = 0, search: string) => {
-    const { refHandler, refParent, bool } = useHandlerScroll(150)
+    const { refHandler, refParent, boolean } = useHandlerScroll(150)
 
     const [skip, setSkip] = React.useState<number>(skip_)
     const [finaldata, setFinalData] = React.useState<T[]>([])
@@ -25,12 +25,12 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], ski
     }, [RQData.data])
 
     React.useEffect(() => {
-        if (bool && RQData.data.next) {
+        if (boolean && RQData.data.next) {
             setTimeout(() =>
                 setSkip((prev: number) => prev + 4)
                 , 600)
         }
-    }, [bool])
+    }, [boolean])
 
     return { RQData, skip, finaldata, refHandler, refParent }
 }

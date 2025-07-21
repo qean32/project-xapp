@@ -15,8 +15,8 @@ interface Props {
 
 
 export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) => {
-    const { bool: notification, swap: swapNotification } = useBoolean(false)
-    const { bool, swap } = useBoolean(false)
+    const { boolean: notification, swap: swapNotification } = useBoolean(false)
+    const { boolean, swap } = useBoolean(false)
     const navigate = useNavigate()
 
     const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -51,7 +51,7 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
 
     return (
         <div className={cn('h-100 fit-content min-w-[60px]', className)}>
-            {bool && createPortal(
+            {boolean && createPortal(
                 <ModalSET fn={swap} className="items-start justify-start" classNameWindow="modal-add-playlist-anim h-100 rounded-none">
                     <PlayListModal fn={selectPlayListHandler} />
                 </ModalSET>, document.body)}

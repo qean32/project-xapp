@@ -13,13 +13,13 @@ export const Auth = () => {
 
     React.useEffect(() => {
         authWindow.swap()
-    }, [on.bool])
+    }, [on.boolean])
 
     return (
         <main>
             <div className="flex justify-center items-center h-75 w-100" >
                 <DefaultContiner>
-                    <div className="regwindow transition07" style={!authWindow.bool ? { maxHeight: '500px' } : { maxHeight: '360px' }}>
+                    <div className="regwindow transition07" style={!authWindow.boolean ? { maxHeight: '500px' } : { maxHeight: '360px' }}>
 
                         <VerticalCarousel />
                         <RightSide authWindow={authWindow} on={on} />
@@ -39,7 +39,7 @@ const RightSide: React.FC<Props> = ({ authWindow, on }: Props) => {
     return (
         <div className="regentrance" style={{ width: '200%' }}>
             <NavPanel switcher={on} />
-            <div style={!authWindow.bool ? { marginLeft: '-50%' } : {}} className="transition07">
+            <div style={!authWindow.boolean ? { marginLeft: '-50%' } : {}} className="transition07">
                 <AuthForm on={on} />
                 <RegistrationForm on={on} />
             </div>

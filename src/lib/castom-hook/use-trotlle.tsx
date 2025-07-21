@@ -2,11 +2,11 @@ import React from "react";
 import { useBoolean } from "./use-boolean";
 
 export function useTrotlle(fn: () => void, daley: number = 400) {
-    const { bool, off, on } = useBoolean(true)
+    const { boolean, off, on } = useBoolean(true)
 
     const returnFn = () => {
         React.useEffect(() => {
-            if (bool) {
+            if (boolean) {
                 fn()
                 off()
             }

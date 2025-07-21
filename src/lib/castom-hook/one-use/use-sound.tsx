@@ -8,9 +8,10 @@ import { rndArray } from "../../function";
 
 export const useSound = () => {
     const audioElem: any = React.useRef();
-    const { bool: isPlay, swap } = useBoolean(false)
+    const { boolean: isPlay, swap } = useBoolean(false)
     const { current, playList, primePlayList, isNewAudio } = useAppSelector((state) => state.music)
     const { mode } = useAppSelector((state) => state.modeSound)
+
     const dispatch = useAppDispatch()
     React.useEffect(() => {
         if (mode == "random-play") {

@@ -12,7 +12,7 @@ export const PlayList = () => {
     changeTitle('плейлист');
     usePage();
 
-    const { results, searchFuncttion } = useSearch(testPlaylist, 'name', 'author');
+    const { results } = useSearch(testPlaylist, 'name', 'author');
     const dispatch = useAppDispatch();
     const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => selectMusic(e, dispatch);
 
@@ -20,7 +20,7 @@ export const PlayList = () => {
         <main>
             <LeftNavigate />
             <DftSETPage>
-                <Search fn={searchFuncttion} />
+                <Search />
                 <ResultSearch />
 
                 <GroupContainerAllData

@@ -8,11 +8,11 @@ interface Props {
 
 
 export const CreatePlayList: React.FC<Props> = ({ }: Props) => {
-    const { bool, swap } = useBoolean(false);
+    const { boolean, swap } = useBoolean(false);
 
     return (
         <>
-            {!bool ?
+            {!boolean ?
                 <div className='cursor-pointer flex justify-center items-center transition03 music py-5 mx-6 rounded-md' onClick={swap} >
                     <img src={plusImg} alt="" />
                 </div>

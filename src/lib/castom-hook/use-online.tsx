@@ -2,7 +2,7 @@ import React from "react";
 import { useBoolean } from "./";
 
 export const useOnline = () => {
-    const { bool, on, off } = useBoolean()
+    const { boolean, on, off } = useBoolean()
     const controller = new AbortController
 
     React.useEffect(() => {
@@ -14,5 +14,5 @@ export const useOnline = () => {
         }
     }, [])
 
-    return bool
+    return boolean
 }
