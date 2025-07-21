@@ -23,6 +23,7 @@ export const Message: React.FC<Props> = ({ message, userId }: Props) => {
             <div className="small-ava" style={{ backgroundImage: `url(${'zxczxc'})` }}></div>
 
             <div className={cn("messagecontext cursor-pointer relative p-5 m-line flex flex-col gap-3", (reverse && 'm-reverse reverse'))}>
+                {message.id}
                 <p>{message.hashMessage}</p>
 
                 <MessageRead read={message.isView} />

@@ -30,18 +30,17 @@ export const Chat = () => {
 type Props = {}
 
 const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
-    const { messages } = useChat({ getData: true });
+    const { messages, refHandler, refParent } = useChat({ getData: true });
     // @ts-ignore
     const { id }: { id: number } = useParams()
-    const { refHandler, refParent } = useHandlerScroll(70, "bottom")
-    useHookScroll(refParent)
+    // useHookScroll(refParent)
 
     return (
         <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll" ref={refParent} >
             <RightClickMessageWindowComponent />
             {messages && messages.map((item) => {
 
-                return <Message userId={id} message={item} key={item?.id} />
+                return <Message userId={id} message={item} key={item.id} />
             })}
 
             <div className="w-100 min-h-[1px]" ref={refHandler} ></div>

@@ -2,7 +2,7 @@ import React from "react"
 import { MessageDto } from "../../model"
 import { socket } from "../socket-config"
 import { en } from "../../export"
-import { useBoolean, useDebounce, useRequest } from "."
+import { useBoolean, useDebounce, useDinamickPaginationChat } from "."
 import { messageService } from "../../service/message-service"
 import { getRoomId, getToken } from "../function"
 import { useParams } from "react-router-dom"
@@ -12,13 +12,12 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
     const { id }: any = jwtDecode(getToken());
     const { id: toId } = useParams();
 
-    const { finaldata: messages, setFinalData: setMessages }
+    const { finaldata: messages, setFinalData: setMessages, skip, setSkip, refHandler, refParent }
         = getData ?
-            useRequest<MessageDto>(() => messageService.getMessages(skip, 10, Number(toId)), ['messages'])
+            useDinamickPaginationChat<MessageDto>(() => messageService.getMessages(skip, 10, Number(toId)), ['messages'])
             :
-            { finaldata: [], setFinalData: () => { } };
+            { finaldata: [], setFinalData: () => { }, setSkip: () => { }, skip: 0 };
 
-    const [skip, setSkip] = React.useState<number>(0);
     const { bool: companionTyping, on, off } = useBoolean(false)
     const debounceCompanionTyping = useDebounce(companionTyping, 600)
     const roomId = getRoomId(Number(toId), id)
@@ -31,7 +30,7 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
     React.useEffect(() => {
         socket.emit(en.connection, { roomId: (userRoom ? id : roomId) });
         socket.on(en.serverSend, (payload: MessageDto) => {
-            setSkip(prev => prev++)
+            setSkip(prev => ++prev)
             setMessages(prev => [payload, ...prev])
         })
         socket.on(en.serverTyping, ({ user }: { user: number }) => {
@@ -58,10 +57,9 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
             })
         })
         socket.on(en.serverRemove, (id: number) => {
-            setSkip(prev => prev--)
+            setSkip(prev => --prev)
             setMessages(prev => [...prev.filter(message => message.id != prev.find(message => message.id == id)?.id)])
         })
-
     }, [])
 
 
@@ -85,8 +83,5 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
         socket.emit(en.clientView, { messages, roomId })
     }
 
-    const getPrevMessage = () => {
-    }
-
-    return { valueTyping: debounceCompanionTyping, messages, typing, viewMessage, sendMessage, updateMessage, removeMessage, getPrevMessage }
+    return { valueTyping: debounceCompanionTyping, messages, typing, viewMessage, sendMessage, updateMessage, removeMessage, refHandler, refParent }
 }
