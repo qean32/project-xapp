@@ -2,16 +2,16 @@ import React from "react"
 import { MessageDto } from "../../model"
 import { socket } from "../socket-config"
 import { en } from "../../export"
-import { useBoolean, useDebounce, useDinamickPaginationChat } from "."
+import { useBoolean, useDebounce, useDinamickPaginationChat, useUserInfo, useWindowFocused } from "."
 import { messageService } from "../../service/message-service"
-import { getRoomId, getToken } from "../function"
+import { getRoomId } from "../function"
 import { useParams } from "react-router-dom"
-import { jwtDecode } from "jwt-decode"
 
 export const useChat = ({ getData = false, isTyping = false, userRoom = false }: { userRoom?: boolean, getData?: boolean, isTyping?: boolean }) => {
-    const { userId }: any = jwtDecode(getToken());
+    const { id: userId } = useUserInfo()
     const { id: toUserId } = useParams();
     const roomId = getRoomId(Number(toUserId), userId)
+    const windowFosused = useWindowFocused()
 
     const { finaldata: messages, setFinalData: setMessages, skip, setSkip, refHandler, refParent }
         = getData ?
@@ -24,9 +24,9 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
 
     React.useEffect(() => {
         const userUnRead = messages.filter(item => !item.isView && item.from != userId)
-        if (userUnRead.length)
+        if (userUnRead.length && windowFosused)
             viewMessage(userUnRead)
-    }, [messages])
+    }, [messages, windowFosused])
     React.useEffect(() => {
         socket.emit(en.connection, { roomId: (userRoom ? userId : roomId) });
         socket.on(en.serverSend, (payload: MessageDto) => {
@@ -46,7 +46,6 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
             setMessages(prev => {
                 const include = [...prev.filter((item) => mess.find((item_ => item.id == item_.id)))]
                 const uninclude = [...prev.filter((item) => !mess.find((item_ => item.id == item_.id)))]
-                console.log([...include, ...uninclude].sort((a, b) => a.id - b.id))
                 return [...include, ...uninclude].sort((a, b) => a.id - b.id).map(item => { return { ...item, isView: true } }).reverse()
             })
         })

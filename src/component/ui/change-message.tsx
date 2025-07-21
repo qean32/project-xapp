@@ -13,12 +13,12 @@ export const ChangeMessage: React.FC<Props> = ({ className, clickHandler }: Prop
     const { hashMessage, files } = useAppSelector(state => state.changeMessage)
 
     return (
-        <div className={cn('relative', className)}>
+        <div className={cn('relative px-3', className)}>
             {files?.split(', ').map(item => {
-                return <div key={item} className='p-3'>{item}</div>
+                return <div key={item} className='p-1'>{item}</div>
             })}
             <img src={crossImg} alt="" className="cursor-pointer absolute right-2 top-1" onClick={clickHandler} />
-            <p className="p-1 px-3">{hashMessage}</p>
+            <p className="p-1">{hashMessage}</p>
         </div>
     )
 }

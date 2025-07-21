@@ -1,17 +1,18 @@
 import { cn, IsImageFile } from "../../lib/function";
-import { MessageDto } from "../../model";
+import { MessageDto, UserDto } from "../../model";
 import { useAppDispatch } from "../../store";
 import { setSelectMessage } from '../../store/right-click-message-window'
 import { FileInMessage, MessageRead } from "../ui";
 
 type Props = {
     message: MessageDto
-    userId: string | undefined
+    user: UserDto
+    opponent: UserDto
 }
 
-export const Message: React.FC<Props> = ({ message, userId }: Props) => {
+export const Message: React.FC<Props> = ({ message, user, opponent }: Props) => {
     const dispatch = useAppDispatch()
-    const reverse = message.from != (userId ?? 0)
+    const reverse = message.from == (user.id ?? 0)
 
     const rightClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()
@@ -20,11 +21,13 @@ export const Message: React.FC<Props> = ({ message, userId }: Props) => {
 
     return (
         <div className={cn("flex gap-5", (reverse && 'reverse'))} onContextMenu={rightClick} >
-            <div className="small-ava" style={{ backgroundImage: `url(${'zxczxc'})` }}></div>
+            <div className="small-ava" style={{ backgroundImage: `url(${reverse ? user.ava : opponent.ava})` }}></div>
 
             <div className={cn("messagecontext cursor-pointer relative p-5 m-line flex flex-col gap-3", (reverse && 'm-reverse reverse'))}>
-                {message.id}
-                <p>{message.hashMessage}</p>
+                <div>
+                    <p>{reverse ? user.name : opponent.name}</p>
+                    <p>{message.hashMessage}</p>
+                </div>
 
                 <MessageRead read={message.isView} />
 

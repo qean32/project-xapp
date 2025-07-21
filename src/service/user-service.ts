@@ -6,6 +6,10 @@ export const userService = {
         return requestGet(`${instance}?skip=${skip}&take=${take}&search=${search}`)
     },
 
+    getUser: (id: string) => {
+        return requestGet(`${instance}/id/?id=${id}`)
+    },
+
     searchUser: (query: string) => {
         return requestGet(`${instance}/search${query}`)
     },

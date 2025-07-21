@@ -13,10 +13,8 @@ export const useDinamickPaginationChat = <T,>(fetch_: Function, RQkey: string[],
 
     React.useEffect(() => {
         RQData.data?.data &&
-            Array.isArray(RQData.data.data) && setFinalData((prev: T[]) => {
-                // console.log(prev, RQData.data);
-                return [...prev, ...RQData.data.data]
-            })
+            Array.isArray(RQData.data.data) &&
+            setFinalData((prev: T[]) => [...prev, ...RQData.data.data])
     }, [RQData.data?.data])
 
     React.useEffect(() => {

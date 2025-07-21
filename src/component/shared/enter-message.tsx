@@ -4,7 +4,7 @@ import { sendmessageImg, uploadfilemessageImg } from "../import";
 import { Button, ChangeMessage } from "../ui";
 import { useAppDispatch, useAppSelector } from "../../lib/castom-hook/redux";
 import { unsetMessage } from "../../store/change-message";
-import { UserTyping } from ".";
+import { FilesInMessage, UserTyping } from ".";
 
 type Props = {
 }
@@ -44,6 +44,7 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
 
     const clickHandler = React.useCallback(() => {
         dispatch(unsetMessage())
+        unset()
     }, [])
 
     return (
@@ -52,6 +53,7 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
 
             <div className="enter-message bg-color-light py-1 pt-3 pl-2 rounded-md mb-5">
                 {changeMessage.hashMessage && <ChangeMessage clickHandler={clickHandler} />}
+                {!!files.length && <FilesInMessage clickHandler={clickHandler} files={files} />}
 
                 <form className='w-100 flex gap-4 z-10' onSubmit={submitHandler} >
                     <InputFile changeHandler={changeHandlerFile} />

@@ -5,7 +5,7 @@ export const useHookScroll = (ref: React.MutableRefObject<HTMLDivElement | null>
         if (ref) {
             const fn = (e: React.EventHandler<HTMLDivElement | any> | any) => {
                 if (ref.current)
-                    ref.current.scrollTop += (e.deltaY * .4);
+                    ref.current.scrollTop += (e.deltaY * .5);
             }
             window.addEventListener('mousewheel', fn);
 
