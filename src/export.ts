@@ -1,4 +1,3 @@
-import openSocket from 'socket.io-client';
 import { MusicDto } from './model'
 
 export const en = {
@@ -17,7 +16,6 @@ export const en = {
     clientUpdate: "clientUpdate",
     clientRemove: "clientRemovee"
 }
-export const socket = openSocket("http://localhost:3000");
 
 export const style = {
     $bg_color: '#292929',
