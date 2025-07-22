@@ -1,11 +1,12 @@
 import React from "react"
 import { LeftNavigate } from "../component/general"
 import { DftSETPage, GroupContainer } from "../component/hoc"
-import { Music } from "../component/shared"
-import { ResultSearch, Search } from "../component/ui"
+import { Music, SearchGroup } from "../component/shared"
+import { } from "../component/ui"
 import { useAppDispatch } from "../lib/castom-hook/redux"
 import { changeTitle, selectMusic } from "../lib/function"
 import { usePage } from "../lib/castom-hook"
+import { musicService } from "../service/music-service"
 
 export const Main = () => {
     const dispatch = useAppDispatch();
@@ -17,14 +18,13 @@ export const Main = () => {
         <main>
             <LeftNavigate />
             <DftSETPage>
-                <Search />
-                <ResultSearch />
+                <SearchGroup />
 
                 <GroupContainer
                     Component={Music}
                     clickHandler={selectFn}
-                    fatchFn={() => { }}
-                    take={10}
+                    fatchFn={musicService.searchMusic}
+                    take={40}
                     componentPropsName="music"
                 />
             </DftSETPage>

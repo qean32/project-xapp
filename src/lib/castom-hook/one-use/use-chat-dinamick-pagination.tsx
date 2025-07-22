@@ -22,12 +22,12 @@ export const useChatDinamickPagination = <T,>(fetch_: Function, RQkey: string[],
             setTimeout(() => {
                 setSkip((prev: number) => prev + 10);
                 swap()
-            }, 1000)
+            }, 600)
         }
     }, [boolean])
     React.useEffect(() => {
         RQData.refetch()
     }, [trigger])
 
-    return { RQData, skip, finaldata, refHandler, refParent, setFinalData, setSkip }
+    return { skip, finaldata, refHandler, refParent, setFinalData, setSkip }
 }

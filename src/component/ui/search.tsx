@@ -15,7 +15,7 @@ export const Search: React.FC<Props> = React.memo(({ className }: Props) => {
     const change = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setSearch({ search: e.target.value }))
     }
-    const changeHandler = useDebounceFunction(change, 200)
+    const changeHandler = useDebounceFunction(change, 1200)
 
     return (
         <div className={cn('flex items-center fit-content w-100 my-5 pl-6', className)}>

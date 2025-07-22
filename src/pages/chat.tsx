@@ -8,6 +8,7 @@ import { useChat, useHookScroll, usePage, useRequest, useUserInfo } from "../lib
 import { userService } from "../service/user-service"
 import { useParams } from "react-router-dom"
 import { UserDto } from "../model"
+import { ScrollHandler } from "../component/ui"
 
 export const Chat = () => {
     changeTitle('мессенджер');
@@ -34,10 +35,10 @@ type Props = {}
 const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
     const { messages, refHandler, refParent } = useChat({ getData: true });
     const user = useUserInfo();
-    const { id } = useParams<{ id: string }>()
+    const { id } = useParams<{ id: string }>();
     useHookScroll(refParent);
     // @ts-ignore
-    const { finaldata: opponent } = useRequest<UserDto>(() => userService.getUser(id), ['let-user'])
+    const { finaldata: opponent } = useRequest<UserDto>(() => userService.getUser(id), ['get-user']);
 
     return (
         <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll" ref={refParent} >
@@ -47,7 +48,7 @@ const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
                 return <Message user={user} message={item} key={item.id} opponent={opponent[0]} />
             })}
 
-            <div className="w-100 min-h-[1px]" ref={refHandler} ></div>
+            <ScrollHandler refHandler={refHandler} />
         </div>
     )
 })

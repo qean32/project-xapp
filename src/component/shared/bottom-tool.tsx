@@ -22,15 +22,13 @@ export const BottomTool: React.FC<Props> = ({ className }: Props) => {
     }
 
     const changeHandler = useDebounceFunction(clickHandler, 20)
-    // React.useEffect(() => {
-    //     console.log('change')
-    // }, [changeHandler, clickHandler])
 
     return (
         <>
             <div
                 className={cn('fixed bottom-0 h-[85px] w-100 z-20 flex justify-center bg-color-dark', className)}>
                 <div className="flex justify-between adaptive-bottom-tool z-10 pointer-events-none">
+                    {/* @ts-ignore */}
                     <Music className='pl-2 pointer-events-none current-music' music={current} />
                     <ToolMusic />
                 </div>

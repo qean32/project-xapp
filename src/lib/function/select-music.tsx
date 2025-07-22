@@ -3,19 +3,22 @@
 import { testPlaylist } from "../../export"
 import { swapMusic } from "../../store/music"
 
-export const selectMusic = (e: React.MouseEvent<HTMLDivElement>, dispath: any) => {
+export const selectMusic = async (e: React.MouseEvent<HTMLDivElement>, dispath: any) => {
     if (e.target?.children) {
-
-        dispath(swapMusic({
-            current: {
-                ava: (e.target.children[0].children[0].style.backgroundImage).toString().slice(5, -2),
-                author: e.target.children[0].children[1].children[0].textContent,
-                name: e.target.children[0].children[1].children[1].textContent,
-                link: e.target.children[1].children[1].href,
-            },
-            playList: testPlaylist,
-            primePlayList: testPlaylist,
-            isNewAudio: true
-        }))
+        const data = fetch(`http://localhost:3000/music/audio?id=${(e.target.children[1].children[1].href).split('/').at(-1)}`)
+            .then(response => response.json())
+            .then(data => {
+                dispath(swapMusic({
+                    current: {
+                        ava: (e.target.children[0].children[0].style.backgroundImage).toString().slice(5, -2),
+                        author: '',
+                        name: e.target.children[0].children[1].children[0].textContent,
+                        link: data.data
+                    },
+                    playList: [],
+                    primePlayList: [],
+                    isNewAudio: true
+                }))
+            })
     }
 }

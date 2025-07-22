@@ -46,7 +46,6 @@ export const GroupContainer: React.FC<Props_> = ({ className, Component, clickHa
     const { search } = useAppSelector(state => state.search);
     const { refHandler, refParent, finaldata: array, skip } = useDinamickPagination(() => fatchFn(skip, take, search), ['community'], 0, search);
 
-
     return (
         <>
             {/* <Loader /> */}
