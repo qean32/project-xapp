@@ -2,7 +2,7 @@ import React from "react"
 import { MessageDto } from "../../model"
 import { socket } from "../socket-config"
 import { en } from "../../export"
-import { useBoolean, useDebounce, useDinamickPaginationChat, useUserInfo, useWindowFocused } from "."
+import { useBoolean, useDebounce, useChatDinamickPagination, useUserInfo, useWindowFocused } from "."
 import { messageService } from "../../service/message-service"
 import { getRoomId } from "../function"
 import { useParams } from "react-router-dom"
@@ -15,7 +15,7 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
 
     const { finaldata: messages, setFinalData: setMessages, skip, setSkip, refHandler, refParent }
         = getData ?
-            useDinamickPaginationChat<MessageDto>(() => messageService.getMessages(skip, 10, Number(toUserId)), ['messages'])
+            useChatDinamickPagination<MessageDto>(() => messageService.getMessages(skip, 10, Number(toUserId)), ['messages'])
             :
             { finaldata: [], setFinalData: () => { }, setSkip: () => { }, skip: 0, refParent: null };
 

@@ -3,7 +3,7 @@ import { useQuery } from "react-query"
 import { useHandlerScroll } from "../use-handler-scroll"
 import { useBoolean } from "../use-boolean"
 
-export const useDinamickPaginationChat = <T,>(fetch_: Function, RQkey: string[], skip_: number = 0) => {
+export const useChatDinamickPagination = <T,>(fetch_: Function, RQkey: string[], skip_: number = 0) => {
     const { refHandler, refParent, boolean } = useHandlerScroll(70, "bottom")
 
     const [skip, setSkip] = React.useState<number>(skip_)

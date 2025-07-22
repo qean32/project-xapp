@@ -9,10 +9,10 @@ export const usePage = () => {
     const RQData: any = useQuery(['server'], () => serverService.server(), { keepPreviousData: true, refetchOnWindowFocus: false })
 
     React.useEffect(() => {
-        if (!RQData.data?.response && RQData.isSuccess) {
-            navigate('/404')
+        if (!RQData.data?.response && RQData.failureCount) {
+            navigate('/*')
         }
-    }, [RQData.data])
+    }, [RQData])
 
     React.useEffect(() => {
         if (!getToken()) {
