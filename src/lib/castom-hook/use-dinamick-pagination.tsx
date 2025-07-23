@@ -7,7 +7,7 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], ski
 
     const [skip, setSkip] = React.useState<number | string>(skip_)
     const [finaldata, setFinalData] = React.useState<T[]>([])
-    const RQData = useQuery([...RQkey, skip, search], () => fetch_(skip), { keepPreviousData: true, refetchOnWindowFocus: false })
+    const RQData = useQuery([...RQkey, skip, search], () => fetch_(skip), { keepPreviousData: false, refetchOnWindowFocus: false })
 
     React.useEffect(() => {
         search ? setSkip(0) : setFinalData([])
@@ -23,6 +23,10 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], ski
                 :
                 setFinalData(RQData.data.data)
             )
+
+        return () => {
+            setFinalData([])
+        }
     }, [RQData.data])
 
     React.useEffect(() => {

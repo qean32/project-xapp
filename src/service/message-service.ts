@@ -1,3 +1,5 @@
+import { jwtDecode } from "jwt-decode";
+import { getToken } from "../lib/function";
 import { requestGet } from "../lib/function/request"
 const instance = 'http-message';
 
@@ -6,7 +8,8 @@ export const messageService = {
         return requestGet(`${instance}?skip=${skip}&take=${take}&to=${to}`)
     },
 
-    getChats: (id: number) => {
+    getChats: () => {
+        const { id }: { id: number } = jwtDecode(getToken());
         return requestGet(`${instance}/chats?id=${id}`)
     }
 }

@@ -3,16 +3,22 @@ import { LeftNavigate } from "../component/general"
 import { changeTitle, getDataId } from "../lib/function"
 import { Chat } from "../component/shared"
 import { useNavigate } from "react-router-dom"
-import { usePage } from "../lib/castom-hook"
+import { useChat, usePage } from "../lib/castom-hook"
 import { messageService } from "../service/message-service"
+import React from "react"
 
 export const Chats = () => {
     changeTitle('мессенджер')
     usePage()
     const navigate = useNavigate();
     const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-        navigate('/chat/' + getDataId(e.target))
+        const id = getDataId(e.target)
+        id && navigate('/chat/' + id)
     }
+    const { messages } = useChat({ userRoom: true });
+    React.useEffect(() => {
+        console.log(messages)
+    }, [messages])
 
     return (
         <main>
@@ -23,7 +29,7 @@ export const Chats = () => {
                     RQkey="chats"
                     Component={Chat}
                     clickHandler={clickHandler}
-                    fatchFn={() => messageService.getChats(2)}
+                    fatchFn={messageService.getChats}
                     take={10}
                     componentPropsName="chat"
                 />

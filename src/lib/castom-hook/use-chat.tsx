@@ -2,20 +2,21 @@ import React from "react"
 import { MessageDto } from "../../model"
 import { socket } from "../socket-config"
 import { en } from "../../export"
-import { useBoolean, useDebounce, useChatDinamickPagination, useUserInfo, useWindowFocused } from "."
+import { useBoolean, useDebounce, useChatDinamickPagination, useWindowFocused } from "."
 import { messageService } from "../../service/message-service"
-import { getRoomId } from "../function"
+import { getRoomId, getToken } from "../function"
 import { useParams } from "react-router-dom"
+import { jwtDecode } from "jwt-decode"
 
 export const useChat = ({ getData = false, isTyping = false, userRoom = false }: { userRoom?: boolean, getData?: boolean, isTyping?: boolean }) => {
-    const { id: userId } = useUserInfo()
+    const { id: userId }: { id: number } = jwtDecode(getToken());
     const { id: toUserId } = useParams();
-    const roomId = getRoomId(Number(toUserId), userId)
+    const roomId = !userRoom ? getRoomId(Number(toUserId), userId) : userId.toString()
     const windowFosused = useWindowFocused()
 
     const { finaldata: messages, setFinalData: setMessages, skip, setSkip, refHandler, refParent }
         = getData ?
-            useChatDinamickPagination<MessageDto>(() => messageService.getMessages(skip, 10, Number(toUserId)), ['messages'])
+            useChatDinamickPagination<MessageDto>(() => messageService.getMessages(skip, 10, Number(toUserId ?? userId)), [`messages${toUserId ?? userId}`])
             :
             { finaldata: [], setFinalData: () => { }, setSkip: () => { }, skip: 0, refParent: null };
 
@@ -28,7 +29,7 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
             viewMessage(userUnRead)
     }, [messages, windowFosused])
     React.useEffect(() => {
-        socket.emit(en.connection, { roomId: (userRoom ? userId : roomId) });
+        socket.emit(en.connection, { roomId });
         socket.on(en.serverSend, (payload: MessageDto) => {
             setSkip(prev => ++prev)
             setMessages(prev => [payload, ...prev])
@@ -59,8 +60,11 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
             setSkip(prev => --prev)
             setMessages(prev => [...prev.filter(message => message.id != prev.find(message => message.id == id)?.id)])
         })
-    }, [])
 
+        return () => {
+            socket.emit(en.disconnection, { roomId });
+        }
+    }, [])
 
     const typing = () => {
         socket.emit(en.clientTyping, { roomId, user: userId })

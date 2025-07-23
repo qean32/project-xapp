@@ -2,7 +2,7 @@ import { MusicDto } from './model'
 
 export const en = {
     connection: 'connection',
-    // connected: 'connected',
+    disconnection: 'disconnection',
 
     serverSend: "serverSend",
     serverView: "serverView",
