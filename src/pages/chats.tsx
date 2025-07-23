@@ -4,6 +4,7 @@ import { changeTitle, getDataId } from "../lib/function"
 import { Chat } from "../component/shared"
 import { useNavigate } from "react-router-dom"
 import { usePage } from "../lib/castom-hook"
+import { messageService } from "../service/message-service"
 
 export const Chats = () => {
     changeTitle('мессенджер')
@@ -19,11 +20,12 @@ export const Chats = () => {
             <DftSETPage>
 
                 <GroupContainer
+                    RQkey="chats"
                     Component={Chat}
                     clickHandler={clickHandler}
-                    fatchFn={() => { }}
+                    fatchFn={() => messageService.getChats(2)}
                     take={10}
-                    componentPropsName="data"
+                    componentPropsName="chat"
                 />
             </DftSETPage>
         </main>

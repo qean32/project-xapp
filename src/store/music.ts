@@ -25,7 +25,7 @@ const musicSlice = createSlice({
     initialState,
     reducers: {
         swapMusic: (state: MusicSliceDto, payload: PayloadAction<MusicSliceDto>) => {
-            console.log(payload.payload.current)
+            // console.log(payload.payload.current)
             state.isNewAudio = payload.payload.isNewAudio
             state.current = payload.payload.current
             state.playList = payload.payload.playList
