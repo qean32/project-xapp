@@ -8,7 +8,7 @@ export const messageService = {
         return requestGet(`${instance}?skip=${skip}&take=${take}&to=${to}`)
     },
 
-    getChats: () => {
+    getChats: (...args: any) => {
         const { id }: { id: number } = jwtDecode(getToken());
         return requestGet(`${instance}/chats?id=${id}`)
     }

@@ -25,7 +25,7 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
 
     React.useEffect(() => {
         const userUnRead = messages.filter(item => !item.isView && item.from != userId)
-        if (userUnRead.length && windowFosused)
+        if (userUnRead.length)
             viewMessage(userUnRead)
     }, [messages, windowFosused])
     React.useEffect(() => {
@@ -83,7 +83,9 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
     }
 
     const viewMessage = (messages: MessageDto[]) => {
-        socket.emit(en.clientView, { messages, roomId })
+        if (!userRoom) {
+            socket.emit(en.clientView, { messages, roomId })
+        }
     }
 
     return { valueTyping: debounceCompanionTyping, messages, typing, viewMessage, sendMessage, updateMessage, removeMessage, refHandler, refParent }

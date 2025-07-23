@@ -6,4 +6,5 @@ export interface ChatDto {
     hashMessage: boolean,
     fromId: UserDto,
     toId: UserDto
+    chatId: string
 }

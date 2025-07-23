@@ -37,5 +37,5 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], ski
         }
     }, [boolean])
 
-    return { RQData, skip, finaldata, refHandler, refParent }
+    return { RQData, skip, finaldata, refHandler, refParent, setFinalData }
 }

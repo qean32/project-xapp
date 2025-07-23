@@ -10,7 +10,7 @@ export const usePage = () => {
 
     React.useEffect(() => {
         if (!RQData.data?.response && RQData.failureCount) {
-            navigate('/*')
+            navigate('/404')
         }
     }, [RQData])
 

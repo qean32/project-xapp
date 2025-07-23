@@ -42,7 +42,6 @@ interface Props_ {
     RQkey: string
 }
 
-// @ts-ignore
 export const GroupContainer: React.FC<Props_> = ({ className, Component, clickHandler, componentPropsName, fatchFn, take, RQkey }: Props_) => {
     const { search } = useAppSelector(state => state.search);
     const { refHandler, refParent, finaldata: array, skip } = useDinamickPagination(() => fatchFn(skip, take, search), [RQkey], 0, search);
