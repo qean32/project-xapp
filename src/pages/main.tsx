@@ -7,11 +7,12 @@ import { useAppDispatch } from "../lib/castom-hook/redux"
 import { changeTitle, selectMusic } from "../lib/function"
 import { usePage } from "../lib/castom-hook"
 import { musicService } from "../service/music-service"
+import { MusicDto } from "../model"
 
 export const Main = () => {
     const dispatch = useAppDispatch();
     usePage();
-    const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => selectMusic(e, dispatch)
+    const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, array: MusicDto[]) => selectMusic(e, dispatch, array)
     changeTitle('главная')
 
     return (
@@ -21,6 +22,7 @@ export const Main = () => {
                 <SearchGroup />
 
                 <GroupContainer
+                    RQkey="music"
                     Component={Music}
                     clickHandler={selectFn}
                     fatchFn={musicService.searchMusic}

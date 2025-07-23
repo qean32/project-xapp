@@ -36,6 +36,7 @@ import empielogoImg from '../../public/svg/empie-logo.svg'
 import animalhideImg from '../../public/svg/animal-hide.svg'
 import sneakersImg from '../../public/svg/sneakers.svg'
 import musicImg from '../../public/svg/music.svg'
+import copyImg from '../../public/svg/copy.svg'
 
 import logoImg from '../../public/svg/logo.svg'
 
@@ -67,6 +68,7 @@ export {
     hideImg,
     homeImg,
     likeImg,
+    copyImg,
     lockImg,
     messageImg,
     nextImg,

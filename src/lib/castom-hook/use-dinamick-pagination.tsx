@@ -5,7 +5,7 @@ import { useHandlerScroll } from "."
 export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], skip_: number = 0, search: string) => {
     const { refHandler, refParent, boolean } = useHandlerScroll(150)
 
-    const [skip, setSkip] = React.useState<number>(skip_)
+    const [skip, setSkip] = React.useState<number | string>(skip_)
     const [finaldata, setFinalData] = React.useState<T[]>([])
     const RQData = useQuery([...RQkey, skip, search], () => fetch_(skip), { keepPreviousData: true, refetchOnWindowFocus: false })
 
@@ -14,6 +14,7 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], ski
     }, [search])
 
     React.useEffect(() => {
+        RQData.data && typeof RQData.data?.next == 'string' && setSkip(RQData.data.next)
         RQData.data &&
             Array.isArray(RQData.data.data)
             &&
@@ -27,7 +28,7 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], ski
     React.useEffect(() => {
         if (boolean && RQData.data.next) {
             setTimeout(() =>
-                setSkip((prev: number) => prev + 4)
+                typeof RQData.data.next == 'string' ? setSkip(RQData.data.next) : setSkip((prev) => Number(prev) + 4)
                 , 600)
         }
     }, [boolean])

@@ -3,7 +3,7 @@ const instance = 'music';
 
 export const musicService = {
     searchMusic: (skip: number, take: number, search: string) => {
-        return requestGet(`${instance}/search?search=${search.split(' ').join('+')}`)
+        return requestGet(`${instance}/search?search=${search.split(' ').join('+')}&page=${skip}`)
     },
 
     createPlayList: (body: {

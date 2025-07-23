@@ -36,20 +36,23 @@ interface Props_ {
     className?: string
     Component: React.ReactNode | React.FC | any
     fatchFn: Function
-    clickHandler: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+    clickHandler: (...args: any) => void
     componentPropsName: string
     take: number
+    RQkey: string
 }
 
 // @ts-ignore
-export const GroupContainer: React.FC<Props_> = ({ className, Component, clickHandler, componentPropsName, fatchFn, take }: Props_) => {
+export const GroupContainer: React.FC<Props_> = ({ className, Component, clickHandler, componentPropsName, fatchFn, take, RQkey }: Props_) => {
     const { search } = useAppSelector(state => state.search);
-    const { refHandler, refParent, finaldata: array, skip } = useDinamickPagination(() => fatchFn(skip, take, search), ['community'], 0, search);
+    const { refHandler, refParent, finaldata: array, skip } = useDinamickPagination(() => fatchFn(skip, take, search), [RQkey], 0, search);
+    const clickHandler_ = RQkey == 'music' ? (...args: any) => clickHandler(...args, array) : clickHandler
+
 
     return (
         <>
             {/* <Loader /> */}
-            <div className={cn("flex flex-col max-h-[90%] relative overflow-scroll", className)} onClick={clickHandler} ref={refParent}>
+            <div className={cn("flex flex-col max-h-[90%] relative overflow-scroll", className)} onClick={clickHandler_} ref={refParent}>
                 {array && array.map((item, i) => {
 
                     return <Component key={i} {...{ [componentPropsName]: item }} />

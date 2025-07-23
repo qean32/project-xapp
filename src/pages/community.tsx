@@ -28,6 +28,7 @@ export const Community = () => {
                     fatchFn={userService.getUsers}
                     componentPropsName="user"
                     take={4}
+                    RQkey="community"
                 />
             </DftSETPage >
         </main >
