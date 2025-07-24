@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { MessageDto } from '../model'
+import { fakeMessage } from './right-click-message-window'
 
 type changeMessageSliceDto = MessageDto
 
-const initialState: changeMessageSliceDto = { chatId: 0, hashMessage: '', id: 1, isView: false, from: 0, to: 0, files: '' }
+const initialState: changeMessageSliceDto = fakeMessage
 
 const changeMessageSlice = createSlice({
     name: 'change-message-window',
@@ -17,6 +18,7 @@ const changeMessageSlice = createSlice({
             state.from = payload.from
             state.to = payload.to
             state.files = payload.files
+            state.createdAt = payload.createdAt
         },
         unsetMessage: (state: changeMessageSliceDto) => {
             state.isView = false

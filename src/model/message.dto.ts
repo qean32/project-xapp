@@ -1,3 +1,5 @@
+import { UserDto } from "./user.dto"
+
 export interface MessageDto {
     id: number
     chatId: number
@@ -6,4 +8,6 @@ export interface MessageDto {
     files?: string
     to: number
     from: number
+    fromId: UserDto
+    createdAt: string
 }

@@ -1,7 +1,7 @@
 import { UserDto } from ".";
 
 export interface ChatDto {
-    updateadAt: boolean,
+    createdAt: string,
     isView: boolean,
     hashMessage: boolean,
     fromId: UserDto,

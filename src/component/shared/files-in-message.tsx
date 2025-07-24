@@ -2,7 +2,7 @@ import React from 'react'
 import { crossImg } from '../import'
 
 interface Props {
-    files: { file: FileList, name: string }[]
+    files: { file: File, name: string }[]
     clickHandler: () => void
 }
 

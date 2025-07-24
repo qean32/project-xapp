@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn, saveUser } from '../../lib/function'
+import { cn, setToken } from '../../lib/function'
 import { InputEmail, InputPassword, Button } from '../ui'
 import { TypeUseBoolen } from '../../lib/castom-hook'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
@@ -24,7 +24,7 @@ export const AuthForm: React.FC<Props> = ({ className, on }: Props) => {
     const onSubmit: SubmitHandler<AuthFormDto> = (data) => {
         authService.login(data)
             // @ts-ignore
-            .then(data => saveUser(data))
+            .then(data => setToken(data))
             .then(() => navigate('/'))
             .catch((error) => setError(error.response.data.message))
     }

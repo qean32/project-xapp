@@ -28,11 +28,17 @@ export const ChatsChild: React.FC<Props> = ({ }: Props) => {
         if (messages.length) {
             // @ts-ignore
             setFinalData(prev => {
-                const chatId = messages[0].chatId.toString()
-                const current = prev.find(item => chatId != getRoomId(item.fromId.id, item.toId.id))
-                // @ts-ignore
-                return [{ ...current, hashMessage: messages[0].hashMessage, isView: false, fromId: messages[0].fromId, chatId: messages[0].chatId, toId: messages[0] },
-                ...prev.filter(item => chatId != getRoomId(item.fromId.id, item.toId.id))]
+                const chatId = getRoomId(messages[0].to, messages[0].from)
+                return [
+                    {
+                        ...prev.find(item => chatId == getRoomId(item.fromId.id, item.toId.id)) ?? {},
+                        hashMessage: messages[0].hashMessage,
+                        createdAt: messages[0].createdAt,
+                        toId: { id: messages[0].to },
+                        isView: false,
+                        fromId: messages[0].fromId
+                    },
+                    ...prev.filter(item => chatId != getRoomId(item.fromId.id, item.toId.id))]
             })
         }
     }, [messages])

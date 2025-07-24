@@ -14,7 +14,7 @@ export const userService = {
         return requestGet(`${instance}/search${query}`)
     },
 
-    updateUser: (body: {}) => {
-        return requestPatch(`${instance}`, body)
+    updateUser: (ava: any) => {
+        return requestPatch(`${instance}/2/`, ava, true)
     }
 }

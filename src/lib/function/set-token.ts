@@ -1,6 +1,6 @@
 import { tokenStorage } from "../../export"
 
-export const saveUser = (token: string) => {
+export const setToken = (token: string) => {
     if (token)
         localStorage.setItem(tokenStorage, JSON.stringify({ 'access': token }))
 }

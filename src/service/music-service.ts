@@ -2,6 +2,7 @@ import { requestGet, requestPost } from "../lib/function/request"
 const instance = 'music';
 
 export const musicService = {
+    // @ts-ignore
     searchMusic: (skip: number, take: number, search: string) => {
         return requestGet(`${instance}/search?search=${search.split(' ').join('+')}&page=${skip}`)
     },

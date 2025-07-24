@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn, saveUser } from '../../lib/function'
+import { cn, setToken } from '../../lib/function'
 import { InputEmail, InputText, InputPassword, Button } from '../ui'
 import { TypeUseBoolen } from '../../lib/castom-hook'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -25,7 +25,7 @@ export const RegistrationForm: React.FC<Props> = ({ className, on }: Props) => {
     const onSubmit: SubmitHandler<RegistrationFormDto> = (data) => {
         authService.registration(data)
             // @ts-ignore
-            .then(data => saveUser(data))
+            .then(data => setToken(data))
             .then(() => navigate('/'))
             .catch((error) => setError(error.response.data.message))
     }

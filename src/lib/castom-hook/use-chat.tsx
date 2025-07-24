@@ -70,7 +70,7 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
         socket.emit(en.clientTyping, { roomId, user: userId })
     }
 
-    const sendMessage = (data: { message: string, from: number, files?: any }) => {
+    const sendMessage = (data: { message: string, from: number, files?: { file: File, name: string }[] }) => {
         socket.emit(en.clientSend, { ...data, to: Number(toUserId) })
     }
 

@@ -1,8 +1,10 @@
 import React from 'react'
-import { generateId, renameFile } from '../../../lib/function'
+import { generateId, setToken } from '../../../lib/function'
 import { Button } from '../../ui'
 import { useBoolean } from '../../../lib/castom-hook'
 import { plusImg, uploadImg } from '../../import'
+import { useMutation } from 'react-query'
+import { userService } from '../../../service/user-service'
 
 interface Props {
 }
@@ -20,8 +22,6 @@ export const UploadImgChild: React.FC<Props> = ({ }: Props) => {
         if (!e.target.files[0]) return
 
         setSrc([e.target.files[0]])
-        // @ts-ignore
-        setValue(renameFile(e))
     }
 
     const dragLeaveHandler = (e: React.DragEvent<HTMLLabelElement>) => {
@@ -38,14 +38,28 @@ export const UploadImgChild: React.FC<Props> = ({ }: Props) => {
         e.preventDefault()
 
         e.dataTransfer.files && setSrc([e.dataTransfer.files[0]])
+    }
+
+    const establishFile = useMutation(() => userService.updateUser(returnformData())
+        .then(data => setToken(data))
+        .then(() => location.reload()))
+    const returnformData = () => {
+        const data = new FormData()
         // @ts-ignore
-        setValue(renameFile(e))
+        data.append('ava', document.getElementById(id).files[0])
+
+        return data
+    }
+
+
+    const saveHandler = () => {
+        establishFile.mutate()
     }
 
     return (
         <>
             <div className='small-ava ava absolute right-[-30%]' style={{ backgroundImage: `url(${urls[0]})` }} ></div>
-            <Button place='сохранить' function_={() => { }} className='absolute bottom-[-25%]' />
+            <Button place='сохранить' function_={saveHandler} className='absolute bottom-[-25%]' />
             <input accept='image/png, image/jpeg, image/svg, image/jpg, image/webp' type='file' className='display-none' id={id} onChange={changeHandler} />
             <label
                 className="flex p-0 cursor-pointer pointer-events-auto justify-center items-center w-[400px] h-[300px] modal-upload"

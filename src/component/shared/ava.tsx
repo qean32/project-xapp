@@ -24,7 +24,7 @@ export const Ava: React.FC<Props> = ({ className, avaPath }: Props) => {
             <div
                 className={cn('ava small-ava bg-color-light cursor-pointer', className)}
                 onClick={swap}
-                style={{ backgroundImage: `url(${avaPath})` }}
+                style={{ backgroundImage: `url(http://localhost:3000/${avaPath})` }}
             >
             </div>
         </>

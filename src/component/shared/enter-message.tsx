@@ -23,6 +23,7 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
         document.getElementById('inpit_')?.focus()
     }, [changeMessage])
 
+
     const submitHandler = () => {
         if (changeMessage.hashMessage) {
             updateMessage({ ...changeMessage, hashMessage: message })
@@ -74,7 +75,7 @@ type Props_ = {
 const InputFile: React.FC<Props_> = ({ changeHandler }: Props_) => {
     return (
         <>
-            <input type="file" className="display-none" id="y1" onChange={changeHandler} />
+            <input type="file" multiple className="display-none" id="y1" onChange={changeHandler} />
             <label htmlFor="y1" className="fit-content pointer-events-auto" ><img src={uploadfilemessageImg} width={'29px'} /></label>
         </>
     )

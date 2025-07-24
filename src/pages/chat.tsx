@@ -4,10 +4,7 @@ import { EnterMessage } from "../component/shared"
 import { Message, RightClickMessageWindowComponent } from "../component/shared"
 import React from 'react'
 import { changeTitle } from "../lib/function"
-import { useChat, useHookScroll, usePage, useRequest, useUserInfo } from "../lib/castom-hook"
-import { userService } from "../service/user-service"
-import { useParams } from "react-router-dom"
-import { UserDto } from "../model"
+import { useChat, useHookScroll, usePage, useUserInfo } from "../lib/castom-hook"
 import { ScrollHandler } from "../component/ui"
 
 export const Chat = () => {
@@ -35,17 +32,14 @@ type Props = {}
 const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
     const { messages, refHandler, refParent } = useChat({ getData: true });
     const user = useUserInfo();
-    const { id } = useParams<{ id: string }>();
     useHookScroll(refParent);
-    // @ts-ignore
-    const { finaldata: opponent } = useRequest<UserDto>(() => userService.getUser(id), ['get-user']);
 
     return (
         <div className="flex flex-col-reverse relative gap-5 py-6 overflow-y-scroll" ref={refParent} >
             <RightClickMessageWindowComponent />
             {messages && messages.map((item) => {
 
-                return <Message user={user} message={item} key={item.id} opponent={opponent[0]} />
+                return <Message user={user} message={item} key={item.id} />
             })}
 
             <ScrollHandler refHandler={refHandler} />
