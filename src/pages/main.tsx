@@ -4,15 +4,21 @@ import { DftSETPage, GroupContainer } from "../component/hoc"
 import { Music, SearchGroup } from "../component/shared"
 import { } from "../component/ui"
 import { useAppDispatch } from "../lib/castom-hook/redux"
-import { changeTitle, selectMusic } from "../lib/function"
+import { changeTitle, isTrueAudio, selectMusic } from "../lib/function"
 import { usePage } from "../lib/castom-hook"
 import { musicService } from "../service/music-service"
 import { MusicDto } from "../model"
+import { swapDownload } from "../store/is-downloading"
 
 export const Main = () => {
     const dispatch = useAppDispatch();
     usePage();
-    const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, array: MusicDto[]) => selectMusic(e, dispatch, array)
+    const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, array: MusicDto[]) => {
+        // @ts-ignore
+        if (typeof (isTrueAudio(e.target.children[1].children[1].href)) != 'string')
+            dispatch(swapDownload())
+        selectMusic(e, dispatch, array)
+    }
     changeTitle('главная')
 
     return (

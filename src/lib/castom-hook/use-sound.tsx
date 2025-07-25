@@ -1,9 +1,10 @@
 import React from "react";
-import { MusicDto } from "../../../model";
-import { useBoolean } from "../use-boolean";
-import { useAppSelector, useAppDispatch } from '../redux'
-import { swapOnlyCurrent, swapMusic } from '../../../store/music'
-import { rndArray } from "../../function";
+import { MusicDto } from "../../model";
+import { useBoolean } from "./use-boolean";
+import { useAppSelector, useAppDispatch } from './redux'
+import { swapOnlyCurrent, swapMusic } from '../../store/music'
+import { getAudioUrl, isTrueAudio, rndArray } from "../function";
+import { swapDownload } from "../../store/is-downloading";
 
 
 export const useSound = () => {
@@ -40,19 +41,21 @@ export const useSound = () => {
         }
     }, [isPlay, current])
 
-    const back = () => {
+    const back = async () => {
         const index = playList.findIndex((item: MusicDto) => item.link == current.link);
         if (index == 0) {
-            dispatch(swapOnlyCurrent(playList[playList.length - 1]))
+            const newCurrent = playList[playList.length - 1]
+            swapMusic_(newCurrent)
         }
         else {
-            dispatch(swapOnlyCurrent(playList[index - 1]))
+            const newCurrent = playList[index - 1]
+            swapMusic_(newCurrent)
         }
         audioElem.current.currentTime = 0;
     }
 
 
-    const next = () => {
+    const next = async () => {
         if (playList.length) {
             const index = playList.findIndex((item: MusicDto) => item.link == current.link);
 
@@ -60,7 +63,8 @@ export const useSound = () => {
                 dispatch(swapOnlyCurrent(playList[0]))
             }
             else {
-                dispatch(swapOnlyCurrent(playList[index + 1]))
+                const newCurrent = playList[index + 1]
+                swapMusic_(newCurrent)
             }
             audioElem.current.currentTime = 0;
         }
@@ -71,6 +75,12 @@ export const useSound = () => {
         const ct = audioElem.current.currentTime;
 
         dispatch(swapOnlyCurrent({ ...current, "progress": ct / duration * 100, "length": duration }))
+    }
+
+    async function swapMusic_(newCurrent: MusicDto) {
+        if (typeof (isTrueAudio(newCurrent.link)) != 'string')
+            dispatch(swapDownload())
+        dispatch(swapOnlyCurrent({ ...newCurrent, link: isTrueAudio(newCurrent.link) ? newCurrent.link : await getAudioUrl(newCurrent.link) }))
     }
 
     return { current, next, back, play, audioElem, isPlay, onPlaying, isNewAudio }

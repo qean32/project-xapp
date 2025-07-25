@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useDebounce } from "../use-debounce"
+import { useDebounce } from "./use-debounce"
 
 export const useSearch = <T,>(array: T[], searchField: string, secondSearchField: string = '') => {
     const [search, setSearch] = React.useState('')

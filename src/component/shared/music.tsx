@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn } from '../../lib/function'
+import { cn, isTrueAudio } from '../../lib/function'
 import { useBoolean } from '../../lib/castom-hook'
 import { createPortal } from 'react-dom'
 import { PlayListModal } from '../children'
@@ -34,8 +34,8 @@ export const Music: React.FC<Props> = ({ className = 'music', music }: Props) =>
                 <div className='flex gap-3 pl-5'>
                     <img className='cursor-pointer pointer-events-auto' src={playlistImg} alt="" onClick={swap} />
                     <a
-                        download={'music.mp3'}
-                        href={music.link}
+                        download={true}
+                        href={isTrueAudio(music.link) ? music.link : music.link.split('/').at(-1)}
                     ><img className='cursor-pointer pointer-events-auto' src={downloadImg} alt="" /></a>
                 </div>
             </div>

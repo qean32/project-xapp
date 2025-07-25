@@ -124,3 +124,20 @@
         opacity: 1;
     }
 }
+
+.is-downloading-anim {
+    animation: IsDonwloadingAnim .7s;
+    transform: translate(-50%, 0);
+}
+
+@keyframes IsDonwloadingAnim {
+    from {
+        transform: translate(-50%, -20px);
+        opacity: .4;
+    }
+
+    to {
+        transform: translate(-50%, 0px);
+        opacity: 1;
+    }
+}
