@@ -4,6 +4,7 @@ export const en = {
     connection: 'connection',
     disconnection: 'disconnection',
 
+    notificationSend: 'notificationSend',
     serverSend: "serverSend",
     serverView: "serverView",
     serverTyping: "serverTyping",

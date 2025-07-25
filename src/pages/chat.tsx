@@ -30,7 +30,7 @@ export const Chat = () => {
 type Props = {}
 
 const GroupMessages: React.FC<Props> = React.memo(({ }: Props) => {
-    const { messages, refHandler, refParent } = useChat({ getData: true });
+    const { messages, refHandler, refParent } = useChat({ setData: true });
     const user = useUserInfo();
     useHookScroll(refParent);
 

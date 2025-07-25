@@ -1,9 +1,9 @@
 import React from 'react'
-import { cn, getDataId } from '../../lib/function'
+import { cn, getDataId, getToken } from '../../lib/function'
 import { ClickHocFn } from '../hoc'
 import { IconAndAText } from '../ui'
 import { useNavigate } from 'react-router-dom'
-import { useBoolean } from '../../lib/castom-hook'
+import { useBoolean, useNotification } from '../../lib/castom-hook'
 import { createPortal } from 'react-dom'
 import { ModalSET } from './modal-set'
 import { PlayListModal } from '../children'
@@ -18,6 +18,12 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
     const { boolean: notification, swap: swapNotification } = useBoolean(false)
     const { boolean, swap } = useBoolean(false)
     const navigate = useNavigate()
+    const messages = getToken() ? useNotification() : { messages: [] }
+    React.useEffect(() => {
+        if (messages.messages.length > 0) {
+            swapNotification()
+        }
+    }, [messages.messages])
 
     const clickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         if (getDataId(e.target) == '-1') {
@@ -37,17 +43,9 @@ export const LeftNavigate: React.FC<Props> = React.memo(({ className }: Props) =
     React.useEffect(() => {
         if (notification && ref.current) {
             // @ts-ignore
-            ref.current.volume = 0.0
-            // @ts-ignore
-            ref.current.play()
+            ref.current.volume = 0.3; ref.current.play()
         }
     }, [notification])
-
-    React.useEffect(() => {
-        setTimeout(() => {
-            swapNotification()
-        }, 2000);
-    }, [])
 
     return (
         <div className={cn('h-100 fit-content min-w-[60px]', className)}>

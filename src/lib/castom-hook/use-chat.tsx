@@ -8,17 +8,14 @@ import { getRoomId, getToken } from "../function"
 import { useParams } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
 
-export const useChat = ({ getData = false, isTyping = false, userRoom = false }: { userRoom?: boolean, getData?: boolean, isTyping?: boolean }) => {
+export const useChat = ({ isTyping = false, setData = false }: { isTyping?: boolean, setData?: boolean }) => {
     const { id: userId }: { id: number } = jwtDecode(getToken());
     const { id: toUserId } = useParams();
-    const roomId = !userRoom ? getRoomId(Number(toUserId), userId) : userId.toString()
+    const roomId = getRoomId(Number(toUserId), userId)
     const windowFosused = useWindowFocused()
 
     const { finaldata: messages, setFinalData: setMessages, skip, setSkip, refHandler, refParent }
-        = getData ?
-            useChatDinamickPagination<MessageDto>(() => messageService.getMessages(skip, 10, Number(toUserId ?? userId)), [`messages${toUserId ?? userId}`])
-            :
-            { finaldata: [], setFinalData: () => { }, setSkip: () => { }, skip: 0, refParent: null };
+        = useChatDinamickPagination<MessageDto>(() => messageService.getMessages(skip, 10, Number(toUserId ?? userId)), [`messages${toUserId ?? userId}`])
 
     const { boolean: companionTyping, on, off } = useBoolean(false)
     const debounceCompanionTyping = useDebounce(companionTyping, 600)
@@ -31,8 +28,10 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
     React.useEffect(() => {
         socket.emit(en.connection, { roomId });
         socket.on(en.serverSend, (payload: MessageDto) => {
-            setSkip(prev => ++prev)
-            setMessages(prev => [payload, ...prev])
+            if (setData) {
+                setSkip(prev => ++prev)
+                setMessages(prev => [payload, ...prev])
+            }
         })
         socket.on(en.serverTyping, ({ user }: { user: number }) => {
             if (user != userId && isTyping) {
@@ -83,7 +82,7 @@ export const useChat = ({ getData = false, isTyping = false, userRoom = false }:
     }
 
     const viewMessage = (messages: MessageDto[]) => {
-        if (!userRoom) {
+        if (setData) {
             socket.emit(en.clientView, { messages, roomId })
         }
     }

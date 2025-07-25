@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDinamickPagination, useChat } from '../../../lib/castom-hook'
+import { useDinamickPagination, useNotification } from '../../../lib/castom-hook'
 import { useAppSelector } from '../../../lib/castom-hook/redux'
 import { getDataId, getRoomId } from '../../../lib/function'
 import { ChatDto } from '../../../model'
@@ -23,7 +23,7 @@ export const ChatsChild: React.FC<Props> = ({ }: Props) => {
     const { refHandler, refParent, finaldata: array, skip, setFinalData }
         = useDinamickPagination<ChatDto>(() => messageService.getChats(skip, 10, search), ['chats'], 0, search);
 
-    const { messages } = useChat({ userRoom: true, getData: true });
+    const { messages } = useNotification();
     React.useEffect(() => {
         if (messages.length) {
             // @ts-ignore
