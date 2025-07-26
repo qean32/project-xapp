@@ -1,3 +1,4 @@
+import { serverHost } from "../../export";
 import { cn, IsImageFile } from "../../lib/function";
 import { MessageDto, UserDto } from "../../model";
 import { useAppDispatch } from "../../store";
@@ -32,13 +33,13 @@ export const Message: React.FC<Props> = ({ message, user }: Props) => {
 
                 <div>
                     {message.files && message.files.split(', ').filter(item => !IsImageFile(item)).map(item => {
-                        return <FileInMessage path={`http://localhost:3000/${item}`} key={item} />
+                        return <FileInMessage path={`${serverHost}file/${item}`} key={item} />
                     })}
                 </div>
 
                 <div className="flex items-start gap-3 flex-wrap">
                     {message.files && message.files.split(', ').filter(item => IsImageFile(item)).map(item => {
-                        return <FileInMessage path={`http://localhost:3000/${item}`} key={item} />
+                        return <FileInMessage path={`${serverHost}file/${item}`} key={item} />
                     })}
                 </div>
             </div>

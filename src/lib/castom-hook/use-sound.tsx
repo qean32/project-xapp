@@ -4,7 +4,8 @@ import { useBoolean } from "./use-boolean";
 import { useAppSelector, useAppDispatch } from './redux'
 import { swapOnlyCurrent, swapMusic } from '../../store/music'
 import { getAudioUrl, isTrueAudio, rndArray } from "../function";
-import { swapDownload } from "../../store/is-downloading";
+import { swapBigFileNotification, swapDownloadFileNotification } from "../../store/state-file";
+import { bigFileMessage } from "../../export";
 
 
 export const useSound = () => {
@@ -41,30 +42,26 @@ export const useSound = () => {
         }
     }, [isPlay, current])
 
-    const back = async () => {
+    const back = async (_?: any, swapCount: number = 1) => {
         const index = playList.findIndex((item: MusicDto) => item.link == current.link);
-        if (index == 0) {
-            const newCurrent = playList[playList.length - 1]
-            swapMusic_(newCurrent)
+        if (index <= 0) {
+            swapMusic_(playList[playList.length - swapCount], 'back')
         }
         else {
-            const newCurrent = playList[index - 1]
-            swapMusic_(newCurrent)
+            swapMusic_(playList[index - swapCount], "back")
         }
         audioElem.current.currentTime = 0;
     }
 
 
-    const next = async () => {
+    const next = async (_?: any, swapCount: number = 1) => {
         if (playList.length) {
             const index = playList.findIndex((item: MusicDto) => item.link == current.link);
-
-            if (index == playList.length - 1) {
-                dispatch(swapOnlyCurrent(playList[0]))
+            if (index >= playList.length - swapCount) {
+                swapMusic_(playList[0], 'next')
             }
             else {
-                const newCurrent = playList[index + 1]
-                swapMusic_(newCurrent)
+                swapMusic_(playList[index + swapCount], "next")
             }
             audioElem.current.currentTime = 0;
         }
@@ -77,10 +74,17 @@ export const useSound = () => {
         dispatch(swapOnlyCurrent({ ...current, "progress": ct / duration * 100, "length": duration }))
     }
 
-    async function swapMusic_(newCurrent: MusicDto) {
-        if (typeof (isTrueAudio(newCurrent.link)) != 'string')
-            dispatch(swapDownload())
-        dispatch(swapOnlyCurrent({ ...newCurrent, link: isTrueAudio(newCurrent.link) ? newCurrent.link : await getAudioUrl(newCurrent.link) }))
+    async function swapMusic_(newCurrent: MusicDto, direction?: 'next' | 'back') {
+        const isTrue = isTrueAudio(newCurrent.link)
+        if (typeof isTrue != 'string')
+            dispatch(swapDownloadFileNotification())
+        if (isTrue != bigFileMessage) {
+            dispatch(swapOnlyCurrent({ ...newCurrent, link: isTrueAudio(newCurrent.link) ? newCurrent.link : await getAudioUrl(newCurrent.link) }))
+        } else {
+            dispatch(swapBigFileNotification())
+            direction == 'next' && next(0, 2)
+            direction == 'back' && back(0, 2)
+        }
     }
 
     return { current, next, back, play, audioElem, isPlay, onPlaying, isNewAudio }

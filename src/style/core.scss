@@ -140,6 +140,10 @@ main {
 .adaptive-bottom-tool {
   width: 790px;
   transform: translateX(-60px);
+
+  & p {
+    width: 160px !important;
+  }
 }
 
 @media screen and (max-width: 1277px) {
@@ -174,7 +178,7 @@ main {
   }
 
   .abaptive-text-music {
-    max-width: 460px;
+    max-width: 410px;
   }
 
   .adaptive-bottom-tool {
@@ -189,7 +193,7 @@ main {
   }
 
   .abaptive-text-music {
-    max-width: 420px;
+    max-width: 390px;
   }
 
   .adaptive-bottom-tool {
@@ -208,7 +212,7 @@ main {
   }
 
   .abaptive-text-music {
-    max-width: 320px;
+    max-width: 320px !important;
   }
 
   .adaptive-bottom-tool {

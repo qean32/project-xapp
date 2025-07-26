@@ -4,6 +4,7 @@ import { useBoolean } from '../../lib/castom-hook'
 import { createPortal } from 'react-dom'
 import { UploadImgChild } from '../children'
 import { ModalSET } from '../general'
+import { serverHost } from '../../export'
 
 interface Props {
     className?: string
@@ -24,7 +25,7 @@ export const Ava: React.FC<Props> = ({ className, avaPath }: Props) => {
             <div
                 className={cn('ava small-ava bg-color-light cursor-pointer', className)}
                 onClick={swap}
-                style={{ backgroundImage: `url(http://localhost:3000/${avaPath})` }}
+                style={{ backgroundImage: `url(${serverHost}file/${avaPath})` }}
             >
             </div>
         </>

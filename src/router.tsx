@@ -7,7 +7,7 @@ import * as _ from './pages'
 import { store } from './store'
 import { Provider } from 'react-redux'
 import { BottomTool, TopMenu } from "./component/shared"
-import { IsDownloading } from "./component/ui"
+import { Notification } from "./component/ui"
 
 export const Router = () => {
     return (
@@ -16,7 +16,7 @@ export const Router = () => {
             <Provider store={store} >
                 <BottomTool />
                 <TopMenu />
-                <IsDownloading />
+                <Notification />
                 <Routes>
 
                     <Route path="" element={<_.Main />} />

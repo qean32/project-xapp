@@ -8,7 +8,7 @@ import { changeTitle, isTrueAudio, selectMusic } from "../lib/function"
 import { usePage } from "../lib/castom-hook"
 import { musicService } from "../service/music-service"
 import { MusicDto } from "../model"
-import { swapDownload } from "../store/is-downloading"
+import { swapDownload } from "../store/state-file"
 
 export const Main = () => {
     const dispatch = useAppDispatch();
