@@ -1,0 +1,135 @@
+@use '../import' as *;
+
+input {
+    background-color: $bg-color-light !important;
+    padding: 10px 18px !important;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
+    min-height: 31px;
+    width: 100%;
+    font-size: 18px !important;
+}
+
+.input-padding {
+    padding: 14px 20px !important;
+}
+
+label {
+    @include positioncenterbyflex;
+    justify-content: start;
+    padding: 0 0 0 20px;
+    width: 100%;
+    pointer-events: none;
+    cursor: pointer;
+}
+
+label>p {
+    transition: .7s;
+    font-size: 16px;
+}
+
+input:focus {
+    border: 1px solid $bg-color-light-;
+}
+
+input[type=search] {
+    border: 1px solid transparent !important;
+    padding: 12px 20px !important;
+}
+
+.transform-label {
+    transform: translate(-.4vh, -25px)
+}
+
+.inputwarning {
+    color: #E74343;
+    position: absolute;
+    bottom: -25px;
+    left: 5px;
+    font-size: 14px;
+    transition: .5s;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.count-input {
+    left: -3vh;
+    font-size: 12px;
+}
+
+.lockpass {
+    position: absolute;
+    right: 1.5vh;
+    top: 1.5vh;
+}
+
+input[type=checkbox] {
+    width: 13px;
+    border: 2px solid $bg-color-dark;
+}
+
+button {
+    padding: 0.6em 1.6em !important;
+    font-size: 1em;
+    background-color: $bg-color-light !important;
+    transition: $dft-transition;
+    border-color: $bg-color-light 1px solid;
+}
+
+button:hover {
+    background-color: $bg-color-light- !important;
+}
+
+input[type=comment] {
+    border-radius: 10px;
+    padding: 8px 0 12px 15px !important;
+
+    &:focus {
+        border: 1px solid transparent;
+    }
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border: none !important;
+    height: 14px !important;
+    min-height: min-content !important;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 14px !important;
+    background: $bg-color-dark;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 14px !important;
+    background: $bg-color-dark;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 14px !important;
+    width: 14px !important;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid $bg-color-light;
+
+    box-shadow: -407px 0 0 400px $bg-color-light;
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid $bg-color-light;
+    box-shadow: -407px 0 0 400px $bg-color-light;
+}

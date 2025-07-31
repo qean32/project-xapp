@@ -1,0 +1,1 @@
+export type IpcEventNameDto = 'CHANGE-SIZE-OVERLAY-WINDOW' | 'CLOSE' | 'HIDE' | 'CHANGE-WiNDOW'

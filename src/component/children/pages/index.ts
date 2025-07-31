@@ -1,0 +1,1 @@
+export { ChatsChild } from './chats-child'

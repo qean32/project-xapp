@@ -3,9 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "src/e/main.js",
+  "main": "src/electron/main.js",
   "scripts": {
     "dev": "vite",
+    "scss": "npx sass ./src/style/core.scss:src/style/core/core.css",
     "dev:electron": "electron .",
     "build": "tsc -b && vite build",
     "dist:win": "electron-builder --win --x64",
@@ -13,26 +14,37 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/vite": "^4.1.7",
     "axios": "^1.9.0",
+    "electron-router-dom": "^2.1.0",
+    "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sass": "^1.89.0",
+    "react-hook-form": "^7.58.1",
+    "react-query": "^3.39.3",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.6.2",
+    "redux-state-sync": "^3.1.4",
     "socket.io-client": "^4.8.1",
-    "tailwindcss": "^4.1.7"
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/redux-state-sync": "^3.1.10",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.21",
     "electron": "^36.2.0",
     "electron-builder": "^26.0.12",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
   }

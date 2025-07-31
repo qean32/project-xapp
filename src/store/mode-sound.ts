@@ -1,24 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-type ModeSoundDto = 'repeat-playList' | 'repeat-music' | 'compilation' | 'random';
-const initialState: ModeSoundDto = 'repeat-playList'
+export type ModeSoundDto = { mode: 'repeat' | 'repeat-music' | 'random-play'; }
+const initialState: ModeSoundDto = { mode: 'repeat' }
 
-const map = new Map([
-    ['repeat-playList', 'repeat-music'],
-    ['repeat-music', 'compilation'],
-    ['compilation', 'random'],
-    ['random', 'repeat-playList'],
+export const mapModeSound = new Map([
+    ['repeat', 'repeat-music'],
+    ['repeat-music', 'random-play'],
+    ['random-play', 'repeat'],
 ])
 
-export const modeSound: any = createSlice({
+const modeSoundSlice = createSlice({
     name: 'mode-sound',
     initialState,
     reducers: {
         swap: (state: ModeSoundDto) => {
             // @ts-ignore
-            state = map.get(state)
+            state.mode = mapModeSound.get(state.mode)
         }
     }
 })
 
-export const { swap } = modeSound.actions
+export const modeSoundReducer = modeSoundSlice.reducer
+export const { swap } = modeSoundSlice.actions

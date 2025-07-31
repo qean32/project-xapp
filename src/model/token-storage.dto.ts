@@ -1,2 +1,3 @@
-export interface TokenStorage {
+export interface TokenStorageDto {
+    access: string
 }

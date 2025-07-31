@@ -1,0 +1,143 @@
+@use 'import' as *;
+
+.whitesmoke {
+    color: whitesmoke !important;
+}
+
+.small {
+    width: 18px;
+    height: 18px;
+}
+
+.small- {
+    width: 23px;
+    height: 23px;
+}
+
+.medium {
+    width: 30px;
+    height: 30px;
+}
+
+.small-ava {
+    width: 60px;
+    height: 45px;
+    background-color: $bg-color-light;
+    border-radius: 5px;
+    background-position: center;
+    background-size: cover;
+}
+
+.ava {
+    height: 70px;
+    width: 100px;
+}
+
+.trans-5 {
+    transform: translateY(5px);
+}
+
+.trans-10 {
+    transform: translateY(10px);
+}
+
+.small-to-top {
+    transition: $dft-transition;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.transform-40 {
+    transform: translateY(-40px) !important;
+}
+
+.music:hover {
+    background-color: $bg-color-light;
+}
+
+.messagecontext {
+    max-width: 80%;
+    min-width: 20%;
+    background-color: $bg-color-light;
+}
+
+.m-reverse {
+    border-radius: 10px 0 10px 10px !important;
+}
+
+.m-line {
+    border-radius: 0 10px 10px 10px;
+}
+
+.rightClickMessageWindow {
+    & p:hover {
+        background-color: $bg-color-light;
+    }
+}
+
+.overlay {
+    cursor: pointer;
+    transition: $dft-transition;
+}
+
+.current-music {
+    width: 440px;
+
+    & img {
+        transform: translateY(15px);
+    }
+
+    & .small-ava {
+        width: 70px !important;
+        height: 50px !important;
+    }
+
+    & p {
+        font-size: 18px;
+        max-width: 205px;
+    }
+}
+
+.carousel-img {
+    transform: translateY(-70px);
+}
+
+.notification-anim {
+    opacity: 1;
+    animation: notification-anim-anim .6s;
+}
+
+@keyframes notification-anim-anim {
+    0% {
+        opacity: .6;
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.is-downloading-anim {
+    animation: IsDonwloadingAnim .7s;
+    transform: translate(-50%, 0);
+}
+
+@keyframes IsDonwloadingAnim {
+    from {
+        transform: translate(-50%, -20px);
+        opacity: .4;
+    }
+
+    to {
+        transform: translate(-50%, 0px);
+        opacity: 1;
+    }
+}

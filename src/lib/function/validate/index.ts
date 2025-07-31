@@ -1,4 +1,4 @@
-export { } from './validate-word-to-word'
-export { } from './validete-email'
-export { } from './validete-login'
-export { } from './validete-password'
+export { validateWordToWord } from './validate-word-to-word'
+export { validateEmail } from './validete-email'
+export { validateLogin } from './validete-login'
+export { validatePassword } from './validete-password'
