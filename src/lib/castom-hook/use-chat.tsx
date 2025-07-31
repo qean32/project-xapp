@@ -1,5 +1,5 @@
 import React from "react"
-import { MessageDto } from "../../model"
+import { IdDto, MessageDto } from "../../model"
 import { socket } from "../socket-config"
 import { en } from "../../export"
 import { useBoolean, useDebounce, useChatDinamickPagination, useWindowFocused } from "."
@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
 
 export const useChat = ({ isTyping = false, setData = false }: { isTyping?: boolean, setData?: boolean }) => {
-    const { id: userId }: { id: number } = jwtDecode(getToken());
+    const { id: userId }: IdDto = jwtDecode(getToken());
     const { id: toUserId } = useParams();
     const roomId = getRoomId(Number(toUserId), userId)
     const windowFosused = useWindowFocused()

@@ -4,9 +4,8 @@ import { useRequest } from '../../../lib/castom-hook'
 import { PlayListShortDto } from '../../../model'
 import { useAppSelector } from '../../../lib/castom-hook/redux'
 import { musicService } from '../../../service/music-service'
-
 interface Props {
-    fn: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+    fn?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 export const PlayListModal: React.FC<Props> = ({ fn }: Props) => {

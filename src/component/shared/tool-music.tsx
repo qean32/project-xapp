@@ -15,17 +15,12 @@ interface Props {
 
 export const ToolMusic: React.FC<Props> = ({ className = 'p-5', left = true, small = false }: Props) => {
     const { audioElem, back, current, next, play, isPlay, onPlaying, isNewAudio } = useSound();
-    const { value } = useAppSelector(state => state.audioValue);
     const { mode } = useAppSelector(state => state.modeSound);
+    const { value } = useAppSelector(state => state.audioValue);
 
-    const modeSound = React.useMemo(() => new Map([
-        ['repeat', next],
-        ['repeat-music', () => { }],
-        ['random-play', next],
-    ]), [])
     const endAudio = () => {
-        // @ts-ignore
-        modeSound.get(mode)()
+        mode == 'repeat' && next();
+        mode == 'random-play' && next();
     }
 
     React.useEffect(() => {

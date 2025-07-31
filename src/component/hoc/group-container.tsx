@@ -7,8 +7,8 @@ import { useAppSelector } from '../../lib/castom-hook/redux';
 interface Props {
     className?: string
     Component: React.ReactNode | React.FC | any
-    clickHandler: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
     componentPropsName: string
+    clickHandler: (...args: any) => void
     array: any[]
 }
 

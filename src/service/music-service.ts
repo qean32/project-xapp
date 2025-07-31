@@ -17,6 +17,10 @@ export const musicService = {
         return requestGet(`${instance}/playlists`)
     },
 
+    getPlayList: (id: string) => {
+        return requestGet(`${instance}/playlist?id=${id}`)
+    },
+
     addToPlayList: (body: {
         playlistId: number
         urlMusic: string

@@ -44,9 +44,12 @@ const musicSlice = createSlice({
                 }
                 return item
             })
+        },
+        swapCurrent: (state: MusicSliceDto, payload: PayloadAction<MusicDto>) => {
+            state.current = payload.payload
         }
     }
 })
 
 export const musicReducer = musicSlice.reducer
-export const { swapMusic, swapOnlyCurrent } = musicSlice.actions
+export const { swapMusic, swapOnlyCurrent, swapCurrent } = musicSlice.actions

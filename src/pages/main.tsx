@@ -8,15 +8,15 @@ import { changeTitle, isTrueAudio, selectMusic } from "../lib/function"
 import { usePage } from "../lib/castom-hook"
 import { musicService } from "../service/music-service"
 import { MusicDto } from "../model"
-import { swapDownload } from "../store/state-file"
+import { swapDownloadFileNotification } from "../store/state-file"
 
 export const Main = () => {
     const dispatch = useAppDispatch();
     usePage();
     const selectFn = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, array: MusicDto[]) => {
         // @ts-ignore
-        if (typeof (isTrueAudio(e.target.children[1].children[1].href)) != 'string')
-            dispatch(swapDownload())
+        if (e.target.children[1] && typeof (isTrueAudio(e.target.children[1].children[1].href)) != 'string')
+            dispatch(swapDownloadFileNotification())
         selectMusic(e, dispatch, array)
     }
     changeTitle('главная')
