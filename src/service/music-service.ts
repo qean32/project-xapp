@@ -2,15 +2,15 @@ import { requestGet, requestPost } from "../lib/function/request"
 const instance = 'music';
 
 export const musicService = {
-    // @ts-ignore
     searchMusic: (skip: number, take: number, search: string) => {
         return requestGet(`${instance}/search?search=${search.split(' ').join('+')}&page=${skip}`)
+        take
     },
 
-    createPlayList: (body: {
+    createPlayList: (data: {
         name: string
     }) => {
-        return requestPost(`${instance}/create-playlist`, body)
+        return requestPost(`${instance}/create-playlist`, data)
     },
 
     getPlayLists: () => {
@@ -21,11 +21,23 @@ export const musicService = {
         return requestGet(`${instance}/playlist?id=${id}`)
     },
 
-    addToPlayList: (body: {
+    addToPlayList: (data: {
         playlistId: number
-        urlMusic: string
+        ava: string
+        name: string
+        link: string
     }
     ) => {
-        return requestPost(`add-to-playlist`, body)
+        return requestPost(`${instance}/add-to-playlist`, data)
+    },
+
+    removeFromPlayList: (data: {
+        playlistId: number
+        ava: string
+        name: string
+        link: string
+    }
+    ) => {
+        return requestPost(`${instance}/remove-from-playlist`, data)
     }
 }

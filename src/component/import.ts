@@ -31,6 +31,7 @@ import nextarrowImg from '../../public/svg/next-arrow.svg'
 import nextmainarrowImg from '../../public/svg/next-main-arrow.svg'
 import soundvalue_img from '../../public/svg/sound-value-.svg'
 import soundvalue__img from '../../public/svg/sound-value--.svg'
+import recoverImg from '../../public/svg/recover.svg'
 
 import empielogoImg from '../../public/svg/empie-logo.svg'
 import animalhideImg from '../../public/svg/animal-hide.svg'
@@ -52,6 +53,7 @@ export {
     sneakersImg,
     musicImg,
 
+    recoverImg,
     soundvalue_img,
     soundvalue__img,
     acceptImg,

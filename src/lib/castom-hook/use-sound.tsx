@@ -4,7 +4,7 @@ import { useBoolean } from "./use-boolean";
 import { useAppSelector, useAppDispatch } from './redux'
 import { swapOnlyCurrent, swapMusic, swapCurrent } from '../../store/music'
 import { getAudioUrl, isTrueAudio, rndArray } from "../function";
-import { swapBigFileNotification, swapDownloadFileNotification } from "../../store/state-file";
+import { swapBigFileNotification, swapDownloadFileNotification } from "../../store/notification";
 import { bigFileMessage } from "../../export";
 
 

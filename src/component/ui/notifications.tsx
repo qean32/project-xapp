@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../lib/castom-hook/redux'
-import { swapBigFileNotification, swapDownloadFileNotification } from '../../store/state-file'
+import { swapAddedNotification, swapBigFileNotification, swapDownloadFileNotification } from '../../store/notification'
 import { NotificationHoc } from '../hoc'
 import { bigFileMessage } from '../../export'
 
@@ -9,7 +9,7 @@ interface Props {
 
 
 export const Notification: React.FC<Props> = ({ }: Props) => {
-    const { download, bigFile } = useAppSelector(state => state.stateFile)
+    const { added, download, bigFile } = useAppSelector(state => state.notification)
     const { current } = useAppSelector(state => state.music)
     const dispatch = useAppDispatch()
 
@@ -21,6 +21,10 @@ export const Notification: React.FC<Props> = ({ }: Props) => {
         if (bigFile)
             setTimeout(() => dispatch(swapBigFileNotification()), 2100)
     }, [bigFile])
+    React.useEffect(() => {
+        if (added)
+            setTimeout(() => dispatch(swapAddedNotification()), 2100)
+    }, [added])
     return (
         <>
             <NotificationHoc view={(!!(current.link == bigFileMessage) || bigFile)} >
@@ -28,6 +32,9 @@ export const Notification: React.FC<Props> = ({ }: Props) => {
             </NotificationHoc>
             <NotificationHoc view={download} >
                 Загрузка аудиофайла...
+            </NotificationHoc>
+            <NotificationHoc view={added} >
+                Плейлист обнавлен!
             </NotificationHoc>
         </>
     )

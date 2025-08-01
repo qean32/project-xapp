@@ -8,6 +8,7 @@ import { store } from './store'
 import { Provider } from 'react-redux'
 import { BottomTool, TopMenu } from "./component/shared"
 import { Notification } from "./component/ui"
+import { RefreshToken } from "./component/general"
 
 export const Router = () => {
     return (
@@ -17,6 +18,7 @@ export const Router = () => {
                 <BottomTool />
                 <TopMenu />
                 <Notification />
+                <RefreshToken />
                 <Routes>
 
                     <Route path="" element={<_.Main />} />
