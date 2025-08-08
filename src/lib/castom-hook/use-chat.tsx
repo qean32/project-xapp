@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
 
 export const useChat = ({ isTyping = false, setData = false }: { isTyping?: boolean, setData?: boolean }) => {
-    const { id: userId }: IdDto = jwtDecode(getToken());
+    const { id: userId }: IdDto = getToken() ? jwtDecode(getToken()) : { id: 0 };
     const { id: toUserId } = useParams();
     const roomId = getRoomId(Number(toUserId), userId)
     const windowFosused = useWindowFocused()

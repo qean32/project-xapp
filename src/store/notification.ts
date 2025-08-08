@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-type notificationSliceDto = { download: boolean, bigFile: boolean, added: boolean }
-const initialState: notificationSliceDto = { download: false, bigFile: false, added: false }
+type notificationSliceDto = { download: boolean, largeFile: boolean, added: boolean }
+const initialState: notificationSliceDto = { download: false, largeFile: false, added: false }
 
 const notificationSlice = createSlice({
     name: 'notification',
@@ -10,8 +10,8 @@ const notificationSlice = createSlice({
         swapDownloadFileNotification: (state: notificationSliceDto) => {
             state.download = !state.download
         },
-        swapBigFileNotification: (state: notificationSliceDto) => {
-            state.bigFile = !state.bigFile
+        swapLargeFileNotification: (state: notificationSliceDto) => {
+            state.largeFile = !state.largeFile
         },
         swapAddedNotification: (state: notificationSliceDto) => {
             state.added = !state.added
@@ -20,4 +20,4 @@ const notificationSlice = createSlice({
 })
 
 export const notificationReducer = notificationSlice.reducer
-export const { swapDownloadFileNotification, swapBigFileNotification, swapAddedNotification } = notificationSlice.actions
+export const { swapDownloadFileNotification, swapLargeFileNotification, swapAddedNotification } = notificationSlice.actions

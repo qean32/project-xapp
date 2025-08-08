@@ -1,5 +1,6 @@
 import React from 'react'
 import { cn } from '../../lib/function'
+import { serverHost } from '../../export'
 
 interface Props {
     className?: string
@@ -9,6 +10,6 @@ interface Props {
 
 export const SmallAva: React.FC<Props> = ({ className, path }: Props) => {
     return (
-        <div className={cn('small-ava', className)} style={{ backgroundImage: `url(${!path.includes('http') ? 'http://localhost:3000/' + path : path})` }} ></div>
+        <div className={cn('small-ava', className)} style={{ backgroundImage: `url(${!path.includes('http') ? `${serverHost}file/` + path : path})` }} ></div>
     )
 }

@@ -33,7 +33,8 @@ export { axiosInstance } from './service/instance'
 // export const host = 'http://localhost:5173/'
 export const serverHost = 'http://localhost:3000/'
 export const tokenStorage = 'tokenStorage'
-export const bigFileMessage = 'Слишком большой фаил'
+export const largeFileMessage = 'Слишком большой фаил'
+export const invalidTokenMessage = 'invalid token!'
 
 export const customAttribute = {
     dataId: 'data-id'

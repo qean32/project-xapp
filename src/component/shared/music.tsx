@@ -7,7 +7,7 @@ import { ModalSET } from '../general'
 import { MusicDto } from '../../model'
 import { downloadImg, playlistImg } from '../import'
 import { SmallAva } from '../ui'
-import { bigFileMessage } from '../../export'
+import { largeFileMessage } from '../../export'
 import { swapAddedNotification } from '../../store/notification'
 import { musicService } from '../../service/music-service'
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
 export const Music: React.FC<Props> = ({ className = 'music', music }: Props) => {
     const { boolean, swap } = useBoolean(false)
     const audioLink = isTrueAudio(music.link)
-    const isBigAudio = audioLink == bigFileMessage
+    const isLargeAudio = audioLink == largeFileMessage
 
     return (
         <>
@@ -32,11 +32,11 @@ export const Music: React.FC<Props> = ({ className = 'music', music }: Props) =>
                 </ModalSET>, document.body)}
 
             <div
-                title={isBigAudio ? 'Слишком большой аудофаил' : ''}
+                title={isLargeAudio ? 'Слишком большой аудофаил' : ''}
                 className=
                 {cn('flex justify-between items-center py-3 pr-7 pl-8 cursor-pointer transition03',
                     className,
-                    (!audioLink || isBigAudio && 'opacity-65'),
+                    (!audioLink || isLargeAudio && 'opacity-65'),
                 )}>
 
                 <div className='flex gap-5 overflow-hidden pointer-events-none'>

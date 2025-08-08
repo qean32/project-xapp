@@ -2,6 +2,7 @@ import React from 'react'
 import { cn } from '../../lib/function'
 import { useDinamickPagination, useHookScroll } from '../../lib/castom-hook';
 import { useAppSelector } from '../../lib/castom-hook/redux';
+import { Loader } from '../ui';
 // import { Loader } from '../ui';
 
 interface Props {
@@ -44,13 +45,11 @@ interface Props_ {
 
 export const GroupContainer: React.FC<Props_> = ({ className, Component, clickHandler, componentPropsName, fatchFn, take, RQkey }: Props_) => {
     const { search } = useAppSelector(state => state.search);
-    const { refHandler, refParent, finaldata: array, skip } = useDinamickPagination(() => fatchFn(skip, take, search), [RQkey], 0, search);
+    const { refHandler, refParent, finaldata: array, skip, loading } = useDinamickPagination(() => fatchFn(skip, take, search), [RQkey], 0, search);
     const clickHandler_ = RQkey == 'music' ? (...args: any) => clickHandler(...args, array) : clickHandler
-
 
     return (
         <>
-            {/* <Loader /> */}
             <div className={cn("flex flex-col max-h-[90%] relative overflow-scroll", className)} onClick={clickHandler_} ref={refParent}>
                 {array && array.map((item, i) => {
 
@@ -58,6 +57,7 @@ export const GroupContainer: React.FC<Props_> = ({ className, Component, clickHa
                 })}
                 <div className='w-100 min-h-[50px]' ref={refHandler} ></div>
             </div >
+            {loading && <Loader className='pt-2' />}
         </>
     )
 }

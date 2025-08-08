@@ -4,7 +4,7 @@ import { useBoolean } from '../../lib/castom-hook'
 import { MusicDto } from '../../model'
 import { downloadImg, recoverImg, trashImg } from '../import'
 import { SmallAva } from '../ui'
-import { bigFileMessage } from '../../export'
+import { largeFileMessage } from '../../export'
 import { musicService } from '../../service/music-service'
 
 interface Props {
@@ -31,7 +31,7 @@ export const MusicPlayList: React.FC<Props> = ({ className = 'music', music }: P
                 <div className='flex gap-5 overflow-hidden pointer-events-none'>
                     <SmallAva path={music.ava} />
                     <div className="flex flex-col justify-between p-1 max-w-[80%]">
-                        <p className={'text-nowrap text-ellipsis abaptive-text-music overflow-hidden' + (audioLink == bigFileMessage && 'underline')}>{music.name}</p>
+                        <p className={'text-nowrap text-ellipsis abaptive-text-music overflow-hidden' + (audioLink == largeFileMessage && 'underline')}>{music.name}</p>
                     </div>
                 </div>
                 <div className='flex justify-end gap-3 pl-5 w-[120px]'>

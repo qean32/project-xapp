@@ -6,9 +6,9 @@ interface Props {
 }
 
 
-export const Loader: React.FC<Props> = ({ className }: Props) => {
+export const Loader: React.FC<Props> = ({ className = 'absolute' }: Props) => {
     return (
-        <div className={cn('absolute flex justify-center items-center', className)} style={{ inset: '0 0', transform: 'translateY(-100px)' }}>
+        <div className={cn('flex justify-center items-center', className)} style={{ inset: '0' }}>
             <span className="loader w-[35px] h-[35px]"></span>
         </div>
     )
