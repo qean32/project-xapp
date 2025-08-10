@@ -20,7 +20,7 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], ski
             && Array.isArray(RQData.data.data)
         ) {
             off();
-            (!search ?
+            (search ?
                 setFinalData((prev: T[]) => [...prev, ...RQData.data.data])
                 :
                 setFinalData(RQData.data.data)
@@ -29,6 +29,7 @@ export const useDinamickPagination = <T,>(fetch_: Function, RQkey: string[], ski
     }, [RQData.data])
 
     React.useEffect(() => {
+        console.log(RQData.data?.next)
         if (boolean && RQData.data.next) {
             on()
             setTimeout(() =>

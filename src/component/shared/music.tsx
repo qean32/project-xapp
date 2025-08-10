@@ -49,7 +49,7 @@ export const Music: React.FC<Props> = ({ className = 'music', music }: Props) =>
                     <img className='cursor-pointer pointer-events-auto' src={playlistImg} alt="" onClick={swap} />
                     <a
                         download={true}
-                        href={audioLink ? music.link : music.link.split('/').at(-1)}
+                        href={audioLink ? music.link : music.link?.split('/').at(-1)}
                     ><img className='cursor-pointer pointer-events-auto' src={downloadImg} alt="" /></a>
                     {/* {!audioLink && <img className='cursor-pointer pointer-events-auto' src={playlistImg} alt="" />} */}
                 </div>

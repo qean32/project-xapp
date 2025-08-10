@@ -2,8 +2,8 @@ import { requestGet, requestPost } from "../lib/function/request"
 const instance = 'music';
 
 export const musicService = {
-    searchMusic: (skip: number, take: number, search: string) => {
-        return requestGet(`${instance}/search?search=${search.split(' ').join('+')}&page=${skip}`)
+    searchMusic: (page: number, take: number, search: string) => {
+        return requestGet(`${instance}/search?search=${search.split(' ').join('+')}&page=${page}`)
         take
     },
 
