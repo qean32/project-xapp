@@ -10,10 +10,10 @@ type MusicSliceDto = {
 
 const initialState: MusicSliceDto = {
     current: {
-        link: 'https://cdn15.deliciousoranges.com/s1/get/music/20210219/Serega_pirat_-_dead_inside_72716179.mp3',
+        link: 'https://lmusic.kz/api/stream/101416',
         author: 'Serega Pirat',
-        ava: 'https://i.pinimg.com/1200x/f0/59/98/f059981655a772f50670ae134e348a55.jpg',
-        name: 'dead inside'
+        ava: 'https://avatars.mds.yandex.net/get-yapic/51381/n9bJBaaJjuLnCl0Jykl6Ri0UNc-1/orig',
+        name: '5IVE'
     },
     isNewAudio: false,
     playList: [],

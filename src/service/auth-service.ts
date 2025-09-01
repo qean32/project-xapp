@@ -9,5 +9,9 @@ export const authService = {
 
     registration: async (body: RegistrationFormDto) => {
         return requestPost(`${instance}/registration`, body)
+    },
+
+    refreshAuth: async () => {
+        return requestPost(`${instance}/refresh-auth`, {})
     }
 }

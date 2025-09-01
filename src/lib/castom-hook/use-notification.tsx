@@ -1,12 +1,12 @@
 import React from "react"
-import { MessageDto } from "../../model"
+import { IdDto, MessageDto } from "../../model"
 import { socket } from "../socket-config"
 import { en } from "../../export"
 import { jwtDecode } from "jwt-decode"
 import { getToken } from "../function"
 
 export const useNotification = () => {
-    const { id: userId }: { id: number } = jwtDecode(getToken());
+    const { id: userId }: IdDto = getToken() ? jwtDecode(getToken()) : { id: 0 };
     const roomId = userId.toString()
     const [messages, setMessages] = React.useState<MessageDto[]>([])
 

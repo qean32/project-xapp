@@ -9,7 +9,7 @@ import { audioValueReducer } from './audio-value'
 import { userReducer } from './user'
 import { newPlaylistReducer } from './new-playlist'
 import { searchReducer } from './search'
-import { stateFileReducer } from './state-file'
+import { notificationReducer } from './notification'
 
 
 const rootReducer = withReduxStateSync(
@@ -22,7 +22,7 @@ const rootReducer = withReduxStateSync(
         user: userReducer,
         newPlaylist: newPlaylistReducer,
         search: searchReducer,
-        stateFile: stateFileReducer,
+        notification: notificationReducer,
     })
 )
 

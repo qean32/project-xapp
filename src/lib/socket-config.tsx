@@ -1,3 +1,4 @@
 import openSocket from 'socket.io-client';
+import { serverHost } from '../export';
 
-export const socket = openSocket("http://localhost:3000");
+export const socket = openSocket(serverHost);

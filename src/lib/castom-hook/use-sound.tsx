@@ -4,8 +4,8 @@ import { useBoolean } from "./use-boolean";
 import { useAppSelector, useAppDispatch } from './redux'
 import { swapOnlyCurrent, swapMusic, swapCurrent } from '../../store/music'
 import { getAudioUrl, isTrueAudio, rndArray } from "../function";
-import { swapBigFileNotification, swapDownloadFileNotification } from "../../store/state-file";
-import { bigFileMessage } from "../../export";
+import { swapLargeFileNotification, swapDownloadFileNotification } from "../../store/notification";
+import { largeFileMessage } from "../../export";
 
 
 export const useSound = () => {
@@ -78,10 +78,10 @@ export const useSound = () => {
         const audioLink = isTrueAudio(newCurrent.link)
         if (typeof audioLink != 'string')
             dispatch(swapDownloadFileNotification())
-        if (audioLink != bigFileMessage) {
+        if (audioLink != largeFileMessage) {
             dispatch(swapOnlyCurrent({ ...newCurrent, link: audioLink ? newCurrent.link : await getAudioUrl(newCurrent.link) }))
         } else {
-            dispatch(swapBigFileNotification())
+            dispatch(swapLargeFileNotification())
             direction == 'next' && next(0, 2)
             direction == 'back' && back(0, 2)
         }

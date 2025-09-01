@@ -11,7 +11,7 @@ export function useRequest<T>(fetch_: any, RQkey: string[]) {
         }
         RQData.data &&
             Array.isArray(RQData.data) &&
-            setFinalData((prev: T[]) => [...prev, ...RQData.data])
+            setFinalData(RQData.data)
     }, [RQData.data])
 
     return { finaldata, setFinalData, count: RQData?.data?.count }

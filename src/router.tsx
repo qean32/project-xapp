@@ -1,6 +1,6 @@
 import {
-    BrowserRouter,
-    // HashRouter,
+    // BrowserRouter,
+    HashRouter,
     Route, Routes
 } from "react-router-dom"
 import * as _ from './pages'
@@ -8,15 +8,17 @@ import { store } from './store'
 import { Provider } from 'react-redux'
 import { BottomTool, TopMenu } from "./component/shared"
 import { Notification } from "./component/ui"
+import { RefreshToken } from "./component/general"
 
 export const Router = () => {
     return (
-        // <HashRouter>
-        <BrowserRouter>
+        <HashRouter>
+            {/* // <BrowserRouter> */}
             <Provider store={store} >
                 <BottomTool />
                 <TopMenu />
                 <Notification />
+                <RefreshToken />
                 <Routes>
 
                     <Route path="" element={<_.Main />} />
@@ -29,7 +31,7 @@ export const Router = () => {
                     <Route path="*" element={<_.P404 />} />
                 </Routes>
             </Provider>
-        </BrowserRouter>
-        // </HashRouter>
+            {/* </BrowserRouter> */}
+        </HashRouter>
     )
 }

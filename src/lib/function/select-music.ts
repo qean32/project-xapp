@@ -10,6 +10,7 @@ export const selectMusic = async (e: React.MouseEvent<HTMLDivElement>, dispath: 
             const link = e.target.children[1].children[1].href
             if (link.split('.').at(-1) != 'mp3') {
                 const link_ = await getAudioUrl(link)
+                console.log(link_)
                 const name = e.target.children[0].children[1].children[0].textContent
                 dispath(
                     swapMusic({

@@ -2,13 +2,12 @@ import React from "react"
 import { LeftNavigate } from "../component/general"
 import { DftSETPage, GroupContainer } from "../component/hoc"
 import { Music, SearchGroup } from "../component/shared"
-import { } from "../component/ui"
 import { useAppDispatch } from "../lib/castom-hook/redux"
 import { changeTitle, isTrueAudio, selectMusic } from "../lib/function"
 import { usePage } from "../lib/castom-hook"
 import { musicService } from "../service/music-service"
 import { MusicDto } from "../model"
-import { swapDownloadFileNotification } from "../store/state-file"
+import { swapDownloadFileNotification } from "../store/notification"
 
 export const Main = () => {
     const dispatch = useAppDispatch();
