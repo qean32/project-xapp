@@ -1,6 +1,6 @@
 import {
-    BrowserRouter,
-    // HashRouter,
+    // BrowserRouter,
+    HashRouter,
     Route, Routes
 } from "react-router-dom"
 import * as _ from './pages'
@@ -12,8 +12,8 @@ import { RefreshToken } from "./component/general"
 
 export const Router = () => {
     return (
-        // <HashRouter>
-        <BrowserRouter>
+        <HashRouter>
+            {/* // <BrowserRouter> */}
             <Provider store={store} >
                 <BottomTool />
                 <TopMenu />
@@ -31,7 +31,7 @@ export const Router = () => {
                     <Route path="*" element={<_.P404 />} />
                 </Routes>
             </Provider>
-        </BrowserRouter>
-        // </HashRouter>
+            {/* </BrowserRouter> */}
+        </HashRouter>
     )
 }

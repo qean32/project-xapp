@@ -69,7 +69,7 @@ export const useChat = ({ isTyping = false, setData = false }: { isTyping?: bool
         socket.emit(en.clientTyping, { roomId, user: userId })
     }
 
-    const sendMessage = (data: { message: string, from: number, files?: { file: File, name: string }[] }) => {
+    const sendMessage = async (data: { message: string, from: number, files?: { file: File, name: string }[] }) => {
         socket.emit(en.clientSend, { ...data, to: Number(toUserId) })
     }
 

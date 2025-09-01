@@ -15,11 +15,6 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
     const changeMessage = useAppSelector(state => state.changeMessage)
     const { id } = useUserInfo()
     const dispatch = useAppDispatch()
-
-    React.useEffect(() => {
-        console.log(files)
-    }, [files])
-
     React.useEffect(() => {
         if (changeMessage.hashMessage)
             setMessage(changeMessage.hashMessage)
@@ -38,7 +33,6 @@ export const EnterMessage: React.FC<Props> = ({ }: Props) => {
 
 
         sendMessage({ message: message, from: id, files: files })
-        console.log({ message: message, from: id, files: files })
         dispatch(unsetMessage())
         unset()
     }
